@@ -20,7 +20,7 @@
         <variable key="os-centos6-pg-version">9.5</variable>
         <variable key="os-centos7-pg-version">9.6</variable>
 
-        <!-- User-defined package to use in documentation (use "apt" to install the current pgpd apt package) -->
+        <!-- User-defined package to use in documentation (use "apt" to install the current PGDG apt package) -->
         <variable key="package">none</variable>
 
         <!-- Defines the general OS type that will be used to generate commands.  Also supported: centos6, centos7 -->
@@ -266,6 +266,9 @@
         </variable>
 
         <variable key="copy-ca-cert">COPY {[fake-cert-path-relative]}/ca.crt {[ca-cert-path]}/pgbackrest-ca.crt</variable>
+
+        <!-- Don't allow sudo to disable core dump (suppresses errors, see https://github.com/sudo-project/sudo/issues/42) -->
+        <variable key="sudo-disable-core-dump">RUN echo "Set disable_coredump false" >> /etc/sudo.conf</variable>
     </variable-list>
 
     <!-- Setup hosts used to build the documentation
@@ -274,14 +277,15 @@
         {[copy-ca-cert]}
 
         # Fix root tty
-        RUN sed -i 's/^mesg n/tty -s \&amp;\&amp; mesg n/g' /root/.profile &amp;&amp; \
+        RUN sed -i 's/^mesg n/tty -s \&amp;\&amp; mesg n/g' /root/.profile
 
-        # Suppress dpkg interactive output
-            rm /etc/apt/apt.conf.d/70debconf
+        # Install base packages (suppress dpkg interactive output)
+        RUN export DEBIAN_FRONTEND=noninteractive &amp;&amp; \
+            rm /etc/apt/apt.conf.d/70debconf &amp;&amp; \
+            apt-get update &amp;&amp; \
+            apt-get install -y sudo ssh wget vim gnupg lsb-release iputils-ping ca-certificates tzdata locales 2>&amp;1
 
-        # Install base packages
-        RUN apt-get update &amp;&amp; \
-            apt-get install -y sudo ssh wget vim gnupg lsb-release iputils-ping ca-certificates locales 2>&amp;1
+        {[sudo-disable-core-dump]}
 
         # Install CA certificate
         RUN update-ca-certificates
@@ -318,6 +322,8 @@
 
         # Install packages
         RUN yum install -y openssh-server openssh-clients sudo wget vim 2>&amp;1
+
+        {[sudo-disable-core-dump]}
 
         # Install CA certificate
         RUN update-ca-trust enable &amp;&amp; \
@@ -638,7 +644,7 @@
         <title>Introduction</title>
 
         <!-- Create S3 server first to allow it time to boot before being used -->
-        <host-add if="'{[s3-local]}' eq 'y'" id="{[host-s3-id]}" name="{[host-s3]}" user="root" image="minio/minio:RELEASE.2019-10-12T01-39-57Z" os="{[os-type]}" option="-v {[fake-cert-path]}/s3-server.crt:/root/.minio/certs/public.crt:ro -v {[fake-cert-path]}/s3-server.key:/root/.minio/certs/private.key:ro -e MINIO_REGION={[s3-region]} -e MINIO_DOMAIN={[s3-endpoint]} -e MINIO_BROWSER=off -e MINIO_ACCESS_KEY={[s3-key]} -e MINIO_SECRET_KEY={[s3-key-secret]}" param="server /data --address :443" update-hosts="n"/>
+        <host-add if="'{[s3-local]}' eq 'y'" id="{[host-s3-id]}" name="{[host-s3]}" user="root" image="minio/minio:RELEASE.2020-05-06T23-23-25Z" os="{[os-type]}" option="-v {[fake-cert-path]}/s3-server.crt:/root/.minio/certs/public.crt:ro -v {[fake-cert-path]}/s3-server.key:/root/.minio/certs/private.key:ro -e MINIO_REGION={[s3-region]} -e MINIO_DOMAIN={[s3-endpoint]} -e MINIO_BROWSER=off -e MINIO_ACCESS_KEY={[s3-key]} -e MINIO_SECRET_KEY={[s3-key-secret]}" param="server /data --address :443" update-hosts="n"/>
 
         <p>Ce guide d'utilisateur est destiné à être suivi séquentiellement du début à la fin&amp;mdash; chaque section dépend de la précédente. Par exemple, la section <link section="/backup">Backup</link> repose sur la configuration qui est décrite dans la sesction <link section="/quickstart">Démarrage rapide</link>.  Une fois que la configuration de <backrest/> est opérationnelle, il est possible de sauter des étapes, mais il est recomandé de suivre le guide dans l'ordre la première fois.</p>
 
@@ -767,13 +773,16 @@
 
             <execute if="{[os-type-is-debian]}" user="root" pre="y">
                 <exe-cmd>
-                    apt-get install make gcc libpq-dev libssl-dev libxml2-dev pkg-config liblz4-dev</exe-cmd>
+                  apt-get install make gcc libpq-dev libssl-dev libxml2-dev pkg-config
+                  liblz4-dev libzstd-dev libbz2-dev libz-dev
+                </exe-cmd>
                 <exe-cmd-extra>-y 2>&amp;1</exe-cmd-extra>
             </execute>
 
             <execute if="{[os-type-is-centos]}" user="root" pre="y">
                 <exe-cmd>
-                    yum install make gcc postgresql-devel openssl-devel libxml2-devel lz4-devel
+                  yum install make gcc postgresql-devel openssl-devel libxml2-devel
+                  lz4-devel libzstd-devel bzip2-devel
                 </exe-cmd>
                 <exe-cmd-extra>-y 2>&amp;1</exe-cmd-extra>
             </execute>
@@ -957,6 +966,18 @@
             </backrest-config>
         </section>
 
+        <!-- =================================================================================================================== -->
+        <section id="s3-support" if="'{[s3-all]}' eq 'y'">
+            <title>Support des magasins d'objets compatibles S3</title>
+
+            <block id="s3-setup">
+                <block-variable-replace key="s3-setup-host">{[host-pg1]}</block-variable-replace>
+                <block-variable-replace key="s3-setup-user">postgres</block-variable-replace>
+                <block-variable-replace key="s3-setup-config-owner">postgres:postgres</block-variable-replace>
+                <block-variable-replace key="s3-setup-create-bucket">y</block-variable-replace>
+            </block>
+        </section>
+
         <!-- SECTION => QUICKSTART - CONFIGURE ARCHIVING -->
         <section id="configure-archiving">
             <title>Configuration de l'archivage</title>
@@ -1033,17 +1054,6 @@
             </backrest-config>
 
             <p>Une fois que le dépôt de sauvegarde a été configuré et que celui-ci a été créée et vérifiée, les paramètres de chiffrement du dépôt ne peuvent plus être modifiés.</p>
-        </section>
-
-        <section id="s3-support" if="'{[s3-all]}' eq 'y'">
-            <title>Support pour les magasins d'objets compatibles S3</title>
-
-            <block id="s3-setup">
-                <block-variable-replace key="s3-setup-host">{[host-pg1]}</block-variable-replace>
-                <block-variable-replace key="s3-setup-user">postgres</block-variable-replace>
-                <block-variable-replace key="s3-setup-config-owner">postgres:postgres</block-variable-replace>
-                <block-variable-replace key="s3-setup-create-bucket">y</block-variable-replace>
-            </block>
         </section>
 
         <!-- SECTION => QUICKSTART - STANZA CREATE -->
@@ -1159,6 +1169,8 @@
             </execute-list>
 
             <p>Chaque dépôts de sauvegarde a une section séparée et il est possible de limiter la sortie à un seul dépôt avec l'option <br-option>--stanza</br-option>. L'indicateur <id>status</id> donne une brève information sur l'état de santé du dépôt. S'il est à <id>ok</id>, alors le <backrest/> fonctionne normalement.  La ligne <id>wal min/max</id> indique les valeurs minimales et maximales des journaux de transaction (WAL) actuellement stockées dans le dépôt de sauvegarde.  Notez qu'il peut y avoir des trous en raison des politiques de conservation des archives ou pour d'autres raisons.</p>
+
+            <p> Le message '<id>backup/expire running</id>' apparaîtra à côté de l'information '<id>status</id>' si l'une de ces commandes est en cours d'exécution sur l'hôte.</p>
 
             <p>Les sauvegardes sont affichées du plus ancien au plus récent.  La sauvegarde la plus ancienne sera <i>toujours</i> une sauvegarde complète (indiquée par un <id>F</id> à la fin de l'étiquette) mais la sauvegarde la plus récente peut être complète, différentielle (se termine par <id>D</id>), ou incrémentale (se termine par <id>I</id>).</p>
 
@@ -1471,7 +1483,7 @@
         <section id="full">
             <title>Conservation de la sauvegarde complète</title>
 
-            <p>Modifiez <br-option>repo1-retention-full</br-option> sur le nombre de sauvegardes complètes souhaitées.  Les nouvelles sauvegardes doivent être effectuées avant l'expiration &amp;mdash ; cela signifie que si <br-setting>repo1-retention-full=2</br-setting> alors il y aura trois sauvegardes complètes stockées avant l'expiration de la plus ancienne.</p>
+            <p>Le paramètre <br-option>repo1-retention-full-type</br-option> détermine comment l'option <br-option>repo1-retention-full</br-option> est interprétée ; soit le nombre de sauvegardes complètes à conserver, soit le nombre de jours de conservation des sauvegardes complètes.  Les nouvelles sauvegardes doivent être effectuées avant leur expiration; Cela signifie que si <br-setting>repo1-retention-full-type=count</br-setting> et <br-setting>repo1-retention-full=2</br-setting> alors il y aura trois sauvegardes complètes stockées avant que la plus ancienne n'expire, ou si <br-setting>repo1-retention-full-type=time</br-setting> et <br-setting>repo1-retention-full=20</br-setting> alors il doit y avoir une sauvegarde complète datant d'au moins 20 jours avant l'expiration. </p>
 
             <backrest-config host="{[host-pg1]}" file="{[backrest-config-demo]}">
                 <title>Configuration de l'option <br-option>repo1-retention-full</br-option></title>
