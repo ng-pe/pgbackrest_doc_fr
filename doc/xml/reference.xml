@@ -426,7 +426,7 @@
                     <config-key id="repo-retention-archive-type" name="Archive Retention Type">
                         <summary>Type de sauvegarde pour la conservation des journaux de transaction (WAL).</summary>
 
-                        <text>Lorsque <setting>repo-retention-archive-type</setting> est positionné sur <setting>full</setting> <backrest/> conservera les journaux de trasnaction (WAL) pour le nombre de sauvegardes complètes défini par <setting>repo-retention-archive</setting>.  S'il est positionné sur  <setting>diff</setting> (différentiel) <backrest/> conservera les journaux de trasnaction (WAL) pour le nombre de sauvegardes complètes et différentielles défini par <setting>repo-retention-archive</setting>, ce qui signifie que si la dernière sauvegarde effectuée était une sauvegarde complète, elle sera comptée comme un différentiel pour les besoins de la retention du dépôt.  S'il est positionné sur <setting>incr</setting> (incrémental) <backrest/> conservera les journaux de trasnaction (WAL) pour le nombre de sauvegardes complètes, différentielles et incrémentielles défini par <setting>repo-retention-archive</setting>. Il est recommandé de ne pas modifier ce paramètre par rapport à la valeur par défaut : expiration que lorsque les sauvegardes complètes auront expiré..</text>
+                        <text>Lorsque <setting>repo-retention-archive-type</setting> est positionné sur <setting>full</setting> <backrest/> conservera les journaux de trasnaction (WAL) pour le nombre de sauvegardes complètes défini par <setting>repo-retention-archive</setting>.  S'il est positionné sur  <setting>diff</setting> (différentiel) <backrest/> conservera les journaux de trasnaction (WAL) pour le nombre de sauvegardes complètes et différentielles défini par <setting>repo-retention-archive</setting>, ce qui signifie que si la dernière sauvegarde effectuée était une sauvegarde complète, elle sera comptée comme un différentiel pour les besoins de la retention du dépôt.  S'il est positionné sur <setting>incr</setting> (incrémental) <backrest/> conservera les journaux de trasnaction (WAL) pour le nombre de sauvegardes complètes, différentielles et incrémentielles défini par <setting>repo-retention-archive</setting>. Il est recommandé de ne pas modifier ce paramètre par rapport à la valeur par défaut : expiration que lorsque les sauvegardes complètes auront expiré.</text>
 
                         <example>diff</example>
                     </config-key>
@@ -435,136 +435,136 @@
                     <config-key id="repo-retention-archive" name="Archive Retention">
                         <summary>Number of backups worth of continuous WAL to retain.</summary>
 
-                        <text><admonition type="note">WAL segments required to make a backup consistent are always retained until the backup is expired regardless of how this option is configured.</admonition>If this value is not set and <setting>repo-retention-full-type</setting> is <setting>count</setting> (default), then the archive to expire will default to the <setting>repo-retention-full</setting> (or <setting>repo-retention-diff</setting>) value corresponding to the <setting>repo-retention-archive-type</setting> if set to <setting>full</setting> (or <setting>diff</setting>). This will ensure that WAL is only expired for backups that are already expired. If <setting>repo-retention-full-type</setting> is <setting>time</setting>, then this value will default to removing archives that are earlier than the oldest full backup retained after satisfying the <setting>repo-retention-full</setting> setting.
+                        <text><admonition type="note">Les segments WAL nécessaires pour rendre une sauvegarde cohérente sont toujours conservés jusqu'à l'expiration de la sauvegarde, quelle que soit la configuration de cette option.</admonition> Si cette configuration n'est pas définie et que <setting>repo-retention-full-type</setting> est positionné sur <setting>count</setting> (valeur par défaut), alors l'expiration de l'archive sera par défaut à la valeur de <setting>repo-retention-full</setting>  si <setting>repo-retention-archive-type</setting> est définit à <setting>full</setting> (ou à <setting>repo-retention-diff</setting> si <setting>repo-retention-archive-type</setting> est définit à <setting>diff</setting> ). Cela permet de garantir que le WAL n'expirera que pour les sauvegardes ayant déjà expirées. Si <setting>repo-retention-full-type</setting> est positionné sur <setting>time</setting>, avec cette valeur, par défaut, les archives qui sont antérieures à la plus ancienne sauvegarde complète conservée et satisfaisant au paramètre <setting>repo-retention-full</setting> seront supprimés.
 
-                        This option must be set if <setting>repo-retention-archive-type</setting> is set to <setting>incr</setting>.  If disk space is at a premium, then this setting, in conjunction with <setting>repo-retention-archive-type</setting>, can be used to aggressively expire WAL segments. However, doing so negates the ability to perform PITR from the backups with expired WAL and is therefore <b>not</b> recommended.</text>
+                        Cette option doit être définie si <setting>repo-retention-archive-type</setting> est positionné sur <setting>incr</setting>. Si l'espace disque est insuffisant, tce paramètre, associé à <setting>repo-retention-archive-type</setting>, peut être utilisé pour faire expirer de manière agressive les segments WAL. Toutefois, cela annule la possibilité d'effectuer un PITR à partir des sauvegardes avec les WAL expirés et donc <b>n'est pas</b> recommandé.</text>
 
                         <example>2</example>
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-KEY KEY -->
-                    <config-key id="repo-s3-key" name="S3 Repository Access Key">
-                        <summary>S3 repository access key.</summary>
+                    <config-key id="repo-s3-key" name="Clé d'accès au dépôt S3">
+                        <summary>Clé d'accès au dépôt S3.</summary>
 
-                        <text>AWS key used to access this bucket.</text>
+                        <text>Clé AWS utilisée pour accéder au bucket.</text>
 
                         <example>AKIAIOSFODNN7EXAMPLE</example>
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-KEY-SECRET KEY -->
-                    <config-key id="repo-s3-key-secret" name="S3 Repository Secret Access Key">
-                        <summary>S3 repository secret access key.</summary>
+                    <config-key id="repo-s3-key-secret" name="Clé d'accès secrète au dépôt S3">
+                        <summary>Clé d'accès secrète au dépôt S3.</summary>
 
-                        <text>AWS secret key used to access this bucket.</text>
+                        <text>Clé secrète AWS utilisée pour accéder au bucket.</text>
 
                         <example>wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY</example>
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-TOKEN KEY -->
-                    <config-key id="repo-s3-token" name="S3 Repository Security Token">
-                        <summary>S3 repository security token.</summary>
+                    <config-key id="repo-s3-token" name="Jeton de sécurité pour le dépôt S3">
+                        <summary>Jeton de sécurité pour le dépôt S3.</summary>
 
-                        <text>AWS security token used with temporary credentials.</text>
+                        <text>Jeton de sécurité AWS utilisé avec des identifiants temporaires.</text>
 
                         <example>AQoDYXdzEPT//////////wEXAMPLEtc764bNrC9SAPBSM22 ...</example>
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-BUCKET KEY -->
-                    <config-key id="repo-s3-bucket" name="S3 Repository Bucket">
-                        <summary>S3 repository bucket.</summary>
+                    <config-key id="repo-s3-bucket" name="S3 dépôt Bucket">
+                        <summary>S3 dépôt bucket.</summary>
 
-                        <text>S3 bucket used to store the repository.
+                        <text>Bucket S3 utilisé pour stocker le dépôt.
 
-                        <backrest/> repositories can be stored in the bucket root by setting <br-option>repo-path=/</br-option> but it is usually best to specify a prefix, such as <path>/repo</path>, so logs and other AWS generated content can also be stored in the bucket.</text>
+                        Les dépots <backrest/> peuvent être stockés à la racine du bucket en définissant <br-option>repo-path=/</br-option> mais il est généralement préférable de spécifier un préfixe, comme par exemple <path>/repo</path>, afin que les logs et autres contenus générés par AWS puissent également être stockés dans le bucket.</text>
 
                         <example>pg-backup</example>
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-CA-FILE KEY -->
-                    <config-key id="repo-s3-ca-file" name="S3 SSL CA File">
-                        <summary>S3 SSL CA File.</summary>
+                    <config-key id="repo-s3-ca-file" name="Fichier SSL CA S3">
+                        <summary>Ficher SSL CA S3.</summary>
 
-                        <text>Use a CA file other than the system default.</text>
+                        <text>Utiliser un fichier CA autre que celui défini par défaut dans le système.</text>
 
                         <example>/etc/pki/tls/certs/ca-bundle.crt</example>
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-CA-PATH KEY -->
-                    <config-key id="repo-s3-ca-path" name="S3 SSL CA Path">
-                        <summary>S3 SSL CA Path.</summary>
+                    <config-key id="repo-s3-ca-path" name="Chemin SSL CA">
+                        <summary>Chemin S3 SSL CA.</summary>
 
-                        <text>Use a CA path other than the system default.</text>
+                        <text>Utiliser un chemin pour le CA autre que celui défini par défaut dans le système.</text>
 
                         <example>/etc/pki/tls/certs</example>
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-ENDPOINT KEY -->
-                    <config-key id="repo-s3-endpoint" name="S3 Repository Endpoint">
-                        <summary>S3 repository endpoint.</summary>
+                    <config-key id="repo-s3-endpoint" name="Dépot S3 Point de terminaison">
+                        <summary>Dépot S3 Point de terminaison (endpoint).</summary>
 
-                        <text>The AWS end point should be valid for the selected region.</text>
+                        <text>Le point de terminaison d'AWS doit être valable pour la région sélectionnée.</text>
 
                         <example>s3.amazonaws.com</example>
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-HOST KEY -->
-                    <config-key id="repo-s3-host" name="S3 Repository Host">
-                        <summary>S3 repository host.</summary>
+                    <config-key id="repo-s3-host" name="Hôte dépôt S3">
+                        <summary>Hôte du dépot S3.</summary>
 
-                        <text>Connect to a host other than the end point.  This is typically used for testing.</text>
+                        <text>Conntecter sur un hôte différent du point de terminaison (endpoint). Il est généralement utilisé à des fins de test.</text>
 
                         <example>127.0.0.1</example>
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-PORT KEY -->
-                    <config-key id="repo-s3-port" name="S3 Repository Port">
-                        <summary>S3 repository port.</summary>
+                    <config-key id="repo-s3-port" name="Port dépot S3">
+                        <summary>Port de connection au dépot S3.</summary>
 
-                        <text>Port to use when connecting to the endpoint (or host if specified).</text>
+                        <text>Port à utiliser lors de la connexion au point de terminaison (ou à l'hôte si spécifié).</text>
 
                         <example>9000</example>
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-REGION KEY -->
-                    <config-key id="repo-s3-region" name="S3 Repository Region">
-                        <summary>S3 repository region.</summary>
+                    <config-key id="repo-s3-region" name="Région dépot S3">
+                        <summary>Région du dépôt S3.</summary>
 
-                        <text>The AWS region where the bucket was created.</text>
+                        <text>La région d'AWS où le bucket a été créé.</text>
 
                         <example>us-east-1</example>
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-URI-STYLE KEY -->
-                    <config-key id="repo-s3-uri-style" name="S3 Repository URI Style">
-                        <summary>S3 URI Style.</summary>
+                    <config-key id="repo-s3-uri-style" name="Dépot S3 URI formats">
+                        <summary>S3 URI formats.</summary>
 
-                        <text>The following URI styles are supported:
+                        <text>Les formats URI suivants sont pris en charge:
                         <ul>
-                            <li><id>host</id> - Connect to <id>bucket.endpoint</id> host.</li>
-                            <li><id>path</id> - Connect to <id>endpoint</id> host and prepend bucket to URIs.</li>
+                            <li><id>host</id> - Connexion à l'hôte <id>bucket.endpoint</id>.</li>
+                            <li><id>path</id> - Connexion à l'hôte <id>endpoint</id> et ajout du bucket aux URIs.</li>
                         </ul></text>
 
                         <example>path</example>
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-VERIFY-TLS KEY -->
-                    <config-key id="repo-s3-verify-tls" name="S3 Repository Verify TLS">
-                        <summary>Verify S3 server certificate.</summary>
+                    <config-key id="repo-s3-verify-tls" name="S3 Dépot Vérifiction TLS">
+                        <summary>Vérifier le certificat du serveur S3.</summary>
 
-                        <text>Disables verification of the S3 server certificate.  This should only be used for testing or other scenarios where a certificate has been self-signed.</text>
+                        <text>Désactive la vérification du certificat du serveur S3. Cette fonction ne doit être utilisée que dans le cadre de tests ou dans le cas d'une utilisation avec un certificat a été auto-signé.</text>
 
                         <example>n</example>
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-TYPE KEY -->
-                    <config-key id="repo-type" name="Repository Type">
-                        <summary>Type of storage used for the repository.</summary>
+                    <config-key id="repo-type" name="Type de dépot">
+                        <summary>Type de stockage utilisé pour le dépôt.</summary>
 
-                        <text>The following repository types are supported:
+                        <text>Les types de stockage suivants sont pris en charge :
                         <ul>
-                            <li><id>cifs</id> - Like <id>posix</id>, but disables links and directory fsyncs</li>
-                            <li><id>posix</id> - Posix-compliant file systems</li>
-                            <li><id>s3</id> - AWS Simple Storage Service</li>
+                            <li><id>cifs</id> - Comme <id>posix</id>, mais désactive les liens et les fsyncs sur les répertoires</li>
+                            <li><id>posix</id> - Systèmes de fichiers conformes à Posix</li>
+                            <li><id>s3</id> - Service de stockage d'objet "AWS Simple Storage Service"</li>
                         </ul></text>
 
                         <example>cifs</example>
@@ -572,13 +572,13 @@
 
                     <!-- CONFIG - REPO SECTION - REPO-CIPHER-TYPE KEY -->
                     <config-key id="repo-cipher-type" name="Repository Cipher Type">
-                        <summary>Cipher used to encrypt the repository.</summary>
+                        <summary>Chiffrement (cipher) utilisé pour chiffrer le dépôt.</summary>
 
-                        <text>The following repository types are supported:
+                        <text>Les types de chiffrement suivants sont pris en charge:
                         <ul>
-                            <li><id>none</id> - The repository is not encrypted</li>
-                            <li><id>aes-256-cbc</id> - Advanced Encryption Standard with 256 bit key length</li>
-                        </ul>Note that encryption is always performed client-side even if the repository type (e.g. S3) supports encryption.</text>
+                            <li><id>none</id> - Le dépôt n'est pas chiffré.</li>
+                            <li><id>aes-256-cbc</id> - Advanced Encryption Standard avec une clef de 256 bit</li>
+                        </ul>À noter que le chiffrement est toujours effectué côté client même si le type de stockage (par exemple S3) supporte le chiffrement.</text>
 
                         <default>none</default>
                         <example>aes-256-cbc</example>
@@ -586,9 +586,9 @@
 
                     <!-- CONFIG - REPO SECTION - REPO-CIPHER-PASS KEY -->
                     <config-key id="repo-cipher-pass" name="Repository Cipher Passphrase">
-                        <summary>Repository cipher passphrase.</summary>
+                        <summary>Phrase de chiffrement du dépôt.</summary>
 
-                        <text>Passphrase used to encrypt/decrypt files of the repository.</text>
+                        <text>Mot de passe utilisée pour chiffrer/déchiffrer les fichiers du dépôt.</text>
 
                         <example>zWaf6XtpjIVZC5444yXB+cgFDFl7MxGlgkZSaoPvTGirhPygu4jOKOXf9LO4vjfO</example>
                     </config-key>
@@ -597,64 +597,64 @@
 
             <!-- CONFIG - BACKUP -->
             <config-section id="backup" name="Backup">
-                <text>The <setting>backup</setting> section defines settings related to backup.</text>
+                <text>La section <setting>backup</setting> définit les paramètres relatifs à la sauvegarde..</text>
 
                 <config-key-list>
                     <!-- CONFIG - BACKUP SECTION - ARCHIVE-CHECK -->
                     <config-key id="archive-check" name="Check Archive">
-                        <summary>Check that WAL segments are in the archive before backup completes.</summary>
+                        <summary>Contrôle que les segments WAL se trouvent bien dans les archives à la fin du processus de sauvegarde.</summary>
 
-                        <text>Checks that all WAL segments required to make the backup consistent are present in the WAL archive.  It's a good idea to leave this as the default unless you are using another method for archiving.
+                        <text>Contrôle que tous les segments de WAL nécessaires pour rendre la sauvegarde cohérente sont présents dans les archives de WAL.  Il est conseillé de laisser ce paramètre par défaut, à moins que vous n'utilisiez une autre méthode d'archivage..
 
-                        This option must be enabled if <br-option>archive-copy</br-option> is enabled.</text>
+                        Cette option doit être activée si <br-option>archive-copy</br-option> est activé.</text>
 
                         <example>n</example>
                     </config-key>
 
                     <!-- CONFIG - BACKUP SECTION - ARCHIVE-COPY -->
                     <config-key id="archive-copy" name="Copy Archive">
-                        <summary>Copy WAL segments needed for consistency to the backup.</summary>
+                        <summary>Copier tous les segments WAL nécessaires à la cohérence de la sauvegarde.</summary>
 
-                        <text>This slightly paranoid option protects against corruption in the WAL segment archive by storing the WAL segments required for consistency directly in the backup.  WAL segments are still stored in the archive so this option will use additional space.
+                        <text>Cette option un peu parano protège contre la corruption dans les archives des segments WAL en stockant les segments WAL nécessaires à la cohérence directement dans la sauvegarde. Les segments WAL sont toujours stockés dans l'archive, donc cette option utilisera de l'espace supplémentaire.
 
-                        On restore, the WAL segments will be present in <path>pg_xlog/pg_wal</path> and <postgres/> will use them in preference to calling the <code>restore_command</code>.
+                        Lors de la restauration, les segments WAL seront présents dans <path>pg_xlog/pg_wal</path> et <postgres/> les utilisera de préférence plutôt que d'appeler la <code>restore_command</code>.
 
-                        The <br-option>archive-check</br-option> option must be enabled if <br-option>archive-copy</br-option> is enabled.</text>
+                        L'option <br-option>archive-check</br-option> doit être activée si <br-option>archive-copy</br-option> est activée</text>
 
                         <example>y</example>
                     </config-key>
 
                     <!-- CONFIG - BACKUP SECTION - BACKUP-STANDBY KEY -->
                     <config-key id="backup-standby" name="Backup from Standby">
-                        <summary>Backup from the standby cluster.</summary>
+                        <summary>Sauvegarde depuis l'instance standby secondaire.</summary>
 
-                        <text>Enable backup from standby to reduce load on the primary cluster.  This option requires that both the <host>primary</host> and <host>standby</host> hosts be configured.</text>
+                        <text>Activer la sauvegarde depuis le secondaire en standby pour réduire la charge sur l'instance primaire. Cette option nécessite que les hôtes <host>primary</host> (primaire) et <host>standby</host> (secondaire en standby) soit correctement configurés.</text>
 
                         <example>y</example>
                     </config-key>
 
                     <!-- CONFIG - BACKUP SECTION - CHECKSUM-PAGE KEY -->
                     <config-key id="checksum-page" name="Page Checksums">
-                        <summary>Validate data page checksums.</summary>
+                        <summary>Validation des sommes de contrôle des pages de données (checksums).</summary>
 
-                        <text>Directs <backrest/> to validate all data page checksums while backing up a cluster.  This option is automatically enabled when data page checksums are enabled on the cluster.
+                        <text>Permet à <backrest/> de valider toutes les sommes de contrôle des pages de données pendant la sauvegarde de l'instance.  Cette option est automatiquement activée lorsque les sommes de contrôle des pages de données sont activées sur l'instance.
 
-                        Failures in checksum validation will not abort a backup.  Rather, warnings will be emitted in the log (and to the console with default settings) and the list of invalid pages will be stored in the backup manifest.</text>
+                        Un échec dans la validation de la somme de contrôle n'annulera pas la sauvegarde.  Au contraire, des avertissements seront émis dans le journal des traces (et par défaut sur la console); la liste des pages non valides sera stockée dans le manifeste de sauvegarde.</text>
 
                         <example>n</example>
                     </config-key>
 
                     <!-- CONFIG - BACKUP SECTION - EXCLUDE KEY -->
                     <config-key id="exclude" name="Path/File Exclusions">
-                        <summary>Exclude paths/files from the backup.</summary>
+                        <summary>Exclusion des chemins/fichiers de la sauvegarde..</summary>
 
-                        <text>All exclusions are relative to <path>$PGDATA</path>. If the exclusion ends with / then only files in the specified directory will be excluded, e.g. <br-option>--exclude=junk/</br-option> will exclude all files in the <path>$PGDATA/junk</path> directory but include the directory itself.  If the exclusion does not end with / then the file may match the exclusion exactly or match with / appended to the exclusion, e.g. <br-option>--exclude=junk</br-option> will exclude the <path>$PGDATA/junk</path> directory and all the files it contains.
+                        <text>Toutes les exclusions sont relatives à <path>$PGDATA</path>. Si l'exclusion se termine par / alors seuls les fichiers du répertoire spécifié seront exclus, par exemple <br-option>--exclude=junk/</br-option> exclura tous les fichiers du répertoire <path>$PGDATA/junk</path> mais inclura le répertoire lui-même.  Si l'exclusion ne se termine pas par / alors le fichier peut correspondre exactement à l'exclusion ou correspondre à / apposé à l'exclusion, par exemple <br-option>--exclude=junk</br-option> exclura le répertoire <path>$PGDATA/junk</path> et tous les fichiers qu'il contient.
 
-                        <b>Be careful using this feature -- it is very easy to exclude something critical that will make the backup inconsistent.  Be sure to test your restores!</b>
+                        <b>Soyez prudent en utilisant cette fonctionnalité : il est très rapide d'exclure quelque chose d'essentiel qui rendra la sauvegarde incohérente.  Assurez-vous de tester vos restaurations ! </b>
 
-                        All excluded files will be logged at <id>info</id> level along with the exclusion rule.  Be sure to audit the list of excluded files to ensure nothing unexpected is being excluded.<admonition type="note">Exclusions are not honored on delta restores.  Any files/directories that were excluded by the backup will be <i>removed</i> on delta restore.</admonition>This option should not be used to exclude <postgres/> logs from a backup.  Logs can be moved out of the <id>PGDATA</id> directory using the <postgres/> <setting>log_directory</setting> setting, which has the benefit of allowing logs to be preserved after a restore.
+                        Tous les fichiers exclus seront journalisés au niveau <id>info</id> avec la règle d'exclusion.Veillez à vérifier la liste des fichiers exclus pour vous assurer que rien d'inattendu n'est exclu.<admonition type="note">Les exclusions ne sont pas prises en compte lors des restaurations delta.  Tout fichier/répertoire qui a été exclu par la sauvegarde sera <i>supprimé</i> lors de la restauration delta.</admonition>Cette option ne doit pas être utilisée pour exclure les journaux de traces <postgres/> d'une sauvegarde.  Les journaux peuvent être déplacés hors du répertoire <id>PGDATA</id> en utilisant le paramètre <postgres/> <setting>log_directory</setting>, ce qui présente l'avantage de permettre la préservation des journaux après une restauration.
 
-                        Multiple exclusions may be specified on the command-line or in a configuration file.</text>
+                        Les exclusions multiples peuvent être spécifiées sur la ligne de commande ou dans le fichier de configuration.</text>
 
                         <example>junk/</example>
                     </config-key>
