@@ -1119,9 +1119,9 @@
 
             <!-- OPERATION - CHECK COMMAND -->
             <command id="check" name="Check">
-                <summary>Check the configuration.</summary>
+                <summary>Vérification de la configuration.</summary>
 
-                <text>La commande <cmd>check</cmd> valide que that <backrest/> and the <pg-setting>archive_command</pg-setting> setting are configured correctly for archiving and backups. It detects misconfigurations, particularly in archiving, that result in incomplete backups because required WAL segments did not reach the archive. The command can be run on the database or the repository host.  The command may also be run on the standby host, however, since <code>pg_switch_xlog()</code>/<code>pg_switch_wal()</code> cannot be performed on the standby, the command will only test the repository configuration.
+                <text>La commande <cmd>check</cmd> valide que <backrest/> et le paramétre <pg-setting>archive_command</pg-setting> sont configurés correctement pour l'archivage et les sauvegardes. Il détecte d'éventuelles erreurs de configuration, en particulier pour l'archivage. Une mauvaise configuration de l'archivage se traduit par des sauvegardes incomplètes : les segments WAL requis n'étant pas parvenus aux archives. La commande peut être exécutée sur le serveur de l'instance de la base de données ou sur le serveur du dépôt de sauvegarde.  La commande peut également être exécutée sur l'hôte secondaire (standby), mais comme les commandes <code>pg_switch_xlog()</code>/<code>pg_switch_wal()</code> ne peut pas être exécuté sur une instance secondaire, la commande ne testera que la configuration du dépôt.
 
                 Notez que <code>pg_create_restore_point('pgBackRest Archive Check')</code> et <code>pg_switch_xlog()</code>/<code>pg_switch_wal()</code> sont appelés pour forcer <postgres/> à archiver un segment WAL. Les points de restauration ne sont supportés que dans <postgres/> &gt;= 9.1; Pour les versions plus anciennes, la commande <cmd>check</cmd> peut échouer s'il n'y a pas eu d'activité d'écriture depuis la dernière rotation du journal, il est donc recommandé que l'activité soit générée par l'utilisateur s'il n'y a pas eu d'écriture depuis le dernier changement de WAL avant l'exécution de la commande <cmd>check</cmd></text>
 
@@ -1140,6 +1140,16 @@
                 <summary>Expiration des sauvegardes qui dépassent la rétention.</summary>
 
                 <text><backrest/> effectue la rotation des sauvegardes mais ne se préoccupe pas de savoir quand les sauvegardes ont été créées.  Si deux sauvegardes complètes sont configurées pour être conservées, <backrest/> conservera deux sauvegardes complètes, qu'elles aient lieu à deux heures ou à deux semaines d'intervalle.</text>
+
+                <option-list>
+                    <!-- OPERATION - EXPIRE COMMAND - SET OPTION -->
+                    <option id="set" name="Defini">
+                        <summary>Definir l'expiration de la sauvegarde.</summary>
+
+                        <text>Le jeu de sauvegarde spécifié (c'est-à-dire l'étiquette de sauvegarde fournie et toutes ses sauvegardes dépendantes, le cas échéant) expirera quelles que soient les règles de conservation des sauvegardes, excepté qu'au moins une sauvegarde complète doit rester dans le dépôt. <admonition type="warning">Utilisez cette option avec une extrême prudence &amp;mdash ; elle supprimera définitivement toutes les sauvegardes et archives non nécessaires pour effectuer une sauvegarde cohérente du dépôt de sauvegarde <backrest/> pour le jeu de sauvegarde spécifié. Ce processus peut empêcher l'exécution du PITR. Si les options <br-option>--repo-retention-full</br-option> et/ou <br-option>--repo-retention-archive</br-option> sont configurées, alors il est conseillé de remplacer ces options en définissant leurs valeurs au maximum lors de l'exécution de la commande d'expiration.</admonition></text>
+                        <example>20150131-153358F_20150131-153401I</example>
+                    </option>
+                </option-list>
 
                 <command-example-list>
                     <command-example>
