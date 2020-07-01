@@ -564,7 +564,7 @@
                         <ul>
                             <li><id>cifs</id> - Comme <id>posix</id>, mais désactive les liens et les fsyncs sur les répertoires</li>
                             <li><id>posix</id> - Systèmes de fichiers conformes à Posix</li>
-                            <li><id>s3</id> - Service de stockage d'objet "AWS Simple Storage Service"</li>
+                            <li><id>s3</id> - Service de stockage d'objet (AWS Simple Storage Service)</li>
                         </ul></text>
 
                         <example>cifs</example>
