@@ -321,7 +321,7 @@
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-HOST-CMD KEY -->
-                    <config-key id="repo-host-cmd" name="Repository Host Command">
+                    <config-key id="repo-host-cmd" name="Chemin des binaires">
                         <summary>Chemin des binaires <backrest/> sur l'hôte du dépôt.</summary>
 
                         <text>Nécessaire uniquement si le chemin d'accès à <exe/> est différent entre les hôtes locaux et l'hote du dépôt.  S'il n'est pas défini, le chemin des binaires sur l'hôte du dépôt sera le même que le chemin des binaires locaux.</text>
@@ -331,7 +331,7 @@
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-HOST-CONFIG KEY -->
-                    <config-key id="repo-host-config" name="Repository Host Configuration">
+                    <config-key id="repo-host-config" name="Emplacement du fichier de configuration">
                         <summary>Emplacement du fichier de configuration <backrest/> sur l'hôte du dépôt.</summary>
 
                         <text>Définit l'emplacement du fichier de configuration sur l'hôte du dépôt.  Ceci n'est nécessaire que si le fichier de configuration de l'hôte du dépôt se trouve dans un emplacement différent de celui du fichier de configuration local.</text>
@@ -340,7 +340,7 @@
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-HOST-CONFIG-INCLUDE-PATH KEY -->
-                    <config-key id="repo-host-config-include-path" name="Repository Host Configuration Include Path">
+                    <config-key id="repo-host-config-include-path" name="Chemin d'inclusion de la configuration">
                         <summary>Chemin d'inclusion <backrest/>  de la configuration de l'hôte du dépôt.</summary>
 
                         <text>Définit l'emplacement du chemin d'inclusion de la configuration sur l'hôte du dépôt.  Ceci n'est nécessaire que si le chemin d'inclusion de la configuration de l'hôte du dépôt se trouve à un endroit différent du chemin d'inclusion de la configuration locale.</text>
@@ -349,7 +349,7 @@
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-HOST-CONFIG-PATH KEY -->
-                    <config-key id="repo-host-config-path" name="Repository Host Configuration Path">
+                    <config-key id="repo-host-config-path" name="Chemin de configuration">
                         <summary>Chemin de configuration <backrest/> de l'hôte du dépôt.</summary>
 
                         <text>Définit l'emplacement du chemin de configuration sur l'hôte du dépôt.  Ceci n'est nécessaire que si le chemin de configuration de l'hôte du référentiel se trouve à un endroit différent du chemin de configuration local.</text>
@@ -358,7 +358,7 @@
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-HOST-USER KEY -->
-                    <config-key id="repo-host-user" name="Repository Host User">
+                    <config-key id="repo-host-user" name="Utilisateur de l'hôte du dépôt">
                         <summary>Utilisateur de l'hôte du dépôt lorsque <setting>repo-host</setting> est défini.</summary>
 
                         <text>Définit l'utilisateur qui sera utilisé pour les opérations sur l'hôte du dépôt.  De préférence, il ne s'agit pas de l'utilisateur <id>postgres</id> mais plutôt d'un autre utilisateur comme <id>pgbackrest</id>.  Si <postgres/> fonctionne sur l'hôte du dépôt, l'utilisateur <id>postgres</id> peut être placé dans le groupe <id>pgbackrest</id> afin qu'il ait les autorisations de lecture sur le dépôt sans pouvoir en endommager le contenu accidentellement.</text>
@@ -367,7 +367,7 @@
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-HOST-PORT KEY -->
-                    <config-key id="repo-host-port" name="Repository Host Port">
+                    <config-key id="repo-host-port" name="Port de l'hôte du dépôt">
                         <summary>Port de l'hôte du dépôt lorsque <setting>repo-host</setting> est défini.</summary>
 
                         <text>Utilisez cette option pour spécifier un port non par défaut pour le protocole d'accès à l'hôte du dépôt.  Actuellement, seul SSH est pris en charge</text>
@@ -376,7 +376,7 @@
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-HARDLINK -->
-                    <config-key id="repo-hardlink" name="Repository Hardlink">
+                    <config-key id="repo-hardlink" name="Liens physiques Dépot">
                         <summary>Liens physiques (hardlink) des fichiers entre les sauvegardes dans le dépôt.</summary>
 
                         <text>Activation la liaison physique des fichiers dans les sauvegardes différentielles et incrémentales avec leurs sauvegardes complètes.  Cela donne l'impression que chaque sauvegarde est une sauvegarde complète au niveau du système de fichiers.  Attention, cependant, car la modification de fichiers liés peut affecter toutes les sauvegardes de ce jeu.</text>
@@ -385,7 +385,7 @@
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-PATH KEY -->
-                    <config-key id="repo-path" name="Repository Path">
+                    <config-key id="repo-path" name="Chemin d'accès du Dépots">
                         <summary>Chemin d'accès où sont stockées les sauvegardes et les archives.</summary>
 
                         <text>Le dépôt est l'endroit où <backrest/> stocke les sauvegardes et archive les segments des journaux de transaction (WAL).
@@ -396,7 +396,7 @@
                     </config-key>
 
                     <!-- CONFIG - RETENTION SECTION - REPO-RETENTION-FULL KEY -->
-                    <config-key id="repo-retention-full" name="Full Retention">
+                    <config-key id="repo-retention-full" name="Rétention Complète">
                         <summary>Nombre ou temps de sauvegardes complètes à conserver.</summary>
 
                         <text>Lorsqu'une sauvegarde complète expire, toutes les sauvegardes différentielles et incrémentielles associées à la sauvegarde complète expirent également.  Lorsque l'option n'est pas définie, un avertissement sera émis.  Si une conservation indéfinie est souhaitée, il faut alors définir l'option à la valeur maximale.</text>
@@ -405,7 +405,7 @@
                     </config-key>
 
                     <!-- CONFIG - RETENTION SECTION - REPO-RETENTION-FULL-TYPE KEY -->
-                    <config-key id="repo-retention-full-type" name="Full Retention Type">
+                    <config-key id="repo-retention-full-type" name="Type de rétention Complète">
                         <summary>Type de conservation pour les sauvegardes complètes.</summary>
 
                         <text>Détermine si le paramètre <setting>repo-retention-full</setting> représente une période de temps (jours) ou le nombre de sauvegardes complètes à conserver. Si le paramètre est réglé sur <setting>time</setting> les sauvegardes complètes plus anciennes que le paramètre <setting>repo-retention-full</setting> seront supprimées du dépôt si au moins une sauvegarde est égale ou supérieure au paramètre <setting>repo-retention-full</setting>. Par exemple, si <setting>repo-retention-full</setting> est de 30 (jours) et qu'il y a 2 sauvegardes complètes : une de 25 jours et une de 35 jours, aucune sauvegarde complète n'expirera puisque l'expiration de la sauvegarde de 35 jours ne laisserait que la sauvegarde de 25 jours; ce qui violerait la politique de conservation de 30 jours : à savoir, avoir au moins une sauvegarde de 30 jours avant qu'une plus ancienne puisse expirer. Les journaux de transactions archivés (WAL) plus anciennes que la sauvegarde complète la plus ancienne restante seront automatiquement expirées, à moins que les paramètres <setting>repo-retention-archive-type</setting> et <setting>repo-retention-archive</setting> ne soient explicitement définis.</text>
@@ -414,7 +414,7 @@
                     </config-key>
 
                     <!-- CONFIG - RETENTION SECTION - REPO-DIFFERENTIAL-RETENTION KEY -->
-                    <config-key id="repo-retention-diff" name="Differential Retention">
+                    <config-key id="repo-retention-diff" name="Rétention Différentielle">
                         <summary>Nombre de sauvegardes différentielles à conserver.</summary>
 
                         <text>Lorsqu'une sauvegarde différentielle expire, toutes les sauvegardes incrémentales associées à la sauvegarde différentielle expirent également.  Lorsqu'elles ne sont pas définies, toutes les sauvegardes différentielles seront conservées jusqu'à ce que les sauvegardes complètes dont elles dépendent expirent.</text>
@@ -423,7 +423,7 @@
                     </config-key>
 
                     <!-- CONFIG - RETENTION SECTION - REPO-ARCHIVE-RETENTION-TYPE KEY -->
-                    <config-key id="repo-retention-archive-type" name="Archive Retention Type">
+                    <config-key id="repo-retention-archive-type" name="Type Rétention Archive">
                         <summary>Type de sauvegarde pour la conservation des journaux de transaction (WAL).</summary>
 
                         <text>Lorsque <setting>repo-retention-archive-type</setting> est positionné sur <setting>full</setting> <backrest/> conservera les journaux de trasnaction (WAL) pour le nombre de sauvegardes complètes défini par <setting>repo-retention-archive</setting>.  S'il est positionné sur  <setting>diff</setting> (différentiel) <backrest/> conservera les journaux de trasnaction (WAL) pour le nombre de sauvegardes complètes et différentielles défini par <setting>repo-retention-archive</setting>, ce qui signifie que si la dernière sauvegarde effectuée était une sauvegarde complète, elle sera comptée comme un différentiel pour les besoins de la retention du dépôt.  S'il est positionné sur <setting>incr</setting> (incrémental) <backrest/> conservera les journaux de trasnaction (WAL) pour le nombre de sauvegardes complètes, différentielles et incrémentielles défini par <setting>repo-retention-archive</setting>. Il est recommandé de ne pas modifier ce paramètre par rapport à la valeur par défaut : expiration que lorsque les sauvegardes complètes auront expiré.</text>
