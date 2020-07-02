@@ -1,20 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE doc SYSTEM "doc.dtd">
-<doc title="{[project]} Command &amp; Configuration Reference">
+<doc title="{[project]} Guide de référence des commandes &amp; de la configuration">
     <!-- CONFIG -->
     <config title="{[project]} Référence de la configuration">
-        <description>La référence de configuration de {[projet]} détaille toutes les options de configuration.</description>
+        <description>Ce guide de référence de la configuration {[projet]} détaille toutes les options de configuration.</description>
 
         <text><backrest/> peut être utilisé entièrement avec les paramètres de la ligne de commande mais un fichier de configuration est plus pratique pour les installations complexes ou comportant beaucoup d'options. L'emplacement par défaut du fichier de configuration est <file>/etc/pgbackrest/pgbackrest.conf</file>.  Si aucun fichier n'existe à cet emplacement, l'ancienne valeur par défaut <file>/etc/pgbackrest.conf</file> sera alors utilisée.</text>
 
-        <config-section-list title="Settings">
+        <config-section-list title="Paramètres">
             <!-- CONFIG - LOG -->
             <config-section id="log" name="Log">
                 <text>La section <setting>log</setting> définit les paramètres liés à la journalisation des traces.<admonition type="caution">Cette journalisation peut révéler des informations sensibles telles que des clés et des mots de passe.  À utiliser donc avec prudence !</admonition></text>
 
                 <!-- CONFIG - LOG SECTION - LOG-LEVEL-FILE KEY -->
                 <config-key-list>
-                    <config-key id="log-level-file" name="File Log Level">
+                    <config-key id="log-level-file" name="Niveau du journal fichier">
                         <summary>Niveau d'enregistrement des traces lors de l'enregistrement sur fichier.</summary>
 
                         <text>Les niveaux de traces suivants sont pris en charge:
@@ -32,7 +32,7 @@
                     </config-key>
 
                     <!-- CONFIG - LOG SECTION - LOG-LEVEL-CONSOLE KEY -->
-                    <config-key id="log-level-console" name="Console Log Level">
+                    <config-key id="log-level-console" name="Niveau du journal de la console">
                         <summary>Niveau de journalisation en sortie sur la console.</summary>
 
                         <text>Les niveaux de traces suivants sont pris en charge:
@@ -50,7 +50,7 @@
                     </config-key>
 
                     <!-- CONFIG - LOG SECTION - LOG-LEVEL-STDERR KEY -->
-                    <config-key id="log-level-stderr" name="Std Error Log Level">
+                    <config-key id="log-level-stderr" name="Niveau du journal pour stderr">
                         <summary>Niveau de traces sur la sortie console stderr.</summary>
 
                         <text>Spécifie les niveaux de traces qui sortiront en <id>stderr</id> plutôt que <id>stdout</id> (spécifié par <br-option>log-level-console</br-option>).  L'horodatage et le processus ne seront pas émis sur <id>stderr</id>.
@@ -70,7 +70,7 @@
                     </config-key>
 
                     <!-- CONFIG - GENERAL SECTION - LOG-PATH KEY -->
-                    <config-key id="log-path" name="Log Path">
+                    <config-key id="log-path" name="Emplacement du journal">
                         <summary>Emplacement où les fichiers journaux de traces sont stockés.</summary>
 
                         <text>Le chemin d'accès au journal fournit un emplacement pour <backrest/> pour stocker les fichiers journaux.  Notez que si <setting>log-level-file=off</setting> alors aucun chemin pour l'emplacement des journaux de traces n'est nécessaire.</text>
@@ -79,7 +79,7 @@
                     </config-key>
 
                     <!-- CONFIG - LOG SECTION - LOG-TIMESTAMP KEY -->
-                    <config-key id="log-timestamp" name="Log Timestamp">
+                    <config-key id="log-timestamp" name="Horodatage du journal">
                         <summary>Activer l'horodatage dans les traces.</summary>
 
                         <text>Active l'horodatage dans la console et l'enregistrement des fichiers.  Cette option est désactivée dans des situations particulières telles que la génération de documentation.</text>
@@ -88,7 +88,7 @@
                     </config-key>
 
                     <!-- CONFIG - LOG SECTION - LOG-SUBPROCESS KEY -->
-                    <config-key id="log-subprocess" name="Log Subprocesses">
+                    <config-key id="log-subprocess" name="Journalisation des sous-processus">
                         <summary>Activer la journalisation des traces dans les sous-processus.</summary>
 
                         <text>Activez la journalisation des traces dans les fichiers pour tous les sous-processus créés par ce processus en utilisant le niveau de journalisation spécifié par <br-option>log-level-file</br-option>.</text>
@@ -103,7 +103,7 @@
                 <text>La section <setting>general</setting> définit les options qui sont communes à de nombreuses commandes.</text>
 
                 <config-key-list>
-                    <config-key id="buffer-size" name="Buffer Size">
+                    <config-key id="buffer-size" name="Taille de la mémoire tampon">
                         <summary>Taille de la mémoire tampon pour les opérations sur les fichiers.</summary>
 
                         <text>Définissez la taille de la mémoire tampon utilisée pour les opérations de copie, de compression et de décompression.  Un maximum de 3 tampons seront utilisés à la fois par processus.  Un maximum supplémentaire de 256K par processus peut être utilisé pour les tampons zlib.
@@ -116,7 +116,7 @@
                     </config-key>
 
                     <!-- CONFIG - GENERAL SECTION - CMD-SSH KEY -->
-                    <config-key id="cmd-ssh" name="SSH client command">
+                    <config-key id="cmd-ssh" name="Commande client SSH">
                         <summary>Chemin d'accès à l'exécutable du client ssh.</summary>
 
                         <text>Utilisez un client SSH spécifique lorsqu'une alternative est nécessaire ou lorsque l'exécutable <file>ssh</file> n'est pas dans $PATH.</text>
@@ -125,7 +125,7 @@
                     </config-key>
 
                     <!-- CONFIG - GENERAL SECTION - COMPRESS -->
-                    <config-key id="compress" name="Compress">
+                    <config-key id="compress" name="Compression">
                         <summary>Utilisez la compression de fichiers.</summary>
 
                         <text>Les fichiers de sauvegarde sont compatibles avec les outils de compression en ligne de commande.
@@ -136,20 +136,22 @@
                     </config-key>
 
                     <!-- CONFIG - GENERAL SECTION - COMPRESS-TYPE -->
-                    <config-key id="compress-type" name="Compress Type">
+                    <config-key id="compress-type" name="Type de compression">
                         <summary>Type de compression pour les fichiers.</summary>
 
                         <text>Les types de compression suivants sont pris en charge :
                         <ul>
+                            <li><id>bz2</id> - format de compression bzip2</li>
                             <li><id>gz</id> - format de compression gzip</li>
                             <li><id>lz4</id> - format de compression lz4 (non disponible sur toutes les plateformes)</li>
+                            <li><id>zst</id> - format de compression Zstandard (non disponible sur toutes les plateformes)</li>
                         </ul></text>
 
                         <example>n</example>
                     </config-key>
 
                     <!-- CONFIG - GENERAL SECTION - COMPRESS-LEVEL KEY -->
-                    <config-key id="compress-level" name="Compress Level">
+                    <config-key id="compress-level" name="Niveau de compression">
                         <summary>Niveau de compression des fichiers.</summary>
 
                         <text>Définit le niveau à utiliser pour la compression des fichiers lorsque <setting>compress-type</setting> n'est pas égal à <id>none</id> ou <setting>compress=y</setting> (déprécié).</text>
@@ -159,7 +161,7 @@
                     </config-key>
 
                     <!-- CONFIG - GENERAL SECTION - COMPRESS-LEVEL-NETWORK KEY -->
-                    <config-key id="compress-level-network" name="Network Compress Level">
+                    <config-key id="compress-level-network" name="Niveau de compression réseau">
                         <summary>Niveau de compression du réseau.</summary>
 
                         <text>Définit le niveau de compression sur le réseau, lorsque <setting>compress-type=none</setting> et que la commande n'est pas exécutée sur le même hôte que le dépôt.  La compression est utilisée pour réduire le trafic réseau mais peut être désactivée en définissant <setting>compress-level-network=0</setting>.  Lorsque <setting>compress-type</setting> n'est pas égal à <id>none</id>, le paramètre <setting>compress-level-network</setting> est ignoré et <setting>compress-level</setting> est utilisé à la place de sorte que le fichier ne soit compressé qu'une seule fois.  La compression SSH est toujours désactivée.</text>
@@ -169,7 +171,7 @@
                     </config-key>
 
                     <!-- CONFIG - GENERAL SECTION - DB-TIMEOUT KEY -->
-                    <config-key id="db-timeout" name="Database Timeout">
+                    <config-key id="db-timeout" name="Timeout de la base de données">
                         <summary>Délai d'attente des requêtes à la base de données.</summary>
 
                         <text>Définit le délai d'attente, en secondes, pour les interrogations de la base de données.  Cela inclut les fonctions <code>pg_start_backup()</code> et <code>pg_stop_backup()</code> qui peuvent chacune prendre un temps considérable.  C'est pourquoi le délai d'attente doit être maintenu à un niveau élevé, sauf si vous savez que ces fonctions retourneront rapidement (c'est-à-dire si vous avez défini <setting>startfast=y</setting> et que vous savez que l'instance de base de données ne générera pas beaucoup de segments WAL pendant la sauvegarde). <admonition type="note">L'option <br-option>db-timeout</br-option> doit être inférieure à l'option <br-option>protocol-timeout</br-option>.</admonition></text>
@@ -188,8 +190,19 @@
                         <example>y</example>
                     </config-key>
 
+                    <!-- CONFIG - GENERAL SECTION - IO-TIMEOUT KEY -->
+                    <config-key id="io-timeout" name="Délai d'attente E/S">
+                        <summary>Délai d'attente E/S.</summary>
+
+                        <text>Délai d'attente, en secondes, utilisé pour les connexions et les opérations de lecture/écriture.
+
+                        Notez que l'ensemble de l'opération de lecture/écriture n'a pas besoin de se terminer dans ce délai mais une <i>progression</i> doit être constatée, même s'il ne s'agit que d'un seul octet.</text>
+
+                        <example>120</example>
+                    </config-key>
+
                     <!-- CONFIG - GENERAL SECTION - LOCK-PATH KEY -->
-                    <config-key id="lock-path" name="Lock Path">
+                    <config-key id="lock-path" name="Chemin fichier de verrouillage">
                         <summary>Chemin d'accès où sont stockés les fichiers de verrouillage.</summary>
 
                         <text>Le chemin de verrouillage fournit l'emplacement à <backrest/> pour créer des fichiers de verrouillage afin d'éviter que des opérations en conflictuelles ne soient exécutées simultanément.</text>
@@ -198,7 +211,7 @@
                     </config-key>
 
                     <!-- CONFIG - GENERAL SECTION - NEUTRAL-UMASK -->
-                    <config-key id="neutral-umask" name="Neutral Umask">
+                    <config-key id="neutral-umask" name="Umask neutre">
                         <summary>Utilisation d'un <quote>umask</quote> neutre</summary>
 
                         <text>Définit l'umask à 0000 pour que les modes dans le dépôt de sauvegarde soient créés de manière appropriée.  Le mode par défaut du répertoire est 0750 et le mode par défaut du fichier est 0640.  Pour les répertoires lock et log, les modes de répertoire et de fichier sont respectivement fixés à 0770 et 0660.
@@ -209,14 +222,14 @@
                     </config-key>
 
                     <!-- CONFIG - GENERAL SECTION - LOG-PATH KEY -->
-                    <config-key id="spool-path" name="Spool Path">
+                    <config-key id="spool-path" name="Chemin pour données transitoires (Spool)">
                         <summary>Chemin où les données transitoires sont stockées.</summary>
 
                         <text>Ce chemin est utilisé pour stocker les données nécessaires à la commande asynchrone <cmd>archive-push</cmd> et <cmd>archive-get</cmd>.
 
                         La commande asynchrone <cmd>archive-push</cmd> enregistre des accusés de réception dans le chemin du spool lorsqu'elle a stocké avec succès le WAL dans l'archive (et des erreurs en cas d'échec) afin que le processus de premier plan puisse rapidement notifier <postgres/>. Les fichiers d'accusés de réception sont très petits (zéro octets en cas de succès et quelques centaines d'octets en cas d'erreur).
 
-                        Le processus asynchrone <cmd>archive-push</cmd> met en file d'attente le WAL dans le chemin du spool afin qu'il puisse être fourni très rapidement lorsque <postgres/> le demande.  Le déplacement des fichiers vers <postgres/> est plus efficace lorsque le chemin du spool se trouve sur le même système de fichiers que <path>pg_xlog</path>/<path>pg_wal</path>.
+                        La commande asynchrone <cmd>archive-get</cmd> met en file d'attente le WAL dans le chemin du spool afin qu'il puisse être fourni très rapidement lorsque <postgres/> le demande.  Le déplacement de fichiers vers <postgres/> est plus efficace lorsque le chemin du spool se trouve sur le même système de fichiers que <path>pg_xlog</path>/<path>pg_wal</path>.
 
                         Les données stockées dans le chemin du spool ne sont pas réellement temporaires puisqu'elles peuvent et doivent survivre à un redémarrage.  Cependant, la perte des données dans le chemin du spool n'est pas un problème.  <backrest/> va simplement revérifier chaque segment WAL pour s'assurer qu'il est bien archivé pour <cmd>archive-push</cmd> et reconstruire la file d'attente pour <cmd>archive-get</cmd>.
 
@@ -226,7 +239,7 @@
                     </config-key>
 
                     <!-- CONFIG - GENERAL SECTION - PROCESS-MAX -->
-                    <config-key id="process-max" name="Process Maximum">
+                    <config-key id="process-max" name="Processus Maximum">
                         <summary>Nombre de processus maximal lors utilisé lors de la compression et du transfert.</summary>
 
                         <text>Chaque processus effectuera une compression et un transfert pour que la commande s'exécute plus rapidement, mais ne réglez pas <setting>process-max</setting> à un niveau si élevé que cela affecte les performances de la base de données.</text>
@@ -235,19 +248,61 @@
                     </config-key>
 
                     <!-- CONFIG - GENERAL SECTION - PROTOCOL-TIMEOUT KEY -->
-                    <config-key id="protocol-timeout" name="Protocol Timeout">
+                    <config-key id="protocol-timeout" name="Délai d'attente au niveau Protocole">
                         <summary>Délai d'attente du protocole.</summary>
 
                         <text>Définit le délai, en secondes, durant lequel le processus local ou distant attendra qu'un nouveau message soit reçu au niveau de la couche protocole.  Cela permet d'éviter que les processus n'attendent indéfiniment un message. <admonition type="note">L'option <br-option>protocol-timeout</br-option> doit être supérieure à celle de <br-option>db-timeout</br-option> option.</admonition></text>
 
                         <example>630</example>
                     </config-key>
+
+                    <!-- CONFIG - GENERAL SECTION - SCK-KEEP-ALIVE KEY -->
+                    <config-key id="sck-keep-alive" name="Keep Alive">
+                        <summary>Activation de la fonction de keep-alive (maintien en vie).</summary>
+
+                        <text>Activation des messages de keep-alive (maintien en vie) sur les connexions réseaux.</text>
+
+                        <example>n</example>
+                    </config-key>
+
+                    <!-- CONFIG - GENERAL SECTION - TCP-KEEP-ALIVE-COUNT KEY -->
+                    <config-key id="tcp-keep-alive-count" name="Conteur Keep Alive">
+                        <summary>Compteur Keep-alive.</summary>
+
+                        <text>Spécifie le nombre de messages TCP à garder en mémoire qui peuvent être perdus avant que la connexion ne soit considérée comme morte.
+
+                        Cette option n'est disponible que sur les systèmes qui prennent en charge l'option réseau <code>TCP_KEEPCNT</code>.</text>
+
+                        <example>3</example>
+                    </config-key>
+
+                    <!-- CONFIG - GENERAL SECTION - TCP-KEEP-ALIVE-IDLE KEY -->
+                    <config-key id="tcp-keep-alive-idle" name="Temps d'inactivité Keep Alive">
+                        <summary>Temps d'inactivité du keepalive.</summary>
+
+                        <text>Spécifie la durée (en secondes) sans activité du réseau après laquelle le système d'exploitation doit envoyer un message TCP de maintien en activité (keep-alive).
+
+                        Cette option n'est disponible que sur les systèmes qui prennent en charge l'option réseau <code>TCP_KEEPIDLE</code>.</text>
+
+                        <example>60</example>
+                    </config-key>
+
+                    <!-- CONFIG - GENERAL SECTION - TCP-KEEP-ALIVE-INTERVAL KEY -->
+                    <config-key id="tcp-keep-alive-interval" name="Intervalle du Keep Alive">
+                        <summary>Temps d'intervalle de maintien en vie (keep-alive).</summary>
+
+                        <text>Spécifie le temps (en secondes) après lequel un message TCP de maintien en activité (keep-alive) non acquitté doit être retransmis.
+
+                        Cette option n'est disponible que sur les systèmes qui prennent en charge l'option réseau <code>TCP_KEEPINTVL</code>.</text>
+
+                        <example>30</example>
+                    </config-key>
                 </config-key-list>
             </config-section>
 
             <!-- CONFIG - REPO -->
-            <config-section id="repository" name="Repository">
-                <text>La section <setting>repository</setting> définit les options utilisées pour configurer le dépôt de sauvegarde.
+            <config-section id="repository" name="Dépot (Repository)">
+                <text>La section <setting>repository</setting> (dépot) définit les options utilisées pour configurer le dépôt de sauvegarde.
 
                 <b>Indexation</b> : Toutes les options <setting>repo-</setting> sont indexées pour permettre la configuration de plusieurs dépôts, bien qu'un seul dépôt soit actuellement pris en charge. Par exemple, le dépôt est configuré avec les options <setting>repo1-path</setting>, <setting>repo1-host</setting>, etc.
 
@@ -255,7 +310,7 @@
 
                 <config-key-list>
                     <!-- CONFIG - REPO SECTION - REPO-HOST KEY -->
-                    <config-key id="repo-host" name="Repository Host">
+                    <config-key id="repo-host" name="Hôte du dépot">
                         <summary>Hôte de dépôt dans le cas d'un fonctionnement à distance via SSH.</summary>
 
                         <text>Assurez-vous que l'authentification SSH soit correctement approuvé entre l'hôte <postgres/> et l'hôte du référentiel.
@@ -266,7 +321,7 @@
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-HOST-CMD KEY -->
-                    <config-key id="repo-host-cmd" name="Repository Host Command">
+                    <config-key id="repo-host-cmd" name="Chemin des binaires">
                         <summary>Chemin des binaires <backrest/> sur l'hôte du dépôt.</summary>
 
                         <text>Nécessaire uniquement si le chemin d'accès à <exe/> est différent entre les hôtes locaux et l'hote du dépôt.  S'il n'est pas défini, le chemin des binaires sur l'hôte du dépôt sera le même que le chemin des binaires locaux.</text>
@@ -276,7 +331,7 @@
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-HOST-CONFIG KEY -->
-                    <config-key id="repo-host-config" name="Repository Host Configuration">
+                    <config-key id="repo-host-config" name="Emplacement du fichier de configuration">
                         <summary>Emplacement du fichier de configuration <backrest/> sur l'hôte du dépôt.</summary>
 
                         <text>Définit l'emplacement du fichier de configuration sur l'hôte du dépôt.  Ceci n'est nécessaire que si le fichier de configuration de l'hôte du dépôt se trouve dans un emplacement différent de celui du fichier de configuration local.</text>
@@ -285,7 +340,7 @@
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-HOST-CONFIG-INCLUDE-PATH KEY -->
-                    <config-key id="repo-host-config-include-path" name="Repository Host Configuration Include Path">
+                    <config-key id="repo-host-config-include-path" name="Chemin d'inclusion de la configuration">
                         <summary>Chemin d'inclusion <backrest/>  de la configuration de l'hôte du dépôt.</summary>
 
                         <text>Définit l'emplacement du chemin d'inclusion de la configuration sur l'hôte du dépôt.  Ceci n'est nécessaire que si le chemin d'inclusion de la configuration de l'hôte du dépôt se trouve à un endroit différent du chemin d'inclusion de la configuration locale.</text>
@@ -294,7 +349,7 @@
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-HOST-CONFIG-PATH KEY -->
-                    <config-key id="repo-host-config-path" name="Repository Host Configuration Path">
+                    <config-key id="repo-host-config-path" name="Chemin de configuration">
                         <summary>Chemin de configuration <backrest/> de l'hôte du dépôt.</summary>
 
                         <text>Définit l'emplacement du chemin de configuration sur l'hôte du dépôt.  Ceci n'est nécessaire que si le chemin de configuration de l'hôte du référentiel se trouve à un endroit différent du chemin de configuration local.</text>
@@ -303,7 +358,7 @@
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-HOST-USER KEY -->
-                    <config-key id="repo-host-user" name="Repository Host User">
+                    <config-key id="repo-host-user" name="Utilisateur de l'hôte du dépôt">
                         <summary>Utilisateur de l'hôte du dépôt lorsque <setting>repo-host</setting> est défini.</summary>
 
                         <text>Définit l'utilisateur qui sera utilisé pour les opérations sur l'hôte du dépôt.  De préférence, il ne s'agit pas de l'utilisateur <id>postgres</id> mais plutôt d'un autre utilisateur comme <id>pgbackrest</id>.  Si <postgres/> fonctionne sur l'hôte du dépôt, l'utilisateur <id>postgres</id> peut être placé dans le groupe <id>pgbackrest</id> afin qu'il ait les autorisations de lecture sur le dépôt sans pouvoir en endommager le contenu accidentellement.</text>
@@ -312,7 +367,7 @@
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-HOST-PORT KEY -->
-                    <config-key id="repo-host-port" name="Repository Host Port">
+                    <config-key id="repo-host-port" name="Port de l'hôte du dépôt">
                         <summary>Port de l'hôte du dépôt lorsque <setting>repo-host</setting> est défini.</summary>
 
                         <text>Utilisez cette option pour spécifier un port non par défaut pour le protocole d'accès à l'hôte du dépôt.  Actuellement, seul SSH est pris en charge</text>
@@ -321,210 +376,219 @@
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-HARDLINK -->
-                    <config-key id="repo-hardlink" name="Repository Hardlink">
-                        <summary>Hardlink files between backups in the repository.</summary>
+                    <config-key id="repo-hardlink" name="Liens physiques Dépot">
+                        <summary>Liens physiques (hardlink) des fichiers entre les sauvegardes dans le dépôt.</summary>
 
-                        <text>Enable hard-linking of files in differential and incremental backups to their full backups.  This gives the appearance that each backup is a full backup at the file-system level.  Be careful, though, because modifying files that are hard-linked can affect all the backups in the set.</text>
+                        <text>Activation la liaison physique des fichiers dans les sauvegardes différentielles et incrémentales avec leurs sauvegardes complètes.  Cela donne l'impression que chaque sauvegarde est une sauvegarde complète au niveau du système de fichiers.  Attention, cependant, car la modification de fichiers liés peut affecter toutes les sauvegardes de ce jeu.</text>
 
                         <example>y</example>
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-PATH KEY -->
-                    <config-key id="repo-path" name="Repository Path">
-                        <summary>Path where backups and archive are stored.</summary>
+                    <config-key id="repo-path" name="Chemin d'accès du Dépots">
+                        <summary>Chemin d'accès où sont stockées les sauvegardes et les archives.</summary>
 
-                        <text>The repository is where <backrest/> stores backups and archives WAL segments.
+                        <text>Le dépôt est l'endroit où <backrest/> stocke les sauvegardes et archive les segments des journaux de transaction (WAL).
 
-                        It may be difficult to estimate in advance how much space you'll need.  The best thing to do is take some backups then record the size of different types of backups (full/incr/diff) and measure the amount of WAL generated per day.  This will give you a general idea of how much space you'll need, though of course requirements will likely change over time as your database evolves.</text>
+                        Il peut être difficile d'estimer à l'avance l'espace dont vous aurez besoin.  La meilleure chose à faire est de prendre quelques sauvegardes puis d'enregistrer la taille des différents types de sauvegardes (full/incr/diff) et de mesurer la quantité de WAL générée par jour.  Cela vous donnera une idée générale de l'espace dont vous aurez besoin, même si, bien sûr, les besoins changeront probablement au fil du temps, à fur et à mesure de l'évolution de votre base de données.</text>
 
                         <example>/backup/db/backrest</example>
                     </config-key>
 
-                    <!-- CONFIG - RETENTION SECTION - REPO-FULL-RETENTION KEY -->
-                    <config-key id="repo-retention-full" name="Full Retention">
-                        <summary>Number of full backups to retain.</summary>
+                    <!-- CONFIG - RETENTION SECTION - REPO-RETENTION-FULL KEY -->
+                    <config-key id="repo-retention-full" name="Rétention Complète">
+                        <summary>Nombre ou temps de sauvegardes complètes à conserver.</summary>
 
-                        <text>When a full backup expires, all differential and incremental backups associated with the full backup will also expire.  When the option is not defined a warning will be issued.  If indefinite retention is desired then set the option to the max value.</text>
+                        <text>Lorsqu'une sauvegarde complète expire, toutes les sauvegardes différentielles et incrémentielles associées à la sauvegarde complète expirent également.  Lorsque l'option n'est pas définie, un avertissement sera émis.  Si une conservation indéfinie est souhaitée, il faut alors définir l'option à la valeur maximale.</text>
 
                         <example>2</example>
                     </config-key>
 
-                    <!-- CONFIG - RETENTION SECTION - REPO-DIFFERENTIAL-RETENTION KEY -->
-                    <config-key id="repo-retention-diff" name="Differential Retention">
-                        <summary>Number of differential backups to retain.</summary>
+                    <!-- CONFIG - RETENTION SECTION - REPO-RETENTION-FULL-TYPE KEY -->
+                    <config-key id="repo-retention-full-type" name="Type de rétention Complète">
+                        <summary>Type de conservation pour les sauvegardes complètes.</summary>
 
-                        <text>When a differential backup expires, all incremental backups associated with the differential backup will also expire.  When not defined all differential backups will be kept until the full backups they depend on expire.</text>
+                        <text>Détermine si le paramètre <setting>repo-retention-full</setting> représente une période de temps (jours) ou le nombre de sauvegardes complètes à conserver. Si le paramètre est réglé sur <setting>time</setting> les sauvegardes complètes plus anciennes que le paramètre <setting>repo-retention-full</setting> seront supprimées du dépôt si au moins une sauvegarde est égale ou supérieure au paramètre <setting>repo-retention-full</setting>. Par exemple, si <setting>repo-retention-full</setting> est de 30 (jours) et qu'il y a 2 sauvegardes complètes : une de 25 jours et une de 35 jours, aucune sauvegarde complète n'expirera puisque l'expiration de la sauvegarde de 35 jours ne laisserait que la sauvegarde de 25 jours; ce qui violerait la politique de conservation de 30 jours : à savoir, avoir au moins une sauvegarde de 30 jours avant qu'une plus ancienne puisse expirer. Les journaux de transactions archivés (WAL) plus anciennes que la sauvegarde complète la plus ancienne restante seront automatiquement expirées, à moins que les paramètres <setting>repo-retention-archive-type</setting> et <setting>repo-retention-archive</setting> ne soient explicitement définis.</text>
+
+                        <example>30</example>
+                    </config-key>
+
+                    <!-- CONFIG - RETENTION SECTION - REPO-DIFFERENTIAL-RETENTION KEY -->
+                    <config-key id="repo-retention-diff" name="Rétention Différentielle">
+                        <summary>Nombre de sauvegardes différentielles à conserver.</summary>
+
+                        <text>Lorsqu'une sauvegarde différentielle expire, toutes les sauvegardes incrémentales associées à la sauvegarde différentielle expirent également.  Lorsqu'elles ne sont pas définies, toutes les sauvegardes différentielles seront conservées jusqu'à ce que les sauvegardes complètes dont elles dépendent expirent.</text>
 
                         <example>3</example>
                     </config-key>
 
                     <!-- CONFIG - RETENTION SECTION - REPO-ARCHIVE-RETENTION-TYPE KEY -->
-                    <config-key id="repo-retention-archive-type" name="Archive Retention Type">
-                        <summary>Backup type for WAL retention.</summary>
+                    <config-key id="repo-retention-archive-type" name="Type Rétention Archive">
+                        <summary>Type de sauvegarde pour la conservation des journaux de transaction (WAL).</summary>
 
-                        <text>If set to <setting>full</setting> <backrest/> will keep archive logs for the number of full backups defined by <setting>repo-retention-archive</setting>.  If set to <setting>diff</setting> (differential) <backrest/> will keep archive logs for the number of full and differential backups defined by <setting>repo-retention-archive</setting>, meaning if the last backup taken was a full backup, it will be counted as a differential for the purpose of repo-retention.  If set to <setting>incr</setting> (incremental) <backrest/> will keep archive logs for the number of full, differential, and incremental backups defined by <setting>repo-retention-archive</setting>. It is recommended that this setting not be changed from the default which will only expire WAL in conjunction with expiring full backups.</text>
+                        <text>Lorsque <setting>repo-retention-archive-type</setting> est positionné sur <setting>full</setting> <backrest/> conservera les journaux de trasnaction (WAL) pour le nombre de sauvegardes complètes défini par <setting>repo-retention-archive</setting>.  S'il est positionné sur  <setting>diff</setting> (différentiel) <backrest/> conservera les journaux de trasnaction (WAL) pour le nombre de sauvegardes complètes et différentielles défini par <setting>repo-retention-archive</setting>, ce qui signifie que si la dernière sauvegarde effectuée était une sauvegarde complète, elle sera comptée comme un différentiel pour les besoins de la retention du dépôt.  S'il est positionné sur <setting>incr</setting> (incrémental) <backrest/> conservera les journaux de trasnaction (WAL) pour le nombre de sauvegardes complètes, différentielles et incrémentielles défini par <setting>repo-retention-archive</setting>. Il est recommandé de ne pas modifier ce paramètre par rapport à la valeur par défaut : expiration que lorsque les sauvegardes complètes auront expiré.</text>
 
                         <example>diff</example>
                     </config-key>
 
                     <!-- CONFIG - RETENTION SECTION - REPO-ARCHIVE-RETENTION KEY -->
-                    <config-key id="repo-retention-archive" name="Archive Retention">
-                        <summary>Number of backups worth of continuous WAL to retain.</summary>
+                    <config-key id="repo-retention-archive" name="Rétention d'Archive ">
+                        <summary>Nombre de sauvegardes correspondant à la valeur de WAL continue à conserver.</summary>
 
-                        <text><admonition type="note">WAL segments required to make a backup consistent are always retained until the backup is expired regardless of how this option is configured.</admonition>If this value is not set, then the archive to expire will default to the <setting>repo-retention-full</setting> (or <setting>repo-retention-diff</setting>) value corresponding to the <setting>repo-retention-archive-type</setting> if set to <setting>full</setting> (or <setting>diff</setting>). This will ensure that WAL is only expired for backups that are already expired.
+                        <text><admonition type="note">Les segments WAL nécessaires pour rendre une sauvegarde cohérente sont toujours conservés jusqu'à l'expiration de la sauvegarde, quelle que soit la configuration de cette option.</admonition> Si cette configuration n'est pas définie et que <setting>repo-retention-full-type</setting> est positionné sur <setting>count</setting> (valeur par défaut), alors l'expiration de l'archive sera par défaut à la valeur de <setting>repo-retention-full</setting>  si <setting>repo-retention-archive-type</setting> est définit à <setting>full</setting> (ou à <setting>repo-retention-diff</setting> si <setting>repo-retention-archive-type</setting> est définit à <setting>diff</setting> ). Cela permet de garantir que le WAL n'expirera que pour les sauvegardes ayant déjà expirées. Si <setting>repo-retention-full-type</setting> est positionné sur <setting>time</setting>, avec cette valeur, par défaut, les archives qui sont antérieures à la plus ancienne sauvegarde complète conservée et satisfaisant au paramètre <setting>repo-retention-full</setting> seront supprimés.
 
-                        This option must be set if <setting>repo-retention-archive-type</setting> is set to <setting>incr</setting>.  If disk space is at a premium, then this setting, in conjunction with <setting>repo-retention-archive-type</setting>, can be used to aggressively expire WAL segments. However, doing so negates the ability to perform PITR from the backups with expired WAL and is therefore <b>not</b> recommended.</text>
+                        Cette option doit être définie si <setting>repo-retention-archive-type</setting> est positionné sur <setting>incr</setting>. Si l'espace disque est insuffisant, ce paramètre, associé à <setting>repo-retention-archive-type</setting>, peut être utilisé pour faire expirer de manière agressive les segments WAL. Toutefois, cela annule la possibilité d'effectuer un PITR à partir des sauvegardes avec les WAL expirés et donc <b>n'est pas</b> recommandé.</text>
 
                         <example>2</example>
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-KEY KEY -->
-                    <config-key id="repo-s3-key" name="S3 Repository Access Key">
-                        <summary>S3 repository access key.</summary>
+                    <config-key id="repo-s3-key" name="Clé d'accès S3">
+                        <summary>Clé d'accès au dépôt S3.</summary>
 
-                        <text>AWS key used to access this bucket.</text>
+                        <text>Clé AWS utilisée pour accéder au bucket.</text>
 
                         <example>AKIAIOSFODNN7EXAMPLE</example>
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-KEY-SECRET KEY -->
-                    <config-key id="repo-s3-key-secret" name="S3 Repository Secret Access Key">
-                        <summary>S3 repository secret access key.</summary>
+                    <config-key id="repo-s3-key-secret" name="Clé d'accès secrète S3">
+                        <summary>Clé d'accès secrète au dépôt S3.</summary>
 
-                        <text>AWS secret key used to access this bucket.</text>
+                        <text>Clé secrète AWS utilisée pour accéder au bucket.</text>
 
                         <example>wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY</example>
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-TOKEN KEY -->
-                    <config-key id="repo-s3-token" name="S3 Repository Security Token">
-                        <summary>S3 repository security token.</summary>
+                    <config-key id="repo-s3-token" name="Jeton de sécurité pour le dépôt S3">
+                        <summary>Jeton de sécurité pour le dépôt S3.</summary>
 
-                        <text>AWS security token used with temporary credentials.</text>
+                        <text>Jeton de sécurité AWS utilisé avec des identifiants temporaires.</text>
 
                         <example>AQoDYXdzEPT//////////wEXAMPLEtc764bNrC9SAPBSM22 ...</example>
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-BUCKET KEY -->
-                    <config-key id="repo-s3-bucket" name="S3 Repository Bucket">
-                        <summary>S3 repository bucket.</summary>
+                    <config-key id="repo-s3-bucket" name="S3 Bucket">
+                        <summary>S3 dépôt bucket.</summary>
 
-                        <text>S3 bucket used to store the repository.
+                        <text>Bucket S3 utilisé pour stocker le dépôt.
 
-                        <backrest/> repositories can be stored in the bucket root by setting <br-option>repo-path=/</br-option> but it is usually best to specify a prefix, such as <path>/repo</path>, so logs and other AWS generated content can also be stored in the bucket.</text>
+                        Les dépots <backrest/> peuvent être stockés à la racine du bucket en définissant <br-option>repo-path=/</br-option> mais il est généralement préférable de spécifier un préfixe, comme par exemple <path>/repo</path>, afin que les logs et autres contenus générés par AWS puissent également être stockés dans le bucket.</text>
 
                         <example>pg-backup</example>
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-CA-FILE KEY -->
-                    <config-key id="repo-s3-ca-file" name="S3 SSL CA File">
-                        <summary>S3 SSL CA File.</summary>
+                    <config-key id="repo-s3-ca-file" name="Fichier SSL CA S3">
+                        <summary>Ficher SSL CA S3.</summary>
 
-                        <text>Use a CA file other than the system default.</text>
+                        <text>Utiliser un fichier CA autre que celui défini par défaut dans le système.</text>
 
                         <example>/etc/pki/tls/certs/ca-bundle.crt</example>
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-CA-PATH KEY -->
-                    <config-key id="repo-s3-ca-path" name="S3 SSL CA Path">
-                        <summary>S3 SSL CA Path.</summary>
+                    <config-key id="repo-s3-ca-path" name="Chemin SSL CA">
+                        <summary>Chemin S3 SSL CA.</summary>
 
-                        <text>Use a CA path other than the system default.</text>
+                        <text>Utiliser un chemin pour le CA autre que celui défini par défaut dans le système.</text>
 
                         <example>/etc/pki/tls/certs</example>
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-ENDPOINT KEY -->
-                    <config-key id="repo-s3-endpoint" name="S3 Repository Endpoint">
-                        <summary>S3 repository endpoint.</summary>
+                    <config-key id="repo-s3-endpoint" name="Point de terminaison S3">
+                        <summary>Dépot S3 Point de terminaison (endpoint).</summary>
 
-                        <text>The AWS end point should be valid for the selected region.</text>
+                        <text>Le point de terminaison d'AWS doit être valable pour la région sélectionnée.</text>
 
                         <example>s3.amazonaws.com</example>
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-HOST KEY -->
-                    <config-key id="repo-s3-host" name="S3 Repository Host">
-                        <summary>S3 repository host.</summary>
+                    <config-key id="repo-s3-host" name="Hôte S3">
+                        <summary>Hôte du dépot S3.</summary>
 
-                        <text>Connect to a host other than the end point.  This is typically used for testing.</text>
+                        <text>Conntecter sur un hôte différent du point de terminaison (endpoint). Il est généralement utilisé à des fins de test.</text>
 
                         <example>127.0.0.1</example>
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-PORT KEY -->
-                    <config-key id="repo-s3-port" name="S3 Repository Port">
-                        <summary>S3 repository port.</summary>
+                    <config-key id="repo-s3-port" name="Port S3">
+                        <summary>Port de connection au dépot S3.</summary>
 
-                        <text>Port to use when connecting to the endpoint (or host if specified).</text>
+                        <text>Port à utiliser lors de la connexion au point de terminaison (ou à l'hôte si spécifié).</text>
 
                         <example>9000</example>
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-REGION KEY -->
-                    <config-key id="repo-s3-region" name="S3 Repository Region">
-                        <summary>S3 repository region.</summary>
+                    <config-key id="repo-s3-region" name="Région S3">
+                        <summary>Région du dépôt S3.</summary>
 
-                        <text>The AWS region where the bucket was created.</text>
+                        <text>La région d'AWS où le bucket a été créé.</text>
 
                         <example>us-east-1</example>
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-URI-STYLE KEY -->
-                    <config-key id="repo-s3-uri-style" name="S3 Repository URI Style">
-                        <summary>S3 URI Style.</summary>
+                    <config-key id="repo-s3-uri-style" name="S3 Formats d'URI">
+                        <summary>S3 URI formats.</summary>
 
-                        <text>The following URI styles are supported:
+                        <text>Les formats URI suivants sont pris en charge:
                         <ul>
-                            <li><id>host</id> - Connect to <id>bucket.endpoint</id> host.</li>
-                            <li><id>path</id> - Connect to <id>endpoint</id> host and prepend bucket to URIs.</li>
+                            <li><id>host</id> - Connexion à l'hôte <id>bucket.endpoint</id>.</li>
+                            <li><id>path</id> - Connexion à l'hôte <id>endpoint</id> et ajout du bucket aux URIs.</li>
                         </ul></text>
 
                         <example>path</example>
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-VERIFY-TLS KEY -->
-                    <config-key id="repo-s3-verify-tls" name="S3 Repository Verify TLS">
-                        <summary>Verify S3 server certificate.</summary>
+                    <config-key id="repo-s3-verify-tls" name="S3 Vérifiction TLS">
+                        <summary>Vérifier le certificat du serveur S3.</summary>
 
-                        <text>Disables verification of the S3 server certificate.  This should only be used for testing or other scenarios where a certificate has been self-signed.</text>
+                        <text>Désactive la vérification du certificat du serveur S3. Cette fonction ne doit être utilisée que dans le cadre de tests ou dans le cas d'une utilisation avec un certificat a été auto-signé.</text>
 
                         <example>n</example>
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-TYPE KEY -->
-                    <config-key id="repo-type" name="Repository Type">
-                        <summary>Type of storage used for the repository.</summary>
+                    <config-key id="repo-type" name="Type de dépot">
+                        <summary>Type de stockage utilisé pour le dépôt.</summary>
 
-                        <text>The following repository types are supported:
+                        <text>Les types de stockage suivants sont pris en charge :
                         <ul>
-                            <li><id>cifs</id> - Like <id>posix</id>, but disables links and directory fsyncs</li>
-                            <li><id>posix</id> - Posix-compliant file systems</li>
-                            <li><id>s3</id> - AWS Simple Storage Service</li>
+                            <li><id>cifs</id> - Comme <id>posix</id>, mais désactive les liens et les fsyncs sur les répertoires</li>
+                            <li><id>posix</id> - Systèmes de fichiers conformes à Posix</li>
+                            <li><id>s3</id> - Service de stockage d'objet (AWS Simple Storage Service)</li>
                         </ul></text>
 
                         <example>cifs</example>
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-CIPHER-TYPE KEY -->
-                    <config-key id="repo-cipher-type" name="Repository Cipher Type">
-                        <summary>Cipher used to encrypt the repository.</summary>
+                    <config-key id="repo-cipher-type" name="Type de chiffrement du dépôt">
+                        <summary>Chiffrement (cipher) utilisé pour chiffrer le dépôt.</summary>
 
-                        <text>The following repository types are supported:
+                        <text>Les types de chiffrement suivants sont pris en charge:
                         <ul>
-                            <li><id>none</id> - The repository is not encrypted</li>
-                            <li><id>aes-256-cbc</id> - Advanced Encryption Standard with 256 bit key length</li>
-                        </ul>Note that encryption is always performed client-side even if the repository type (e.g. S3) supports encryption.</text>
+                            <li><id>none</id> - Le dépôt n'est pas chiffré.</li>
+                            <li><id>aes-256-cbc</id> - Advanced Encryption Standard avec une clef de 256 bit</li>
+                        </ul>À noter que le chiffrement est toujours effectué côté client même si le type de stockage (par exemple S3) supporte le chiffrement.</text>
 
                         <default>none</default>
                         <example>aes-256-cbc</example>
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-CIPHER-PASS KEY -->
-                    <config-key id="repo-cipher-pass" name="Repository Cipher Passphrase">
-                        <summary>Repository cipher passphrase.</summary>
+                    <config-key id="repo-cipher-pass" name="Phrase de chiffrement du dépôt">
+                        <summary>Phrase de chiffrement du dépôt.</summary>
 
-                        <text>Passphrase used to encrypt/decrypt files of the repository.</text>
+                        <text>Mot de passe utilisée pour chiffrer/déchiffrer les fichiers du dépôt.</text>
 
                         <example>zWaf6XtpjIVZC5444yXB+cgFDFl7MxGlgkZSaoPvTGirhPygu4jOKOXf9LO4vjfO</example>
                     </config-key>
@@ -532,111 +596,111 @@
             </config-section>
 
             <!-- CONFIG - BACKUP -->
-            <config-section id="backup" name="Backup">
-                <text>The <setting>backup</setting> section defines settings related to backup.</text>
+            <config-section id="backup" name="Sauvegarde">
+                <text>La section <setting>backup</setting> définit les paramètres relatifs à la sauvegarde.</text>
 
                 <config-key-list>
                     <!-- CONFIG - BACKUP SECTION - ARCHIVE-CHECK -->
                     <config-key id="archive-check" name="Check Archive">
-                        <summary>Check that WAL segments are in the archive before backup completes.</summary>
+                        <summary>Contrôle que les segments WAL se trouvent bien dans les archives à la fin du processus de sauvegarde.</summary>
 
-                        <text>Checks that all WAL segments required to make the backup consistent are present in the WAL archive.  It's a good idea to leave this as the default unless you are using another method for archiving.
+                        <text>Contrôle que tous les segments de WAL nécessaires pour rendre la sauvegarde cohérente sont présents dans les archives de WAL.  Il est conseillé de laisser ce paramètre par défaut, à moins que vous n'utilisiez une autre méthode d'archivage..
 
-                        This option must be enabled if <br-option>archive-copy</br-option> is enabled.</text>
+                        Cette option doit être activée si <br-option>archive-copy</br-option> est activé.</text>
 
                         <example>n</example>
                     </config-key>
 
                     <!-- CONFIG - BACKUP SECTION - ARCHIVE-COPY -->
-                    <config-key id="archive-copy" name="Copy Archive">
-                        <summary>Copy WAL segments needed for consistency to the backup.</summary>
+                    <config-key id="archive-copy" name="Copie des Archives">
+                        <summary>Copier tous les segments WAL nécessaires à la cohérence de la sauvegarde.</summary>
 
-                        <text>This slightly paranoid option protects against corruption in the WAL segment archive by storing the WAL segments required for consistency directly in the backup.  WAL segments are still stored in the archive so this option will use additional space.
+                        <text>Cette option un peu parano protège contre la corruption dans les archives des segments WAL en stockant les segments WAL nécessaires à la cohérence directement dans la sauvegarde. Les segments WAL sont toujours stockés dans l'archive, donc cette option utilisera de l'espace supplémentaire.
 
-                        On restore, the WAL segments will be present in <path>pg_xlog/pg_wal</path> and <postgres/> will use them in preference to calling the <code>restore_command</code>.
+                        Lors de la restauration, les segments WAL seront présents dans <path>pg_xlog/pg_wal</path> et <postgres/> les utilisera de préférence plutôt que d'appeler la <code>restore_command</code>.
 
-                        The <br-option>archive-check</br-option> option must be enabled if <br-option>archive-copy</br-option> is enabled.</text>
+                        L'option <br-option>archive-check</br-option> doit être activée si <br-option>archive-copy</br-option> est activée</text>
 
                         <example>y</example>
                     </config-key>
 
                     <!-- CONFIG - BACKUP SECTION - BACKUP-STANDBY KEY -->
-                    <config-key id="backup-standby" name="Backup from Standby">
-                        <summary>Backup from the standby cluster.</summary>
+                    <config-key id="backup-standby" name="Sauvegarde à partir du secondaire">
+                        <summary>Sauvegarde depuis l'instance standby secondaire.</summary>
 
-                        <text>Enable backup from standby to reduce load on the primary cluster.  This option requires that both the <host>primary</host> and <host>standby</host> hosts be configured.</text>
+                        <text>Activer la sauvegarde depuis le secondaire en standby pour réduire la charge sur l'instance primaire. Cette option nécessite que les hôtes <host>primary</host> (primaire) et <host>standby</host> (secondaire en standby) soit correctement configurés.</text>
 
                         <example>y</example>
                     </config-key>
 
                     <!-- CONFIG - BACKUP SECTION - CHECKSUM-PAGE KEY -->
-                    <config-key id="checksum-page" name="Page Checksums">
-                        <summary>Validate data page checksums.</summary>
+                    <config-key id="checksum-page" name="Sommes de controle des Pages">
+                        <summary>Validation des sommes de contrôle des pages de données (checksums).</summary>
 
-                        <text>Directs <backrest/> to validate all data page checksums while backing up a cluster.  This option is automatically enabled when data page checksums are enabled on the cluster.
+                        <text>Permet à <backrest/> de valider toutes les sommes de contrôle des pages de données pendant la sauvegarde de l'instance.  Cette option est automatiquement activée lorsque les sommes de contrôle des pages de données sont activées sur l'instance.
 
-                        Failures in checksum validation will not abort a backup.  Rather, warnings will be emitted in the log (and to the console with default settings) and the list of invalid pages will be stored in the backup manifest.</text>
+                        Un échec dans la validation de la somme de contrôle n'annulera pas la sauvegarde.  Au contraire, des avertissements seront émis dans le journal des traces (et par défaut sur la console); la liste des pages non valides sera stockée dans le manifeste de sauvegarde.</text>
 
                         <example>n</example>
                     </config-key>
 
                     <!-- CONFIG - BACKUP SECTION - EXCLUDE KEY -->
-                    <config-key id="exclude" name="Path/File Exclusions">
-                        <summary>Exclude paths/files from the backup.</summary>
+                    <config-key id="exclude" name="Exclusions Chemin/Fichier">
+                        <summary>Exclusion des chemins/fichiers de la sauvegarde..</summary>
 
-                        <text>All exclusions are relative to <path>$PGDATA</path>. If the exclusion ends with / then only files in the specified directory will be excluded, e.g. <br-option>--exclude=junk/</br-option> will exclude all files in the <path>$PGDATA/junk</path> directory but include the directory itself.  If the exclusion does not end with / then the file may match the exclusion exactly or match with / appended to the exclusion, e.g. <br-option>--exclude=junk</br-option> will exclude the <path>$PGDATA/junk</path> directory and all the files it contains.
+                        <text>Toutes les exclusions sont relatives à <path>$PGDATA</path>. Si l'exclusion se termine par / alors seuls les fichiers du répertoire spécifié seront exclus, par exemple <br-option>--exclude=junk/</br-option> exclura tous les fichiers du répertoire <path>$PGDATA/junk</path> mais inclura le répertoire lui-même.  Si l'exclusion ne se termine pas par / alors le fichier peut correspondre exactement à l'exclusion ou correspondre à / apposé à l'exclusion, par exemple <br-option>--exclude=junk</br-option> exclura le répertoire <path>$PGDATA/junk</path> et tous les fichiers qu'il contient.
 
-                        <b>Be careful using this feature -- it is very easy to exclude something critical that will make the backup inconsistent.  Be sure to test your restores!</b>
+                        <b>Soyez prudent en utilisant cette fonctionnalité : il est très rapide d'exclure quelque chose d'essentiel qui rendra la sauvegarde incohérente.  Assurez-vous de tester vos restaurations ! </b>
 
-                        All excluded files will be logged at <id>info</id> level along with the exclusion rule.  Be sure to audit the list of excluded files to ensure nothing unexpected is being excluded.<admonition type="note">Exclusions are not honored on delta restores.  Any files/directories that were excluded by the backup will be <i>removed</i> on delta restore.</admonition>This option should not be used to exclude <postgres/> logs from a backup.  Logs can be moved out of the <id>PGDATA</id> directory using the <postgres/> <setting>log_directory</setting> setting, which has the benefit of allowing logs to be preserved after a restore.
+                        Tous les fichiers exclus seront journalisés au niveau <id>info</id> avec la règle d'exclusion.Veillez à vérifier la liste des fichiers exclus pour vous assurer que rien d'inattendu n'est exclu.<admonition type="note">Les exclusions ne sont pas prises en compte lors des restaurations delta.  Tout fichier/répertoire qui a été exclu par la sauvegarde sera <i>supprimé</i> lors de la restauration delta.</admonition>Cette option ne doit pas être utilisée pour exclure les journaux de traces <postgres/> d'une sauvegarde.  Les journaux peuvent être déplacés hors du répertoire <id>PGDATA</id> en utilisant le paramètre <postgres/> <setting>log_directory</setting>, ce qui présente l'avantage de permettre la préservation des journaux après une restauration.
 
-                        Multiple exclusions may be specified on the command-line or in a configuration file.</text>
+                        Les exclusions multiples peuvent être spécifiées sur la ligne de commande ou dans le fichier de configuration.</text>
 
                         <example>junk/</example>
                     </config-key>
 
                     <!-- CONFIG - BACKUP SECTION - MANIFEST-SAVE-THRESHOLD -->
-                    <config-key id="manifest-save-threshold" name="Manifest Save Threshold">
-                        <summary>Manifest save threshold during backup.</summary>
+                    <config-key id="manifest-save-threshold" name="Seuil sauvegarde manifeste">
+                        <summary>Seuil de déclenchement de la sauvegarde du manifeste lors de la sauvegarde.</summary>
 
-                        <text>Defines how often the manifest will be saved during a backup.  Saving the manifest is important because it stores the checksums and allows the resume function to work efficiently.  The actual threshold used is 1% of the backup size or <setting>manifest-save-threshold</setting>, whichever is greater.
+                        <text>Définit la fréquence à laquelle le manifeste sera sauvegardé lors d'une sauvegarde.  La sauvegarde du manifeste est importante car elle permet de stocker les sommes de contrôle et de faire fonctionner efficacement la fonction de reprise.  Le volume réel utilisé est de 1 % de la taille de la sauvegarde ou <setting>manifest-save-threshold</setting>, la valeur la plus élevée étant retenue.
 
-                        Size can be entered in bytes (default) or KB, MB, GB, TB, or PB where the multiplier is a power of 1024.</text>
+                        La taille peut être saisie en octets (par défaut) ou en KB, MB, GB, TB, ou PB où le multiplicateur est une puissance de 1024.</text>
 
                         <example>5G</example>
                     </config-key>
 
                     <!-- CONFIG - BACKUP SECTION - RESUME -->
-                    <config-key id="resume" name="Resume">
-                        <summary>Allow resume of failed backup.</summary>
+                    <config-key id="resume" name="Reprise">
+                        <summary>Permettre la reprise d'une sauvegarde échoué</summary>
 
-                        <text>Defines whether the resume feature is enabled.  Resume can greatly reduce the amount of time required to run a backup after a previous backup of the same type has failed.  It adds complexity, however, so it may be desirable to disable in environments that do not require the feature.</text>
+                        <text>Définit si la fonctionnalité de reprise est activée.  La reprise peut réduire considérablement le temps nécessaire pour exécuter une sauvegarde si une sauvegarde précédente du même type a échoué.  Elle ajoute toutefois de la complexité, de sorte qu'il peut être conseillé de la désactiver dans les environnements qui n'ont pas besoin de cette fonction.</text>
 
                         <example>n</example>
                     </config-key>
 
                     <!-- CONFIG - BACKUP SECTION - START-FAST -->
-                    <config-key id="start-fast" name="Start Fast">
-                        <summary>Force a checkpoint to start backup quickly.</summary>
+                    <config-key id="start-fast" name="Démarrage rapide">
+                        <summary>Forcer un point de contrôle (checkpoint) pour lancer plus rapidement la sauvegarde.</summary>
 
-                        <text>Forces a checkpoint (by passing <id>y</id> to the <id>fast</id> parameter of <code>pg_start_backup()</code>) so the backup begins immediately.  Otherwise the backup will start after the next regular checkpoint.
+                        <text>Force un point de contrôle (en passant le paramètre <id>y</id> à <id>fast</id> de <code>pg_start_backup()</code>) pour que la sauvegarde commence immédiatement.  Sinon, la sauvegarde commencera après le prochain point de contrôle contrôle.
 
-                        This feature only works in <postgres/> &gt;= <id>8.4</id>.</text>
+                        Cette fonction ne fonctionne qu'à partir de <postgres/> version &gt;= <id>8.4</id>.</text>
 
                         <example>y</example>
                     </config-key>
 
                     <!-- CONFIG - BACKUP SECTION - STOP-AUTO -->
-                    <config-key id="stop-auto" name="Stop Auto">
-                        <summary>Stop prior failed backup on new backup.</summary>
+                    <config-key id="stop-auto" name="Arrêt Automatique">
+                        <summary>Arrêt d'une sauvegarde antérieure défaillante lors la nouvelle sauvegarde.</summary>
 
-                        <text>This will only be done if an exclusive advisory lock can be acquired to demonstrate that the prior failed backup process has really stopped.
+                        <text>Cette opération ne sera effectuée que si un verrouillage consultatif exclusif peut être acquis afin de faire la preuve que le processus de sauvegarde antérieur ayant échoué s'est réellement arrêté.
 
-                        This feature relies on pg_is_in_backup() so only works on <postgres/> >= <id>9.3</id>.
+                        Cette fonctionnalité repose sur pg_is_in_backup() et ne fonctionne donc qu'avec <postgres/> >= <id>9.3</id>.
 
-                        This feature is not supported for <postgres/> >= <id>9.6</id> since backups are run in non-exclusive mode.
+                        Cette fonctionnalité n'est pas prise en charge pour <postgres/> >= <id>9.6</id> car les sauvegardes sont exécutées en mode non exclusif.
 
-                        The setting is disabled by default because it assumes that <backrest/> is the only process doing exclusive online backups.  It depends on an advisory lock that only <backrest/> sets so it may abort other processes that do exclusive online backups.  Note that <cmd>base_backup</cmd> and <cmd>pg_dump</cmd> are safe to use with this setting because they do not call <code>pg_start_backup()</code> so are not exclusive.</text>
+                        Ce paramètre est désactivé par défaut car il suppose que <backrest/> est le seul processus qui effectue exclusivement des sauvegardes en ligne.  Il se base sur un verrou consultatif que seul <backrest/> définit afin de pouvoir interrompre les autres processus qui effectuent des sauvegardes exclusives en ligne.  Notez que <cmd>base_backup</cmd> et <cmd>pg_dump</cmd> sont sans risque avec ce paramétrage car ils n'appellent pas <code>pg_start_backup()</code> et ne sont donc pas exclusifs.</text>
 
                         <example>y</example>
                     </config-key>
@@ -645,56 +709,56 @@
 
             <!-- CONFIG - ARCHIVE -->
             <config-section id="archive" name="Archive">
-                <text>The <setting>archive</setting> section defines options for the <cmd>archive-push</cmd> and <cmd>archive-get</cmd> commands.</text>
+                <text>La section <setting>archive</setting> définit les options des commandes <cmd>archive-push</cmd> et <cmd>archive-get</cmd>.</text>
 
                 <config-key-list>
                     <!-- CONFIG - ARCHIVE SECTION - ARCHIVE-ASYNC KEY -->
-                    <config-key id="archive-async" name="Asynchronous Archiving">
-                        <summary>Push/get WAL segments asynchronously.</summary>
+                    <config-key id="archive-async" name="Archivage asynchrone">
+                        <summary>Pousser et obtenir des segments WAL de manière asynchrone.</summary>
 
-                        <text>Enables asynchronous operation for the <cmd>archive-push</cmd> and <cmd>archive-get</cmd> commands.
+                        <text>Permet d'activer un fonctionnement asynchrone pour les commandes <cmd>archive-push</cmd> et <cmd>archive-get</cmd>.
 
-                        Asynchronous operation is more efficient because it can reuse connections and take advantage of parallelism.  See the <br-option>spool-path</br-option>, <br-option>archive-get-queue-max</br-option>, and <br-option>archive-push-queue-max</br-option> options for more information.</text>
+                        Le fonctionnement asynchrone est plus performant car il permet de réutiliser les connexions et de tirer parti du parallélisme.  Consultez les options <br-option>spool-path</br-option>, <br-option>archive-get-queue-max</br-option>, et <br-option>archive-push-queue-max</br-option> pour plus d'informations.</text>
 
                         <example>y</example>
                     </config-key>
 
                     <!-- CONFIG - ARCHIVE SECTION - ARCHIVE-GET-QUEUE-MAX KEY -->
-                    <config-key id="archive-get-queue-max" name="Maximum Archive Get Queue Size">
-                        <summary>Maximum size of the <backrest/> archive-get queue.</summary>
+                    <config-key id="archive-get-queue-max" name="Taille maximale file d'attente récupération d'Archive">
+                        <summary>Taille maximale de la file d'attente <backrest/> archive-get.</summary>
 
-                        <text>Specifies the maximum size of the <cmd>archive-get</cmd> queue when <br-option>archive-async</br-option> is enabled.  The queue is stored in the <br-option>spool-path</br-option> and is used to speed providing WAL to <postgres/>.
+                        <text>Spécifie la taille maximale de la file d'attente <cmd>archive-get</cmd> lorsque <br-option>archive-async</br-option> est activée.  La file d'attente est stockée sur l'emplacement définit par <br-option>spool-path</br-option> et est utilisée pour accélérer la réception des données de WAL par <postgres/>.
 
-                        Size can be entered in bytes (default) or KB, MB, GB, TB, or PB where the multiplier is a power of 1024.</text>
+                        La taille peut être saisie en octets (par défaut) ou en KB, MB, GB, TB ou PB où le multiplicateur est une puissance de 1024.</text>
 
                         <example>1073741824</example>
                     </config-key>
 
                     <!-- CONFIG - ARCHIVE SECTION - ARCHIVE-QUEUE-MAX KEY -->
-                    <config-key id="archive-push-queue-max" name="Maximum Archive Push Queue Size">
-                        <summary>Maximum size of the <postgres/> archive queue.</summary>
+                    <config-key id="archive-push-queue-max" name="Taille maximale de la file d'attente pour les archives">
+                        <summary>Taille maximale de la file d'attente <postgres/> archive..</summary>
 
-                        <text>After the limit is reached, the following will happen:
+                        <text>Une fois la limite atteinte, voici ce qui se produira :
                         <ol>
-                            <li><backrest/> will notify <postgres/> that the WAL was successfully archived, then <b>DROP IT</b>.</li>
-                            <li>A warning will be output to the Postgres log.</li>
+                            <li><backrest/> signalera à <postgres/> que les journaux de transaction (WAL) ont été archivée avec succès, puis, <b>LES SUPPRIMES</b>.</li>
+                            <li>Un avertissement sera émis dans le journal de trace de <postgres/>.</li>
 
-                        </ol>If this occurs then the archive log stream will be interrupted and PITR will not be possible past that point.  A new backup will be required to regain full restore capability.
+                        </ol>Si cela se produit, le flux d'archives sera interrompu et le PITR ne sera plus possible au-delà de ce moment.  Une nouvelle sauvegarde est alors indispensable pour retrouver la fonctionnalité de restauration complète.
 
-                        In asynchronous mode the entire queue will be dropped to prevent spurts of WAL getting through before the queue limit is exceeded again.
+                        En mode asynchrone, la totalité de la file d'attente sera supprimée afin d'éviter que des flots de WAL ne passent avant que la limite de la file ne soit à nouveau dépassée.
 
-                        The purpose of this feature is to prevent the log volume from filling up at which point Postgres will stop completely.  Better to lose the backup than have <postgres/> go down.
+                        Le but de cette fonction est d'éviter que le disque utilisé pour le stockage du journal (pg_wal ou pg_log) ne se remplisse, ce qui entraînerait l'arrêt complet de l'instance  <postgres/>.  Il est peut être préférable de perdre la sauvegarde que d'avoir <postgres/> s'arrêter.
 
-                        Size can be entered in bytes (default) or KB, MB, GB, TB, or PB where the multiplier is a power of 1024.</text>
+                        La taille peut être saisie en octets (par défaut) ou en KB, MB, GB, TB ou PB où le multiplicateur est une puissance de 1024.</text>
 
                         <example>1GB</example>
                     </config-key>
 
                     <!-- ======================================================================================================= -->
-                    <config-key id="archive-timeout" name="Archive Timeout">
-                        <summary>Archive timeout.</summary>
+                    <config-key id="archive-timeout" name="Archive Délai d'attente">
+                        <summary>Délai d'attente de l'archivage (archive timeout).</summary>
 
-                        <text>Set maximum time, in seconds, to wait for each WAL segment to reach the <backrest/> archive repository.  The timeout applies to the <cmd>check</cmd> and <cmd>backup</cmd> commands when waiting for WAL segments required for backup consistency to be archived.</text>
+                        <text>Définit le temps maximum, en secondes, à attendre pour que chaque segment WAL atteigne le dépôt d'archives de <backrest/>.  Le délai s'applique aux commandes <cmd>check</cmd> et <cmd>backup</cmd> lorsqu'on attend que les segments WAL nécessaires à la cohérence de la sauvegarde soient archivés.</text>
 
                         <example>30</example>
                     </config-key>
@@ -703,63 +767,63 @@
 
             <!-- CONFIG - RESTORE -->
             <config-section id="restore" name="Restore">
-                <text>The <setting>restore</setting> section defines settings used for restoring backups.</text>
+                <text>La section <setting>restore</setting> définit les paramètres utilisés lors de la restauration des sauvegardes.</text>
 
                 <config-key-list>
                     <!-- CONFIG - RESTORE SECTION - DB-INCLUDE KEY -->
-                    <config-key id="db-include" name="Include Database">
-                        <summary>Restore only specified databases.</summary>
+                    <config-key id="db-include" name="Inclure la base de données">
+                        <summary>Restaurer uniquement des bases de données spécifiques.</summary>
 
-                        <text>This feature allows only selected databases to be restored.  Databases not specifically included will be restored as sparse, zeroed files to save space but still allow <postgres/> to perform recovery.  After recovery the databases that were not included will not be accessible but can be removed with the <id>drop database</id> command. <admonition type="note">built-in databases (<id>template0</id>, <id>template1</id>, and <id>postgres</id>) are always restored.</admonition>The <setting>{[dash]}-db-include</setting> option can be passed multiple times to specify more than one database to include.</text>
+                        <text>Cette fonctionnalité permet de ne restaurer que certaines bases de données.  Les bases de données qui ne sont pas spécifiquement sélectionnées seront restaurées sous la forme de fichiers épars et mis à zéro afin d'économiser de l'espace, tout en permettant à <postgres/> d'effectuer la restauration.  Après la récupération, les bases de données qui n'ont pas été incluses ne seront pas accessibles mais peuvent être supprimées avec la commande <id>drop database</id>.  <admonition type="note">Les bases de données intégrées (<id>template0</id>, <id>template1</id>, et <id>postgres</id>) sont toujours restaurées.</admonition>L'option <setting>{[dash]}-db-include</setting> peut être passée plusieurs fois pour spécifier plus d'une base de données à inclure.</text>
 
                         <example>db_main</example>
                     </config-key>
 
                     <!-- CONFIG - RESTORE SECTION - LINK-ALL KEY -->
-                    <config-key id="link-all" name="Link All">
-                        <summary>Restore all symlinks.</summary>
+                    <config-key id="link-all" name="Tous Liens synboliques">
+                        <summary>Restaurer tous les liens symboliques</summary>
 
-                        <text>By default symlinked directories and files are restored as normal directories and files in $PGDATA.  This is because it may not be safe to restore symlinks to their original destinations on a system other than where the original backup was performed.  This option restores all the symlinks just as they were on the original system where the backup was performed.</text>
+                        <text>Par défaut, les liens symboliques qu'ils soient répertoires ou fichiers sont restaurés comme des répertoires et fichiers standards dans $PGDATA.  En effet, il peut être dangereux de restaurer des liens symboliques vers leur destination d'origine sur un système autre que celui où la sauvegarde d'origine a été effectuée.  Cette option restaure tous les liens symboliques tels qu'ils étaient sur le système d'origine où la sauvegarde a été effectuée.</text>
 
                         <example>y</example>
                     </config-key>
 
                     <!-- CONFIG - RESTORE SECTION - LINK-MAP KEY -->
-                    <config-key id="link-map" name="Link Map">
-                        <summary>Modify the destination of a symlink.</summary>
+                    <config-key id="link-map" name="Mappage liens symboliques">
+                        <summary>Modification de la destination d'un lien symbolique.</summary>
 
-                        <text>Allows the destination file or path of a symlink to be changed on restore.  This is useful for restoring to systems that have a different storage layout than the original system where the backup was generated.</text>
+                        <text>Permet de modifier la destination du fichier ou du répertoire d'un lien symbolique lors de la restauration.  Ceci est utile lors de la restauration sur un sytèmes avec une configuration du stockage différente de celle du système d'origine (là où la sauvegarde a été réalisée).</text>
 
                         <example>pg_xlog=/data/xlog</example>
                     </config-key>
 
                     <!-- CONFIG - RESTORE SECTION - RECOVERY-OPTION KEY -->
-                    <config-key id="recovery-option" name="Recovery Option">
-                        <summary>Set an option in <file>recovery.conf</file>.</summary>
+                    <config-key id="recovery-option" name="Option Récuperation">
+                        <summary>Définissez une option dans <file>recovery.conf</file>.</summary>
 
-                        <text>See http://www.postgresql.org/docs/X.X/static/recovery-config.html for details on recovery.conf options (replace X.X with your <postgres/> version).  This option can be used multiple times.<admonition type="note">The <setting>restore_command</setting> option will be automatically generated but can be overridden with this option.  Be careful about specifying your own <setting>restore_command</setting> as <backrest/> is designed to handle this for you.  Target Recovery options (recovery_target_name, recovery_target_time, etc.) are generated automatically by <backrest/> and should not be set with this option.</admonition>Since <backrest/> does not start <postgres/> after writing the <file>recovery.conf</file> file, it is always possible to edit/check <file>recovery.conf</file> before manually restarting.</text>
+                        <text>Consultez http://www.postgresql.org/docs/X.X/static/recovery-config.html pour plus de détails sur les options de recovery.conf (remplacez X.X par votre <postgres/> version).  Cette option peut être utilisée plusieurs fois.<admonition type="note">L'option <setting>restore_command</setting> sera générée automatiquement mais peut être écrasée avec cette option.  Faites attention à bien spécifier votre propre <setting>restore_command</setting> car <backrest/> est conçu pour gérer cela pour vous.  Les options Target Recovery (recovery_target_name, recovery_target_time, etc.) sont générées automatiquement par <backrest/> et ne doivent pas être définies avec cette option.</admonition>Dans la mesure où <backrest/> ne démarre pas <postgres/> après avoir écrit le fichier <file>recovery.conf</file>, il est toujours possible de modifier/contrôler <file>recovery.conf</file> avant de redémarrer manuellement.</text>
 
                         <example>primary_conninfo=db.mydomain.com</example>
                     </config-key>
 
                     <!-- CONFIG - RESTORE SECTION - TABLESPACE-MAP KEY -->
-                    <config-key id="tablespace-map" name="Tablespace Map">
-                        <summary>Restore a tablespace into the specified directory.</summary>
+                    <config-key id="tablespace-map" name="Mappage Tablespace">
+                        <summary>Restaurer un tablespace dans un répertoire spécifique.</summary>
 
-                        <text>Moves a tablespace to a new location during the restore.  This is useful when tablespace locations are not the same on a replica, or an upgraded system has different mount points.
+                        <text>Déplace un tablespace vers un nouvel emplacement pendant la restauration.  Cela est utile lorsque les emplacements des tablespaces ne sont pas les mêmes sur un secondaire en réplication, ou lorsqu'un système a des points de montage différents après une mis à niveau.
 
-                        Since <postgres/> 9.2 tablespace locations are not stored in pg_tablespace so moving tablespaces can be done with impunity.  However, moving a tablespace to the <setting>data_directory</setting> is not recommended and may cause problems.  For more information on moving tablespaces http://www.databasesoup.com/2013/11/moving-tablespaces.html is a good resource.</text>
+                        Depuis la version <postgres/> 9.2, les emplacements des tablespaces ne sont pas stockés dans pg_tablespace, donc le déplacement des tablespaces peut se faire en toute tranquillité.  Cependant, le déplacement d'un tablespace vers le <setting>data_directory</setting> n'est pas recommandé et peut causer des problèmes.  Pour plus d'informations sur le déplacement des tablespaces, http://www.databasesoup.com/2013/11/moving-tablespaces.html est une bonne ressource (en anglais).</text>
 
                         <example>ts_01=/db/ts_01</example>
                     </config-key>
 
                     <!-- CONFIG - RESTORE SECTION - TABLESPACE KEY -->
-                    <config-key id="tablespace-map-all" name="Map All Tablespaces">
-                        <summary>Restore all tablespaces into the specified directory.</summary>
+                    <config-key id="tablespace-map-all" name="Remappage Tous Tablespaces">
+                        <summary>Restaurez tous les tablespaces dans le répertoire spécifié.</summary>
 
-                        <text>By default tablespaces are restored into their original locations and while this behavior can be modified by with the <setting>tablespace-map</setting> open it is sometime preferable to remap all tablespaces to a new directory all at once.  This is particularly useful for development or staging systems that may not have the same storage layout as the original system where the backup was generated.
+                        <text>Par défaut, les tablespaces sont restaurés à leur emplacement d'origine et, bien que ce comportement puisse être modifié avec l'option <setting>tablespace-map</setting>, il est parfois souhaitable de remapper tous les tablespaces dans un nouveau répertoire en une seule fois.  Ceci est particulièrement utile pour les systèmes de développement ou de mise en place qui peuvent ne pas avoir la même disposition de stockage que le système d'origine où la sauvegarde a été réalisée.
 
-                        The path specified will be the parent path used to create all the tablespaces in the backup.</text>
+                        Le chemin spécifié sera le chemin parent utilisé pour créer tous les tablespaces de la sauvegarde lors de la restauration.</text>
 
                         <example>/data/tablespace</example>
                     </config-key>
@@ -768,109 +832,109 @@
 
             <!-- CONFIG - STANZA -->
             <config-section id="stanza" name="Stanza">
-                <text>A stanza defines the backup configuration for a specific <postgres/> database cluster.  The stanza section must define the database cluster path and host/user if the database cluster is remote.  Also, any global configuration sections can be overridden to define stanza-specific settings.
+                <text>Un stanza définit la configuration de sauvegarde d'une instance de base de données <postgres/> déterminé.  La section stanza doit définir le chemin de l'instance de base de données et l'hôte/utilisateur si l'instance de base de données est distante.  De plus, toute section de configuration globale peut être écrasée pour définir des paramètres spécifiques au stanza.
 
-                <b>Indexing</b>: All <setting>pg-</setting> options are indexed to allow for configuring multiple <postgres/> hosts. For example, a single primary is configured with the <setting>pg1-path</setting>, <setting>pg1-port</setting>, etc. options.  If a standby is configured then index the <setting>pg-</setting> options on the repository host as <setting>pg2-</setting> (e.g. pg2-host, pg2-path, etc).</text>
+                <b>Indexation</b> : Toutes les options <setting>pg-</setting> sont indexées pour permettre la configuration de plusieurs hôtes <postgres/> . Par exemple, un seul primaire est configurée avec les options <setting>pg1-path</setting>, <setting>pg1-port</setting>, etc.  Si un secondaire (standby) est configuré, alors les options <setting>pg-</setting> sur l'hôte du dépôt sont indexées comme <setting>pg2-</setting> (par exemple pg2-host, pg2-path, etc).</text>
 
                 <config-key-list>
                     <!-- CONFIG - STANZA SECTION - PG-HOST-CMD KEY -->
-                    <config-key id="pg-host-cmd" name="PostgreSQL Host Command">
-                        <summary><backrest/> exe path on the <postgres/> host.</summary>
+                    <config-key id="pg-host-cmd" name="Hôte PostgreSQL Commande">
+                        <summary>Emplacement des exécutable <backrest/> sur l'hôte <postgres/>.</summary>
 
-                        <text>Required only if the path to <exe/> is different on the local and <postgres/> hosts.  If not defined, the database host exe path will be set the same as the local exe path.</text>
+                        <text>Uniquement requis si le chemin vers <exe/> est différent sur le serveur local et <postgres/>.  S'il n'est pas défini, le chemin de l'<exe/> de l'hôte de la base de données sera le même que le chemin de l'<exe/> local.</text>
 
-                        <default>same as local</default>
+                        <default>identique au local</default>
                         <example>/usr/lib/backrest/bin/pgbackrest</example>
                     </config-key>
 
                     <!-- CONFIG - STANZA SECTION - PG-HOST-CONFIG KEY -->
-                    <config-key id="pg-host-config" name="PostgreSQL Host Configuration">
+                    <config-key id="pg-host-config" name="Hôte PostgreSQL Configuration">
                         <summary><backrest/> database host configuration file.</summary>
 
-                        <text>Sets the location of the configuration file on the <postgres/> host.  This is only required if the <postgres/> host configuration file is in a different location than the local configuration file.</text>
+                        <text>Définit l'emplacement du fichier de configuration sur l'hôte <postgres/>.  Ceci n'est requis que si le fichier de configuration de l'hôte <postgres/> se trouve dans un emplacement différent de celui du fichier de configuration local.</text>
 
                         <example>/conf/pgbackrest/pgbackrest.conf</example>
                     </config-key>
 
                     <!-- CONFIG - STANZA SECTION - PG-HOST-CONFIG-INCLUDE-PATH KEY -->
-                    <config-key id="pg-host-config-include-path" name="PostgreSQL Host Configuration Include Path">
-                        <summary><backrest/> database host configuration include path.</summary>
+                    <config-key id="pg-host-config-include-path" name="Hôte PostgreSQL Chemin inclusion Configuration">
+                        <summary>Chemin d'inclusion de la configuration <backrest/> sur l'hôte.</summary>
 
-                        <text>Sets the location of the configuration include path on the <postgres/> host.  This is only required if the <postgres/> host configuration include path is in a different location than the local configuration include path.</text>
+                        <text>Définit l'emplacement du chemin d'inclusion de la configuration sur l'hôte <postgres/>.  Ceci n'est requis que si le chemin d'inclusion de la configuration de l'hôte <postgres/> se trouve à un endroit différent du chemin d'inclusion de la configuration locale.</text>
 
                         <example>/conf/pgbackrest/conf.d</example>
                     </config-key>
 
                     <!-- CONFIG - STANZA SECTION - PG-HOST-CONFIG-PATH KEY -->
-                    <config-key id="pg-host-config-path" name="PostgreSQL Host Configuration Path">
-                        <summary><backrest/> database host configuration path.</summary>
+                    <config-key id="pg-host-config-path" name="Hôte PostgreSQL Chemin Configuration">
+                        <summary>Chemin de configuration <backrest/> de l'hôte de base de données.</summary>
 
-                        <text>Sets the location of the configuration path on the <postgres/> host.  This is only required if the <postgres/> host configuration path is in a different location than the local configuration path.</text>
+                        <text>Définit l'emplacement du chemin de configuration sur l'hôte <postgres/>.  Ceci n'est requis que si le chemin de configuration de l'hôte <postgres/> se trouve dans un emplacement différent du chemin de configuration local.</text>
 
                         <example>/conf/pgbackrest</example>
                     </config-key>
 
                     <!-- CONFIG - STANZA SECTION - PG-HOST KEY -->
-                    <config-key id="pg-host" name="PostgreSQL Host">
-                        <summary><postgres/> host for operating remotely via SSH.</summary>
+                    <config-key id="pg-host" name="Hôte PostgreSQL">
+                        <summary>Hôte <postgres/> pour les opérations à distance via SSH.</summary>
 
-                        <text>Used for backups where the <postgres/> host is different from the repository host.</text>
+                        <text>Utilisé pour les sauvegardes lorsque l'hôte <postgres/> est différent de l'hôte du dépôt.</text>
 
                         <example>db.domain.com</example>
                     </config-key>
 
                     <!-- CONFIG - STANZA SECTION - PG-HOST-USER KEY -->
-                    <config-key id="pg-host-user" name="PostgreSQL Host User">
-                        <summary><postgres/> host logon user when <setting>pg-host</setting> is set.</summary>
+                    <config-key id="pg-host-user" name="Hôte PostgreSQL Utilisateur">
+                        <summary>Utilisateur de connexion <postgres/> lorsque <setting>pg-host</setting> est défini.</summary>
 
-                        <text>This user will also own the remote <backrest/> process and will initiate connections to <postgres/>.  For this to work correctly the user should be the <postgres/> database cluster owner which is generally <id>postgres</id>, the default.</text>
+                        <text>Cet utilisateur sera également propriétaire du processus distant <backrest/> et initiera les connexions à <postgres/>.  Pour que cela puisse fonctionner correctement, l'utilisateur doit être le propriétaire de l'instance de base de données <postgres/>, qui est généralement par défaut <id>postgres</id>.</text>
 
                         <example>db_owner</example>
                     </config-key>
 
                     <!-- CONFIG - STANZA SECTION - PG-PATH KEY -->
-                    <config-key id="pg-path" name="PostgreSQL Path">
+                    <config-key id="pg-path" name="PostgreSQL Chemin">
                         <summary><postgres/> data directory.</summary>
 
-                        <text>This should be the same as the <setting>data_directory</setting> setting in <file>postgresql.conf</file>.  Even though this value can be read from <file>postgresql.conf</file> or <postgres/> it is prudent to set it in case those resources are not available during a restore or offline backup scenario.
+                        <text>Ce paramètre doit être le même que le paramètre <setting>data_directory</setting> du fichier <file>postgresql.conf</file>.  Même si cette valeur peut être lue à partir de <file>postgresql.conf</file> ou <postgres/>, il est conseillé de la définir au cas où ces ressources ne seraient pas disponibles pendant un scénario de restauration ou de sauvegarde hors ligne.
 
-                        The <setting>pg-path</setting> option is tested against the value reported by <postgres/> on every online backup so it should always be current.</text>
+                        L'option <setting>pg-path</setting> est testée par rapport à la valeur indiquée par <postgres/> à chaque sauvegarde en ligne, elle doit donc toujours être à jour.</text>
 
                         <example>/data/db</example>
                     </config-key>
 
                     <!-- CONFIG - STANZA SECTION - PG-PORT KEY -->
                     <config-key id="pg-port" name="PostgreSQL Port">
-                        <summary><postgres/> port.</summary>
+                        <summary>Port <postgres/>.</summary>
 
-                        <text>Port that <postgres/> is running on.  This usually does not need to be specified as most <postgres/> clusters run on the default port.</text>
+                        <text>Port sur lequel <postgres/> écoute.  Il n'est généralement pas nécessaire de le préciser car la plupart des instances <postgres/> fonctionnent sur le port par défaut.</text>
 
                         <example>6543</example>
                     </config-key>
 
                     <!-- CONFIG - STANZA SECTION - PG-SOCKET-PATH KEY -->
-                    <config-key id="pg-socket-path" name="PostgreSQL Socket Path">
-                        <summary><postgres/> unix socket path.</summary>
+                    <config-key id="pg-socket-path" name="PostgreSQL Emplacement Socket Unix">
+                        <summary>Emplacement socket unix <postgres/>.</summary>
 
-                        <text>The unix socket directory that was specified when <postgres/> was started.  <backrest/> will automatically look in the standard location for your OS so there is usually no need to specify this setting unless the socket directory was explicitly modified with the <setting>unix_socket_directory</setting> setting in <file>postgresql.conf</file>.</text>
+                        <text>Le répertoire de la socket unix qui a été spécifié au démarrage de <postgres/>.  <backrest/> trouvera automatiquement l'emplacement standard pour votre système d'exploitation, il n'est donc généralement pas nécessaire de spécifier ce paramètre, sauf si le répertoire des sockets a été explicitement modifié avec le paramètre <setting>unix_socket_directory</setting> dans <file>postgresql.conf</file>.</text>
 
                         <example>/var/run/postgresql</example>
                     </config-key>
 
                     <!-- CONFIG - STANZA SECTION - PG-USER KEY -->
-                    <config-key id="pg-user" name="PostgreSQL Database User">
-                        <summary><postgres/> database user.</summary>
+                    <config-key id="pg-user" name="PostgreSQL Utilisateur Base de données">
+                        <summary>Nom d'utilisateur de base de données <postgres/>.</summary>
 
-                        <text>The database user name used when connecting to <postgres/>.  If not specified <backrest/> will connect with the local OS user or <id>PGUSER</id>.</text>
+                        <text>Le nom d'utilisateur de la base de données utilisé lors de la connexion à <postgres/>.  S'il n'est pas spécifié, <backrest/> se connectera avec l'utilisateur du système d'exploitation local ou <id>PGUSER</id>.</text>
 
                         <example>backupuser</example>
                     </config-key>
 
                     <!-- CONFIG - STANZA SECTION - PG-HOST-PORT KEY -->
-                    <config-key id="pg-host-port" name="PostgreSQL Host Port">
-                        <summary><postgres/> host port when <setting>pg-host</setting> is set.</summary>
+                    <config-key id="pg-host-port" name="Hôte PostgreSQL Port">
+                        <summary>Port de l'hôte <postgres/> lorsque <setting>pg-host</setting> est configuré.</summary>
 
-                        <text>Use this option to specify a non-default port for the <postgres/> host protocol.  Currently only SSH is supported</text>
+                        <text>Utiliser cette option pour spécifier un port non par défaut pour le protocole hôte <postgres/>.  Actuellement, seul le protocole SSH est pris en charge</text>
 
                         <example>25</example>
                     </config-key>
@@ -880,75 +944,75 @@
     </config>
 
     <!-- COMMAND -->
-    <operation title="{[project]} Command Reference">
-        <description>The {[project]} Command Reference details all commands and options.</description>
+    <operation title="{[project]} Référence de commandes">
+        <description>La référence de commandes de {[projet]} détaille toutes les commandes et options.</description>
 
-        <text>Commands are used to execute the various <backrest/> functions.  Here the command options are listed exhaustively, that is, each option applicable to a command is listed with that command even if it applies to one or more other commands.  This includes all the options that may also configured in <file>pgbackrest.conf</file>.
+        <text>Les commandes sont utilisées pour exécuter les différentes fonctionnalités de <backrest/>.  Ici, les options de commande sont énumérées de manière détaillée, autrement dit, chaque option applicable à une commande est énumérée avec cette commande, même si elle s'applique à une ou plusieurs autres commandes.  Cela inclut toutes les options qui peuvent également être configurées dans <file>pgbackrest.conf</file>.
 
-        Non-boolean options configured in <file>pgbackrest.conf</file> can be reset to default on the command-line by using the <id>reset-</id> prefix.  This feature may be used to restore a backup directly on a repository host.  Normally, <backrest/> will error because it can see that the database host is remote and restores cannot be done remotely.  By adding <br-option>--reset-pg1-host</br-option> on the command-line, <backrest/> will ignore the remote database host and restore locally.  It may be necessary to pass a new <br-option>--pg-path</br-option> to force the restore to happen in a specific path, i.e. not the path used on the database host.
+        Les options non booléennes configurées dans <file>pgbackrest.conf</file> peuvent être réinitialisées à la valeur par défaut lors de l'appel en ligne de commande en utilisant le préfixe <id>reset-</id>.   Cette fonctionnalité peut être utilisée afin de restaurer une sauvegarde directement sur le serveur du dépôt.  Normalement, <backrest/> sera en erreur car il detectera que l'hôte de la base de données est distant et que la restauration ne peut pas être faites à distance.  En ajoutant <br-option>--reset-pg1-host</br-option> sur la ligne de commande, <backrest/> ignorera l'hôte de base de données distant et restaurera localement.  Il peut être nécessaire de passer un nouveau <br-option>--pg-path</br-option> pour forcer la restauration à se faire dans un chemin spécifique, c'est-à-dire pas le chemin utilisé sur l'hôte d'instance de la base de données.
 
-        The <id>no-</id> prefix may be used to set a boolean option to false on the command-line.
+        Le préfixe <id>no-</id> peut être utilisé pour définir une option booléenne à false (faux) sur la ligne de commande.
 
-        Any option may be set in an environment variable using the <id>PGBACKREST_</id> prefix and the option name in all caps replacing <id>-</id> with <id>_</id>, e.g. <br-option>pg1-path</br-option> becomes <id>PGBACKREST_PG1_PATH</id> and <br-option>stanza</br-option> becomes <id>PGBACKREST_STANZA</id>.  Boolean options are represented as they would be in a configuration file, e.g. <id>PGBACKREST_COMPRESS="n"</id>, and <id>reset-*</id> variants are not allowed.  Options that that can be specified multiple times on the command-line or in a config file can be represented by separating the values with colons, e.g. <id>PGBACKREST_DB_INCLUDE="db1:db2"</id>.
+        Toute option peut être définie dans une variable d'environnement en utilisant le préfixe <id>PGBACKREST_</id> et le nom de l'option en toutes lettres majuscules en remplaçant <id>-</id> par <id>_</id>, par exemple, <br-option>pg1-path</br-option> devient <id>PGBACKREST_PG1_PATH</id> et <br-option>stanza</br-option> devient <id>PGBACKREST_STANZA</id>.  Les options booléennes sont représentées comme elles le seraient dans un fichier de configuration, par exemple <id>PGBACKREST_COMPRESS="n"</id>, et les variantes <id>reset-*</id> ne sont pas autorisées.  Les options qui peuvent être spécifiées plusieurs fois sur la ligne de commande ou dans un fichier de configuration peuvent être représentées en séparant les valeurs par des deux points, par exemple <id>PGBACKREST_DB_INCLUDE="db1:db2"</id>.
 
-        Command-line options override environment options which override config file options.</text>
+        Les options de la ligne de commande écrasent les options de l'environnement qui écrasent, elles, les options du fichier de configuration.</text>
 
         <operation-general title="General Options">
             <option-list>
                 <!-- OPERATION - GENERAL - CIPHER-PASS OPTION -->
-                <option id="cipher-pass" name="Ad Hoc Cipher Passphrase">
-                    <summary>Cipher passphrase for current command.</summary>
+                <option id="cipher-pass" name="Phrase de passe Ponctuelle chiffrement">
+                    <summary>Phrase secrète de chiffrement pour la commande en cours.</summary>
 
-                    <text>Specify an ad hoc cipher passphrase for the current command.
+                    <text>Spécifier une phrase secrète ponctuelle utilisé pour le chiffrement avec la commande en cours.
 
-                    <b>FOR INTERNAL USE ONLY. DO NOT USE ON A PRODUCTION REPOSITORY.</b></text>
+                    <b>POUR UN USAGE INTERNE UNIQUEMENT. NE PAS UTILISER EN PRODUCTION..</b></text>
 
                     <example>zWaf6XtpjIVZC5444yXB+cgFDFl7MxGlgkZSaoPvTGirhPygu4jOKOXf9LO4vjfO</example>
                 </option>
 
                 <!-- OPERATION - GENERAL - CONFIG OPTION -->
                 <option id="config" name="Config">
-                    <summary><backrest/> configuration file.</summary>
+                    <summary>Fichier de configuration <backrest/>.</summary>
 
-                    <text>Use this option to specify a different configuration file than the default.</text>
+                    <text>Utiliser cette option pour spécifier un fichier de configuration différent de celui par défaut.</text>
 
                     <example>/conf/pgbackrest/pgbackrest.conf</example>
                 </option>
 
                 <!-- OPERATION - GENERAL - CONFIG INCLUDE PATH OPTION -->
                 <option id="config-include-path" name="Config Include Path">
-                    <summary>Path to additional <backrest/> configuration files.</summary>
+                    <summary>Emplacement des fichiers de configuration <backrest/> supplémentaires..</summary>
 
-                    <text>Configuration files existing in the specified location with extension <file>.conf</file> will be concatenated with the <backrest/> configuration file, resulting in one configuration file.</text>
+                    <text>Les fichiers de configuration existant à l'emplacement spécifié avec l'extension <file>.conf</file> seront concaténés avec le fichier de configuration <backrest/>, ce qui donne un seul fichier de configuration.</text>
 
                     <example>/conf/pgbackrest/conf.d</example>
                 </option>
 
                 <!-- OPERATION - GENERAL - CONFIG PATH OPTION -->
-                <option id="config-path" name="Config Path">
-                    <summary>Base path of <backrest/> configuration files.</summary>
+                <option id="config-path" name="Emplacement configuration">
+                    <summary>Emplacement du répertoire de racine de <backrest/> des fichiers de configuration.</summary>
 
-                    <text>This setting is used to override the default base path setting for the <br-option>--config</br-option> and <br-option>--config-include-path</br-option> options unless they are explicitly set on the command-line.
+                    <text>Ce paramètre est utilisé pour écraser le chemin racine par défaut pour les options <br-option>--config</br-option> et <br-option>--config-include-path</br-option> à moins qu'elles ne soient explicitement définies sur la ligne de commande.
 
-                    For example, passing only <code>--config-path=/conf/pgbackrest</code> results in the  <br-option>--config</br-option> default being set to <code>/conf/pgbackrest/pgbackrest.conf</code> and the <br-option>--config-include-path</br-option> default being set to  <code>/conf/pgbackrest/conf.d</code>.</text>
+                    Par exemple, en utilisant uniquement <code>--config-path=/conf/pgbackrest</code>, la valeur par défaut de <br-option>--config</br-option> est <code>/conf/pgbackrest/pgbackrest.conf</code> et la valeur par défaut de <br-option>--config-include-path</br-option> est <code>/conf/pgbackrest/conf.d</code>.</text>
 
                     <example>/conf/pgbackrest</example>
                 </option>
 
                 <!-- OPERATION - GENERAL - DRY-RUN OPTION -->
                 <option id="dry-run" name="Dry Run">
-                    <summary>Execute a dry-run for the command.</summary>
+                    <summary>Executer une commande en mode essai (dry-run).</summary>
 
-                    <text>The <br-option>{[dash]}-dry-run</br-option> option is a command-line only option and can be passed when it is desireable to determine what modifications will be made by the command without the command actually making any modifications.</text>
+                    <text>L'option <br-option>{[dash]}-dry-run</br-option> est une option utilisable uniquement en ligne de commande et peut être utilisée lorsqu'il est nécessaire de déterminer les modifications qui seront apportées par la commande sans que celle-ci n'apporte réellement de modifications.</text>
 
                     <example>y</example>
                 </option>
 
                 <!-- OPERATION - GENERAL - RAW -->
-                <option id="raw" name="Raw Data">
-                    <summary>Do not transform data.</summary>
+                <option id="raw" name="Données brutes Raw Data">
+                    <summary>Ne pas transformer les données.</summary>
 
-                    <text>Do not transform (i.e, encrypt, decompress, etc.) data for the current command.</text>
+                    <text>Ne pas transformer (c'est-à-dire crypter, décompresser, etc.) les données pour la commande en cours.</text>
 
                     <example>y</example>
                 </option>
@@ -957,9 +1021,9 @@
                 <option id="stanza" name="Stanza">
                     <summary>Defines the stanza.</summary>
 
-                    <text>A stanza is the configuration for a <postgres/> database cluster that defines where it is located, how it will be backed up, archiving options, etc.  Most db servers will only have one Postgres database cluster and therefore one stanza, whereas backup servers will have a stanza for every database cluster that needs to be backed up.
+                    <text>Un stanza est la configuration de la sauvegarde d'une instance <postgres/>  où est définit l'endroit où il se trouve, la façon dont il sera sauvegardé, les options d'archivage, etc...  La plupart des serveurs de base de données n'auront qu'une seule instance  <postgres/> et donc un stanza alors que les serveurs de sauvegarde auront un stanza pour chaque instance de base de données qui doit être sauvegardé.
 
-                    It is tempting to name the stanza after the primary cluster but a better name describes the databases contained in the cluster.  Because the stanza name will be used for the primary and all replicas it is more appropriate to choose a name that describes the actual function of the cluster, such as app or dw, rather than the local cluster name, such as main or prod.</text>
+                    Il est tentant de nommer le stanza en référence à l'instance primaire, mais un meilleur nom décrirait les bases de données contenues dans l'instance :  comme le nom du stanza sera utilisé pour le primaire et tous les secondaire, il est plus approprié de choisir un nom qui décrit la fonction réelle du groupe d'instances, comme app ou dw, plutôt que le nom local de l'instance, comme main ou prod.</text>
 
                     <example>main</example>
                 </option>
@@ -968,98 +1032,98 @@
 
         <command-list title="Commands">
             <!-- OPERATION - BACKUP COMMAND -->
-            <command id="backup" name="Backup">
-                <summary>Backup a database cluster.</summary>
+            <command id="backup" name="Sauvegarde">
+                <summary>Sauvegarder une instance de bases de données.</summary>
 
-                <text><backrest/> does not have a built-in scheduler so it's best to run it from cron or some other scheduling mechanism.</text>
+                <text><backrest/> n'a pas de planificateur de taches intégré, il est donc conseillé de l'exécuter à partir de cron ou d'un autre système de planification.</text>
 
                 <option-list>
                     <!-- OPERATION - BACKUP COMMAND - TYPE OPTION -->
                     <option id="type" name="Type">
-                        <summary>Backup type.</summary>
+                        <summary>Type de sauvegarde.</summary>
 
-                        <text>The following backup types are supported:
+                        <text>Les types de sauvegarde ci-dessous sont pris en charge:
                             <ul>
-                                <li><id>full</id> - all database cluster files will be copied and there will be no dependencies on previous backups.</li>
-                                <li><id>incr</id> - incremental from the last successful backup.</li>
-                                <li><id>diff</id> - like an incremental backup but always based on the last full backup.</li>
+                                <li><id>full</id> - tous les fichiers de l'instance de bases de données seront copiés et il n'y aura aucune dépendance par rapport aux sauvegardes précédentes.</li>
+                                <li><id>incr</id> - incrémentale basé sur la dernière sauvegarde complète réussit.</li>
+                                <li><id>diff</id> - comme une sauvegarde incrémentale mais toujours basée sur la dernière sauvegarde complète.</li>
                             </ul></text>
 
                         <example>full</example>
                     </option>
 
                     <!-- OPERATION - BACKUP COMMAND - FORCE OPTION -->
-                    <option id="force" name="Force">
-                        <summary>Force an offline backup.</summary>
+                    <option id="force" name="Forcer">
+                        <summary>Forcer une sauvegarde hors ligne.</summary>
 
-                        <text>When used with <br-option>--no-start-stop</br-option> a backup will be run even if <backrest/> thinks that <postgres/> is running.  <b>This option should be used with extreme care as it will likely result in a bad backup.</b>
+                        <text>Lorsqu'il est utilisé avec <br-option>--no-start-stop</br-option> une sauvegarde sera exécutée même si <backrest/> pense que <postgres/> est en cours d'exécution.  <b>Cette option doit être utilisée avec une extrême prudence car elle risque d'entraîner une sauvegarde incorrecte.</b>
 
-                        There are some scenarios where a backup might still be desirable under these conditions.  For example, if a server crashes and the database cluster volume can only be mounted read-only, it would be a good idea to take a backup even if <file>postmaster.pid</file> is present.  In this case it would be better to revert to the prior backup and replay WAL, but possibly there is a very important transaction in a WAL segment that did not get archived.</text>
+                        Il y quelques scénarios où une telle sauvegarde pourrait encore être utile dans ces conditions.  Par exemple, si un serveur tombe en panne et que le volume de l'instance de base de données ne peut être monté qu'en lecture seule, il serait judicieux d'effectuer une sauvegarde même si <file>postmaster.pid</file> est présent.  Dans ce cas, il serait plus intéressant de revenir à la sauvegarde précédente et de rejouer le WAL, mais il est possible qu'il y ait une transaction très importante dans un segment du WAL qui n'a pas été archivé.</text>
 
                         <example>y</example>
                     </option>
 
                     <!-- ======================================================================================================= -->
                     <option id="online" name="Online">
-                        <summary>Perform an online backup.</summary>
+                        <summary>Effectuer une sauvegarde en ligne.</summary>
 
-                        <text>Specifying --no-online prevents <backrest/> from running <code>pg_start_backup()</code> and <code>pg_stop_backup()</code> on the database cluster.  In order for this to work <postgres/> should be shut down and <backrest/> will generate an error if it is not.
+                        <text>Le fait de spécifier --no-online empêche <backrest/> de lancer <code>pg_start_backup()</code> et <code>pg_stop_backup()</code> sur l'instance de la base de données.  Pour que --no-online fonctionne, l'instance <postgres/> doit être arrêté sinon <backrest/> générera une erreur.
 
-                        The purpose of this option is to allow offline backups.  The <path>pg_xlog</path>/<path>pg_wal</path> directory is copied as-is and <setting>archive-check</setting> is automatically disabled for the backup.</text>
+                        L'objectif de cette option est de permettre des sauvegardes hors ligne.  Le répertoire <path>pg_xlog</path>/<path>pg_wal</path> est copié tel quel et <setting>archive-check</setting> est automatiquement désactivé lors de la sauvegarde.</text>
 
                         <example>n</example>
                     </option>
                 </option-list>
 
                 <command-example-list>
-                    <command-example title="Full Backup">
+                    <command-example title="Sauvegarde complète">
                         <text><code-block title="">
                             {[backrest-exe]} --stanza=db --type=full backup
                         </code-block>
-                        Run a <id>full</id> backup on the <id>db</id> stanza.  <br-option>--type</br-option> can also be set to <id>incr</id> or <id>diff</id> for incremental or differential backups.  However, if no <id>full</id> backup exists then a <id>full</id> backup will be forced even if <id>incr</id> or <id>diff</id> is requested.</text>
+                        Faire une sauvegarde du stanza  <id>db</id>.  <br-option>--type</br-option> peut également être réglé sur <id>incr</id> ou <id>diff</id> pour des sauvegardes incrémentielles ou différentielles.  Cependant, si aucune sauvegarde <id>full</id> n'existe, une sauvegarde <id>full</id> sera forcée même si <id>incr</id> ou <id>diff</id> est demandés.</text>
                     </command-example>
                 </command-example-list>
             </command>
 
             <!-- OPERATION - ARCHIVE-PUSH COMMAND -->
-            <command id="archive-push" name="Archive Push">
-                <summary>Push a WAL segment to the archive.</summary>
+            <command id="archive-push" name="Pousser Archive">
+                <summary>Pousser un segment de WAL vers les archives.</summary>
 
-                <text>The WAL segment may be pushed immediately to the archive or stored locally depending on the value of <setting>archive-async</setting></text>
+                <text>Un segment WAL peut être poussé immédiatement vers les archives ou stocké localement selon la valeur de <setting>archive-async</setting></text>
 
                 <command-example-list>
                     <command-example>
                         <text><code-block title="">
                             {[backrest-exe]} --stanza=db archive-push %p
                         </code-block>
-                        Accepts a WAL segment from <postgres/> and archives it in the repository defined by <setting>repo-path</setting>.  <id>%p</id> is how <postgres/> specifies the location of the WAL segment to be archived.</text>
+                        Accepte un segment WAL de <postgres/> et l'archive dans le dépôt défini par <setting>repo-path</setting>.  <id>%p</id> est la façon dont <postgres/> spécifie l'emplacement du segment WAL à archiver.</text>
                     </command-example>
                 </command-example-list>
             </command>
 
             <!-- OPERATION - ARCHIVE-GET COMMAND -->
-            <command id="archive-get" name="Archive Get">
-                <summary>Get a WAL segment from the archive.</summary>
+            <command id="archive-get" name="Récupération Archive">
+                <summary>Récuperation d'un segments WAL à partir des archives.</summary>
 
-                <text>WAL segments are required for restoring a <postgres/> cluster or maintaining a replica.</text>
+                <text>Les segments WAL sont nécessaires pour restaurer une instance <postgres/> ou pour maintenir une réplication.</text>
 
                 <command-example-list>
                     <command-example>
                         <text><code-block title="">
                             {[backrest-exe]} --stanza=db archive-get %f %p
                         </code-block>
-                        Retrieves a WAL segment from the repository.  This command is used in <file>recovery.conf</file> to restore a backup, perform PITR, or as an alternative to streaming for keeping a replica up to date.  <id>%f</id> is how <postgres/> specifies the WAL segment it needs and <id>%p</id> is the location where it should be copied.</text>
+                        Récupère un segment WAL depuis le dépôt de sauvegarde.  Cette commande est configuré dans <file>recovery.conf</file> lors d'une restauration de sauvegarde, afin d'effectuer un PITR, ou comme alternative au streaming pour garder un réplica à jour. <id>%f</id> est la variable utilisé par <postgres/> pour spécifier le segment WAL dont il a besoin et <id>%p</id> est l'emplacement où il doit être copié.</text>
                     </command-example>
                 </command-example-list>
             </command>
 
             <!-- OPERATION - CHECK COMMAND -->
-            <command id="check" name="Check">
-                <summary>Check the configuration.</summary>
+            <command id="check" name="Vérification">
+                <summary>Vérification de la configuration.</summary>
 
-                <text>The <cmd>check</cmd> command validates that <backrest/> and the <pg-setting>archive_command</pg-setting> setting are configured correctly for archiving and backups. It detects misconfigurations, particularly in archiving, that result in incomplete backups because required WAL segments did not reach the archive. The command can be run on the database or the repository host.  The command may also be run on the standby host, however, since <code>pg_switch_xlog()</code>/<code>pg_switch_wal()</code> cannot be performed on the standby, the command will only test the repository configuration.
+                <text>La commande <cmd>check</cmd> valide que <backrest/> et le paramétre <pg-setting>archive_command</pg-setting> sont configurés correctement pour l'archivage et les sauvegardes. Il détecte d'éventuelles erreurs de configuration, en particulier pour l'archivage. Une mauvaise configuration de l'archivage se traduit par des sauvegardes incomplètes : les segments WAL requis n'étant pas parvenus aux archives. La commande peut être exécutée sur le serveur de l'instance de la base de données ou sur le serveur du dépôt de sauvegarde.  La commande peut également être exécutée sur l'hôte secondaire (standby), mais comme les commandes <code>pg_switch_xlog()</code>/<code>pg_switch_wal()</code> ne peut pas être exécuté sur une instance secondaire, la commande ne testera que la configuration du dépôt.
 
-                Note that <code>pg_create_restore_point('pgBackRest Archive Check')</code> and <code>pg_switch_xlog()</code>/<code>pg_switch_wal()</code> are called to force <postgres/> to archive a WAL segment.  Restore points are only supported in <postgres/> &gt;= 9.1 so for older versions the <cmd>check</cmd> command may fail if there has been no write activity since the last log rotation, therefore it is recommended that activity be generated by the user if there have been no writes since the last WAL switch before running the <cmd>check</cmd> command.</text>
+                Notez que <code>pg_create_restore_point('pgBackRest Archive Check')</code> et <code>pg_switch_xlog()</code>/<code>pg_switch_wal()</code> sont appelés pour forcer <postgres/> à archiver un segment WAL. Les points de restauration ne sont supportés que dans <postgres/> &gt;= 9.1; Pour les versions plus anciennes, la commande <cmd>check</cmd> peut échouer s'il n'y a pas eu d'activité d'écriture depuis la dernière rotation du journal, il est donc recommandé que l'activité soit générée par l'utilisateur s'il n'y a pas eu d'écriture depuis le dernier changement de WAL avant l'exécution de la commande <cmd>check</cmd></text>
 
                 <command-example-list>
                     <command-example>
@@ -1072,115 +1136,125 @@
             </command>
 
             <!-- OPERATION - EXPIRE COMMAND -->
-            <command id="expire" name="Expire">
-                <summary>Expire backups that exceed retention.</summary>
+            <command id="expire" name="Expiration">
+                <summary>Expiration des sauvegardes qui dépassent la rétention.</summary>
 
-                <text><backrest/> does backup rotation but is not concerned with when the backups were created.  If two full backups are configured for retention, <backrest/> will keep two full backups no matter whether they occur two hours or two weeks apart.</text>
+                <text><backrest/> effectue la rotation des sauvegardes mais ne se préoccupe pas de savoir quand les sauvegardes ont été créées.  Si deux sauvegardes complètes sont configurées pour être conservées, <backrest/> conservera deux sauvegardes complètes, qu'elles aient lieu à deux heures ou à deux semaines d'intervalle.</text>
+
+                <option-list>
+                    <!-- OPERATION - EXPIRE COMMAND - SET OPTION -->
+                    <option id="set" name="Definir">
+                        <summary>Definir l'expiration de la sauvegarde.</summary>
+
+                        <text>Le jeu de sauvegarde spécifié (c'est-à-dire l'étiquette de sauvegarde fournie et toutes ses sauvegardes dépendantes, le cas échéant) expirera quelles que soient les règles de conservation des sauvegardes, excepté qu'au moins une sauvegarde complète doit rester dans le dépôt. <admonition type="warning">Utilisez cette option avec une extrême prudence &amp;mdash ; elle supprimera définitivement toutes les sauvegardes et archives non nécessaires pour effectuer une sauvegarde cohérente du dépôt de sauvegarde <backrest/> pour le jeu de sauvegarde spécifié. Ce processus peut empêcher l'exécution du PITR. Si les options <br-option>--repo-retention-full</br-option> et/ou <br-option>--repo-retention-archive</br-option> sont configurées, alors il est conseillé de remplacer ces options en définissant leurs valeurs au maximum lors de l'exécution de la commande d'expiration.</admonition></text>
+                        <example>20150131-153358F_20150131-153401I</example>
+                    </option>
+                </option-list>
 
                 <command-example-list>
                     <command-example>
                         <text><code-block title="">
                             {[backrest-exe]} --stanza=db expire
                         </code-block>
-                        Expire (rotate) any backups that exceed the defined retention.  Expiration is run automatically after every successful backup, so there is no need to run this command separately unless you have reduced retention, usually to free up some space.</text>
+                        Expiration (rotation) de toutes les sauvegardes qui dépassent la durée de conservation définie.  L'expiration est exécutée automatiquement après chaque sauvegarde réussie, il n'est donc pas nécessaire d'exécuter cette commande séparément, sauf si vous avez réduit la rétention, généralement pour libérer de l'espace.</text>
                     </command-example>
                 </command-example-list>
             </command>
 
             <!-- OPERATION - REPO-CREATE COMMAND -->
-            <command id="repo-create" name="Create Repository">
-                <summary>Create the repository.</summary>
+            <command id="repo-create" name="Création dépôt">
+                <summary>Créer le dépôt.</summary>
 
-                <text>Creates the bucket if <setting>repo-type=s3</setting>.
+                <text>Création du bucket si l'option <setting>repo-type=s3</setting>.
 
-                <b>FOR INTERNAL USE ONLY. DO NOT USE ON A PRODUCTION REPOSITORY.</b></text>
+                <b>POUR UN USAGE INTERNE UNIQUEMENT. NE PAS UTILISER EN PRODUCTION.</b></text>
 
                 <command-example-list>
-                    <command-example title="Create repository">
+                    <command-example title="Créer un dépôt">
                         <text><code-block title="">
                             {[backrest-exe]} repo-create
                         </code-block>
 
-                        Create the repository.</text>
+                      Créer un dépôt.</text>
                     </command-example>
                 </command-example-list>
             </command>
 
             <!-- OPERATION - REPO-GET COMMAND -->
-            <command id="repo-get" name="Repository Get File">
-                <summary>Get a file from the repository.</summary>
+            <command id="repo-get" name="Obtenir un fichier du dépôt">
+                <summary>Obtenir un fichier du dépôt.</summary>
 
-                <text>Similar to the unix <cmd>cat</cmd> command but options are different.</text>
+                <text>Similaire à la commande unix <cmd>cat</cmd> mais les options sont différentes.</text>
 
                 <option-list>
                     <!-- OPERATION - REPO-GET COMMAND - IGNORE-MISSING OPTION -->
-                    <option id="ignore-missing" name="Ignore Missing">
-                        <summary>Ignore missing source file.</summary>
+                    <option id="ignore-missing" name="Ignorer les manquants">
+                        <summary>Ignorer le fichier source manquant.</summary>
 
-                        <text>Exit with 1 if the source file is missing but don't throw an error.</text>
+                        <text>Se termine avec un code de sortie à 1 si le fichier source est manquant mais n'affiche pas d'erreur.</text>
 
                         <example>y</example>
                     </option>
                 </option-list>
 
                 <command-example-list>
-                    <command-example title="Get a file from the repository">
+                    <command-example title="Obtenir un fichier du dépôt">
                         <text><code-block title="">
                             {[backrest-exe]} repo-get backup/demo/file.txt
                         </code-block>
 
-                        Get a file from the demo stanza.</text>
+                        Obtenir un fichier du stanza demo.</text>
                     </command-example>
                 </command-example-list>
             </command>
 
             <!-- OPERATION - REPO-LS COMMAND -->
-            <command id="repo-ls" name="Repository List Paths/Files">
-                <summary>List paths/files in the repository.</summary>
+            <command id="repo-ls" name="Liste des chemins/dossiers du dépôt">
+                <summary>Lister les chemins/fichiers du dépôt.</summary>
 
-                <text>Similar to the unix <cmd>ls</cmd> command but options and output are different.  Only information provided by repository storage drivers is available: <id>name</id>, <id>type</id>, <id>size</id>, (modify) <id>time</id>, and <id>destination</id> (for drivers that support links).</text>
+                <text>Similaire à la commande unix <cmd>ls</cmd> mais les options et la sortie sont différentes.  Seules les informations fournies par les pilotes de stockage du référentiel sont disponibles : <id>name</id> (nom), <id>type</id>(type), <id>size</id> (taille), <id>time</id> (date de modification), et <id>destination</id> (destination sur les système prennent en charge les liens).</text>
 
                 <option-list>
                     <!-- OPERATION - LS COMMAND - FILTER OPTION -->
-                    <option id="filter" name="Filter Output">
-                        <summary>Filter output with a regular expression.</summary>
+                    <option id="filter" name="Filtre de sortie">
+                        <summary>Filtrer la sortie avec une expression régulière.</summary>
 
-                        <text>The filter is applied against the file/path names before they are output.</text>
+                        <text>Le filtre est appliqué sur les noms de fichiers/chemins d'accès avant l'affichage sur la sortie.</text>
 
                         <example>(F|D|I)$</example>
                     </option>
 
                     <!-- OPERATION - LS COMMAND - OUTPUT OPTION -->
-                    <option id="output" name="Output">
-                        <summary>Output format.</summary>
+                    <option id="output" name="Sortie">
+                        <summary>Format de sortie.</summary>
 
-                        <text>The following output types are supported:
+                        <text>Les types de sortie suivants sont pris en charge:
                         <ul>
-                            <li><id>text</id> - Simple list with one file/link/path name on each line.</li>
-                            <li><id>json</id> - Detailed file/link/path information in JSON format.</li>
+                            <li><id>text</id> - Liste simple avec un nom de fichier/lien/chemin sur chaque ligne.</li>
+                            <li><id>json</id> - Informations détaillées sur les fichier/lien/dossier au format JSON.</li>
                         </ul></text>
 
                         <example>json</example>
                     </option>
 
                     <!-- OPERATION - LS COMMAND - RECURSE OPTION -->
-                    <option id="recurse" name="Recurse Subpaths">
-                        <summary>Include all subpaths in output.</summary>
+                    <option id="recurse" name="Récursivité des sous-chemins">
+                        <summary>Inclure tous les sous-chemins dans la sortie.</summary>
 
-                        <text>All subpaths and their files will be included in the output.</text>
+                        <text>Tous les sous-chemins et leurs fichiers seront inclus dans le résultat.</text>
 
                         <example>y</example>
                     </option>
 
                     <!-- OPERATION - LS COMMAND - SORT OPTION -->
-                    <option id="sort" name="Sort Output">
-                        <summary>Sort output ascending, descending, or none.</summary>
+                    <option id="sort" name="Tri de sortie">
+                        <summary>Trier la sortie par ordre croissant, décroissant ou aucun.</summary>
 
-                        <text>The following sort types are supported:
+                        <text>Les types de tri suivants sont pris en charge:
                         <ul>
-                            <li><id>asc</id> - sort ascending.</li>
-                            <li><id>desc</id> - sort descending.</li>
-                            <li><id>none</id> - no sorting.</li>
+                            <li><id>asc</id> - tri croissant.</li>
+                            <li><id>desc</id> - tri décroissant.</li>
+                            <li><id>none</id> - pas de tri.</li>
                         </ul></text>
 
                         <example>desc</example>
@@ -1188,135 +1262,135 @@
                 </option-list>
 
                 <command-example-list>
-                    <command-example title="List all backups in a stanza">
+                    <command-example title="Liste de toutes les sauvegardes d'un stanza">
                         <text><code-block title="">
                             {[backrest-exe]} repo-ls backup/demo
                         </code-block>
 
-                        List all backups in the demo stanza.</text>
+                        Liste de toutes les sauvegardes du stanza demo.</text>
                     </command-example>
                 </command-example-list>
             </command>
 
             <!-- OPERATION - REPO-PUT COMMAND -->
-            <command id="repo-put" name="Repository Put File">
-                <summary>Put a file in the repository.</summary>
+            <command id="repo-put" name="Déposer un ficher">
+                <summary>Déposer un fichier dans le dépôt.</summary>
 
-                <text>Similar to the unix <cmd>tee</cmd> command but options and behavior are different.
+                <text>Similaire à la commande unix <cmd>tee</cmd> mais avec des options différentes.
 
-                <b>FOR INTERNAL USE ONLY. DO NOT USE ON A PRODUCTION REPOSITORY.</b></text>
+                <b>POUR UN USAGE INTERNE UNIQUEMENT. NE PAS UTILISER EN PRODUCTION.</b></text>
 
                 <command-example-list>
-                    <command-example title="Put a file in the repository">
+                    <command-example title="Déposer un fichier dans le dépôt">
                         <text><code-block title="">
                             cat file.txt {[backrest-exe]} repo-put backup/demo/file.txt
                         </code-block>
 
-                        Put a file in the demo stanza.</text>
+                        Déposer un fichier dans le stanza demo.</text>
                     </command-example>
                 </command-example-list>
             </command>
 
             <!-- OPERATION - RM COMMAND -->
-            <command id="repo-rm" name="Repository Remove Paths/Files">
-                <summary>Remove paths/files in the repository.</summary>
+            <command id="repo-rm" name="Supprimer les chemins/dossiers du dépôt">
+                <summary>Supprimer les chemins/fichiers dans le dépôt.</summary>
 
-                <text>Similar to the unix <cmd>rm</cmd> command but options are different.
+                <text>Similaire à la commande unix <cmd>rm</cmd> mais avec des options différentes.
 
-                <b>FOR INTERNAL USE ONLY. DO NOT USE ON A PRODUCTION REPOSITORY.</b></text>
+                <b>POUR UN USAGE INTERNE UNIQUEMENT. NE PAS UTILISER EN PRODUCTION.</b></text>
 
                 <option-list>
                     <!-- OPERATION - RM COMMAND - RECURSE OPTION -->
-                    <option id="recurse" name="Recurse Subpaths">
-                        <summary>Remove all sub file/paths.</summary>
+                    <option id="recurse" name="Récursivité des sous-chemins">
+                        <summary>Supprimer tous les sous-fichiers/répertoire</summary>
 
-                        <text>All subpaths and their files will be removed.</text>
+                        <text>Tous les sous-chemins et leurs fichiers seront supprimés.</text>
 
                         <example>y</example>
                     </option>
                 </option-list>
 
                 <command-example-list>
-                    <command-example title="Remove backup">
+                    <command-example title="Supprimer une sauvegarde">
                         <text><code-block title="">
                             {[backrest-exe]} rm --recurse backup/demo/20190718-155825F
                         </code-block>
 
-                        Remove 20190718-155825F backup in the demo stanza.</text>
+                        Supprimer la sauvegarde 20190718-155825F dans le stanza demo.</text>
                     </command-example>
                 </command-example-list>
             </command>
 
             <!-- OPERATION - RESTORE COMMAND -->
-            <command id="restore" name="Restore">
-                <summary>Restore a database cluster.</summary>
+            <command id="restore" name="Restauration">
+                <summary>Retaurer une instance de base de données.</summary>
 
                 <text>This command is generally run manually, but there are instances where it might be automated.</text>
 
                 <option-list>
                     <!-- OPERATION - RESTORE COMMAND - SET OPTION -->
-                    <option id="set" name="Set">
-                        <summary>Backup set to restore.</summary>
+                    <option id="set" name="Jeu">
+                        <summary>Jeu de sauvegarde à restaurer.</summary>
 
-                        <text>The backup set to be restored.  <id>latest</id> will restore the latest backup, otherwise provide the name of the backup to restore.</text>
+                        <text>Le jeu de sauvegarde à restaurer : <id>latest</id> restaurera la dernière sauvegarde, autrement fournir le nom de la sauvegarde à restaurer</text>
                         <example>20150131-153358F_20150131-153401I</example>
                     </option>
 
                     <!-- OPERATION - RESTORE COMMAND - FORCE OPTION -->
                     <option id="force" name="Force">
-                        <summary>Force a restore.</summary>
+                        <summary>Forcer une restauration.</summary>
 
-                        <text>By itself this option forces the <postgres/> data and tablespace paths to be completely overwritten.  In combination with <br-option>--delta</br-option> a timestamp/size delta will be performed instead of using checksums.</text>
+                        <text>En soi, cette option écrase complètement les chemins des données et des tablespaces de <postgres/>.  En association avec <br-option>--delta</br-option>, un delta sera effectué en se basant sur l'horodatage et la taille au lieu des sommes de contrôle.</text>
 
                         <example>y</example>
                     </option>
 
                     <!-- OPERATION - RESTORE COMMAND - TYPE OPTION -->
                     <option id="type" name="Type">
-                        <summary>Recovery type.</summary>
+                        <summary>Type de récupération.</summary>
 
-                        <text>The following recovery types are supported:
+                        <text>Les types de récupération suivants sont pris en charge:
                         <ul>
-                            <li><id>default</id> - recover to the end of the archive stream.</li>
-                            <li><id>immediate</id> - recover only until the database becomes consistent. This option is only supported on <postgres/> &gt;= 9.4.</li>
-                            <li><id>name</id> - recover the restore point specified in <br-option>--target</br-option>.</li>
-                            <li><id>xid</id> - recover to the transaction id specified in <br-option>--target</br-option>.</li>
-                            <li><id>time</id> - recover to the time specified in <br-option>--target</br-option>.</li>
-                            <li><id>preserve</id> - preserve the existing <file>recovery.conf</file> file.</li>
-                            <li><id>standby</id> - add <setting>standby_mode=on</setting> to <file>recovery.conf</file> file so cluster will start in standby mode.</li>
-                            <li><id>none</id> - no <file>recovery.conf</file> file is written so <postgres/> will attempt to achieve consistency using WAL segments present in <path>pg_xlog</path>/<path>pg_wal</path>.  Provide the required WAL segments or use the <setting>archive-copy</setting> setting to include them with the backup.</li>
+                            <li><id>default</id> - récupération jusqu'à la fin du flux d'archives.</li>
+                            <li><id>immediate</id> - récupération uniquement jusqu'à ce que la base de données devienne cohérente. Cette option n'est prise en charge que sur <postgres/> &gt;= 9.4.</li>
+                            <li><id>name</id> - récupération jusqu'au point de restauration spécifié dans <br-option>--target</br-option>.</li>
+                            <li><id>xid</id> - récupération jusqu'à l'ID de transaction specifié dans <br-option>--target</br-option>.</li>
+                            <li><id>time</id> - se récupération jusqu'au moment spécifié dans <br-option>--target</br-option>.</li>
+                            <li><id>preserve</id> - préserver la configuration de la récupération (ex fichier <file>recovery.conf</file>).</li>
+                            <li><id>standby</id> - ajoute <setting>standby_mode=on</setting> au option de récupération de <postgres/> (ex: <file>recovery.conf</file>) pour que l'instance démarre en mode standby.</li>
+                            <li><id>none</id> - Aucune configuration de récupération n'est écrite dans <postgres/> (ex : <file>recovery.conf</file>). <postgres/> tentera d'obtenir une cohérence en utilisant les segments WAL présents dans <path>pg_xlog</path>/<path>pg_wal</path>. Fournissez les segments WAL requis ou utilisez le paramètre <setting>archive-copy</setting> pour les inclure avec la sauvegarde.</li>
                         </ul></text>
                         <example>xid</example>
                     </option>
 
                     <!-- OPERATION - RESTORE COMMAND - TARGET OPTION -->
                     <option id="target" name="Target">
-                        <summary>Recovery target.</summary>
+                        <summary>Cible de récupération target.</summary>
 
-                        <text>Defines the recovery target when <br-option>--type</br-option> is <id>name</id>, <id>xid</id>, or <id>time</id>.</text>
+                        <text>Définit la cible de récupération lorsque <br-option>--type</br-option> est <id>nom</id>, <id>xid</id>, ou <id>temps</id></text>
                         <example>2015-01-30 14:15:11 EST</example>
                     </option>
 
                     <!-- OPERATION - RESTORE COMMAND - TARGET-EXCLUSIVE OPTION -->
-                    <option id="target-exclusive" name="Target Exclusive">
-                        <summary>Stop just before the recovery target is reached.</summary>
+                    <option id="target-exclusive" name="Cible Exclusive">
+                        <summary>S'arrêter juste avant que l'objectif de récupération ne soit atteint.</summary>
 
-                        <text>Defines whether recovery to the target would be exclusive (the default is inclusive) and is only valid when <br-option>--type</br-option> is <id>time</id> or <id>xid</id>.  For example, using <br-option>--target-exclusive</br-option> would exclude the contents of transaction <id>1007</id> when <br-option>--type=xid</br-option> and <br-option>--target=1007</br-option>.  See the <setting>recovery_target_inclusive</setting> option in the <postgres/> docs for more information.</text>
+                        <text>Définit si la cible de récupération est exclusive (la valeur par défaut est inclusive) et n'est valable que lorsque <br-option>--type</br-option> est <id>time</id> ou <id>xid</id>.  Par exemple, l'utilisation de <br-option>--target-exclusive</br-option> exclurait le contenu de la transaction <id>1007</id> lorsque <br-option>--type=xid</br-option> et <br-option>--target=1007</br-option>.  Pour plus d'information, consultez  dans la documentation de <postgres/> l'option <setting>recovery_target_inclusive</setting>.</text>
 
                         <example>n</example>
                     </option>
 
                     <!-- OPERATION - RESTORE COMMAND - TARGET-RESUME OPTION -->
                     <option id="target-action" name="Target Action">
-                        <summary>Action to take when recovery target is reached.</summary>
+                        <summary>Action à prendre lorsque la cible de récupération est atteint.</summary>
 
-                        <text>This option is effective when <setting>hot_standby=on</setting> is configured in <file>postgresql.conf</file>, otherwise the cluster will be promoted when the target is reached or there is no more WAL in the archive.
+                        <text>Cette option est effective lorsque <setting>hot_standby=on</setting>  est configuré dans  <postgres/> (ex : <file>postgresql.conf</file>); sans quoi l'instance sera promu lorsque la cible sera atteinte ou lorsqu'il n'y plus d'autre WAL archivé.
 
-                            The following actions are supported:
+                            Les actions suivantes sont supportées:
                         <ul>
-                            <li><id>pause</id> - pause when recovery target is reached. (<postgres/> &gt;= 9.1)</li>
-                            <li><id>promote</id> - promote and switch timeline when recovery target is reached. (<postgres/> &gt;= 9.1)</li>
-                            <li><id>shutdown</id> - shutdown server when recovery target is reached. (<postgres/> &gt;= 9.5)</li>
+                            <li><id>pause</id> - mise en pause lorsque la cible de récupération est atteint. (<postgres/> &gt;= 9.1)</li>
+                            <li><id>promote</id> - promotion et changement de timeline lorsque la cible de récupération est atteint. (<postgres/> &gt;= 9.1)</li>
+                            <li><id>shutdown</id> -  arrêt du serveur lorsque la cible de récupération est atteint (<postgres/> &gt;= 9.5)</li>
                         </ul></text>
 
                         <example>promote</example>
@@ -1324,111 +1398,111 @@
 
                     <!-- OPERATION - RESTORE COMMAND - TARGET-TIMELINE OPTION -->
                     <option id="target-timeline" name="Target Timeline">
-                        <summary>Recover along a timeline.</summary>
+                        <summary>Récupération jusqu'à une timeline.</summary>
 
-                        <text>See <setting>recovery_target_timeline</setting> in the <postgres/> docs for more information.</text>
+                        <text>Voir <setting>recovery_target_timeline</setting> dans la documentation de <postgres/> pour plus d'informations</text>
 
                         <example>3</example>
                     </option>
                 </option-list>
 
                 <command-example-list>
-                    <command-example title="Restore Latest">
+                    <command-example title="Restaurer le dernier">
                         <text><code-block title="">
                                 {[backrest-exe]} --stanza=db --type=name --target=release restore
                             </code-block>
-                            Restores the latest database cluster backup and then recovers to the <id>release</id> restore point.</text>
+                            Restaure la dernière sauvegarde de l'instance <postgres/>, jusqu'au point de restauration <id>release</id></text>
                     </command-example>
                 </command-example-list>
             </command>
 
             <!-- OPERATION - INFO COMMAND -->
             <command id="info" name="Info">
-                <summary>Retrieve information about backups.</summary>
+                <summary>Récupérer des informations sur les sauvegardes.</summary>
 
-                <text>The <cmd>info</cmd> command operates on a single stanza or all stanzas.  Text output is the default and gives a human-readable summary of backups for the stanza(s) requested.  This format is subject to change with any release.
+                <text>La commande <cmd>info</cmd> fonctionne sur un ou plusieurs stanza. La sortie texte est la valeur par défaut et donne un résumé lisible par l'utilisateur des sauvegardes pour le ou les stanza demandées.  Ce format est susceptible de changer à chaque version.
 
-                For machine-readable output use <setting>--output=json</setting>.  The JSON output contains far more information than the text output and is kept stable unless a bug is found.</text>
+                Pour une sortie lisible par machine (programme), utiliser l'option <setting>--output=json</setting>.  La sortie JSON contient beaucoup plus d'informations que la sortie texte; elle reste stable à chaque version, à moins qu'un bogue ne soit trouvé.</text>
 
                 <option-list>
                     <!-- OPERATION - INFO COMMAND - OUTPUT OPTION -->
-                    <option id="output" name="Output">
-                        <summary>Output format.</summary>
+                    <option id="output" name="Sortie">
+                        <summary>Format de sortie.</summary>
 
-                        <text>The following output types are supported:
+                        <text>Les sorties suivantes sont prises en charge:
                         <ul>
-                            <li><id>text</id> - Human-readable summary of backup information.</li>
-                            <li><id>json</id> - Exhaustive machine-readable backup information in JSON format.</li>
+                            <li><id>text</id> - Résumé des informations de sauvegarde lisible par l'utilisateur.</li>
+                            <li><id>json</id> - Informations exhaustives sur les sauvegardes au format JSON à destination de machine.</li>
                         </ul></text>
 
                         <example>json</example>
                     </option>
 
-                    <option id="set" name="Set">
-                        <summary>Backup set to detail.</summary>
+                    <option id="set" name="Jeu">
+                        <summary>Détail du jeu de sauvegarde.</summary>
 
-                        <text>Details include a list of databases (with OIDs) in the backup set (excluding template databases), tablespaces (with OIDs) with the destination where they will be restored by default, and symlinks with the destination where they will be restored when <setting>--link-all</setting> is specified.</text>
+                        <text>Les détails comportent une liste des bases de données (avec leurs OID) dans le jeu de sauvegarde (à l'exclusion des bases de données modèles), les tablespaces (avec leurs OID) avec la destination où ils seront restaurés par défaut, et les liens symboliques avec la destination où ils seront restaurés lorsque <setting>--link-all</setting> est spécifié.</text>
                         <example>20150131-153358F_20150131-153401I</example>
                     </option>
                 </option-list>
 
                 <command-example-list>
-                    <command-example title="Information for a single stanza">
+                    <command-example title="Informations pour un stanza particulier">
                         <text><code-block title="">
                             {[backrest-exe]} --stanza=db --output=json info
                         </code-block>
 
-                        Get information about backups in the <id>db</id> stanza.</text>
+                        Obtenir les informations de savegarde pour le stanza <id>db</id>.</text>
                     </command-example>
 
-                    <command-example title="Information for all stanzas">
+                    <command-example title="Informations pour toutes les stanzas">
                         <text><code-block title="">
                             {[backrest-exe]} --output=json info
                         </code-block>
 
-                        Get information about backups for all stanzas in the repository.</text>
+                        Obtenir les informations de sauvegardes pour tous les stanza du dépôt.</text>
                     </command-example>
                 </command-example-list>
             </command>
 
             <!-- OPERATION - HELP COMMAND -->
-            <command id="help" name="Help">
-                <summary>Get help.</summary>
+            <command id="help" name="Aide">
+                <summary>Obtenir de l'aide.</summary>
 
-                <text>Three levels of help are provided.  If no command is specified then general help will be displayed.  If a command is specified then a full description of the command will be displayed along with a list of valid options.  If an option is specified in addition to a command then the a full description of the option as it applies to the command will be displayed.</text>
+                <text>Trois niveaux d'aide sont disponible. Si aucune commande n'est spécifiée, l'aide générale sera affichée. Si une commande est spécifiée, une description complète de la commande sera affichée ainsi qu'une liste des options valides, enfin si une option est spécifiée en plus de la commande, une description complète de l'option en question s'affichera.</text>
 
                 <command-example-list>
-                    <command-example title="Help for the backup command">
+                    <command-example title="Aide de la commande de sauvegarde">
                         <text><code-block title="">
                             {[backrest-exe]} help backup
                         </code-block>
 
-                        Get help for the backup command.</text>
+                        Obtenir de l'aide pour la commande de sauvegarde.</text>
                     </command-example>
 
-                    <command-example title="Help for backup command, --force option">
+                    <command-example title="Aide de la commande de sauvegarde, option --force">
                         <text><code-block title="">
                             {[backrest-exe]} help backup force
                         </code-block>
 
-                        Get help for the force option of the backup command.</text>
+                        Obtenir de l'aide pour l'option force de la commande de sauvegarde.</text>
                     </command-example>
                 </command-example-list>
             </command>
 
             <!-- OPERATION - START COMMAND -->
             <command id="start" name="Start">
-                <summary>Allow <backrest/> processes to run.</summary>
+                <summary>Autorise l'exécution des processus <backrest/>.</summary>
 
-                <text>If the <backrest/> processes were previously stopped using the <cmd>stop</cmd> command then they can be started again using the <cmd>start</cmd> command.  Note that this will not immediately start up any <backrest/> processes but they are allowed to run.</text>
+                <text>Si les processus <backrest/> ont été précédemment arrêtés à l'aide de la commande <cmd>stop</cmd>, ils peuvent être relancés à l'aide de la commande <cmd>start</cmd>.  Notez que cela ne démarrera pas immédiatement les processus <backrest/> mais ils seront autorisés à s'exécuter.</text>
 
                 <command-example-list>
-                    <command-example title="Start processes for stanza main">
+                    <command-example title="Démarrer les processus pour le stanza principale">
                         <text><code-block title="">
                             {[backrest-exe]} --stanza=main start
                         </code-block>
 
-                        Allows <backrest/> processes to run for the <id>main</id> stanza.</text>
+                        Autorise l'exécution des processus <backrest/> pour le stanza <id>main</id>.</text>
                     </command-example>
                 </command-example-list>
             </command>
@@ -1437,28 +1511,28 @@
             <command id="stop" name="Stop">
                 <summary>Stop <backrest/> processes from running.</summary>
 
-                <text>Does not allow any new <backrest/> processes to run.  By default running processes will be allowed to complete successfully.  Use the <setting>--force</setting> option to terminate running processes.
+                <text>Interdit l'exécution de tout nouveau processus <backrest/>. Par défaut, les processus en cours d'exécution seront autorisés à se terminer normalement. Utiliser l'option <setting>--force</setting> pour mettre fin aux processus en cours.
 
-                <backrest/> processes will return an error if they are run after the stop command completes.</text>
+                Les processus <backrest/> retourneront une erreur s'ils sont exécutés après la fin de la commande d'arrêt.</text>
 
                 <option-list>
                     <!-- OPERATION - STOP COMMAND - FORCE OPTION -->
                     <option id="force" name="Force">
-                        <summary>Force all <backrest/> processes to stop.</summary>
+                        <summary>Forcer l'arrêt de tous les processus <backrest/>.</summary>
 
-                        <text>This option will send TERM signals to all running <backrest/> processes to effect a graceful but immediate shutdown.  Note that this will also shutdown processes that were initiated on another system but have remotes running on the current system.  For instance, if a backup was started on the backup server then running <cmd>stop --force</cmd> on the database server will shutdown the backup process on the backup server.</text>
+                        <text>Cette option enverra un signal TERM à tous les processus <backrest/> en cours pour effectuer un arrêt contrôlé et immédiat.  Notez que cela arrêtera également les processus qui ont été lancés depuis un autre système et qui ont des commandes à distance fonctionnant sur le système actuel.  Par exemple, si une sauvegarde a été lancée sur le serveur de sauvegarde, l'exécution de <cmd>stop --force</cmd> sur le serveur de base de données arrêtera le processus de sauvegarde sur le serveur de sauvegarde.</text>
 
                         <example>y</example>
                     </option>
                 </option-list>
 
                 <command-example-list>
-                    <command-example title="Stop processes for all stanzas">
+                    <command-example title="Arrêter les processus pour tout les stanzas">
                         <text><code-block title="">
                             {[backrest-exe]} stop
                         </code-block>
 
-                        Stop new <backrest/> processes for all stanzas but allow any current process to complete.</text>
+                        Arrêter les nouveaux processus <backrest/> pour tout les stanza mais permettre à tout processus en cours de se terminer.</text>
                     </command-example>
                 </command-example-list>
             </command>
@@ -1466,116 +1540,116 @@
 
             <!-- OPERATION - VERSION COMMAND -->
             <command id="version" name="Version">
-                <summary>Get version.</summary>
+                <summary>Obtenir la version.</summary>
 
-                <text>Displays installed <backrest/> version.</text>
+                <text>Affiche la version <backrest/> installée..</text>
 
                 <command-example-list>
-                    <command-example title="Get version">
+                    <command-example title="Obtenir version">
                         <text><code-block title="">
                             {[backrest-exe]} version
                         </code-block>
 
-                        Get <backrest/> version.</text>
+                        Obtenir la version de  <backrest/>.</text>
                     </command-example>
                 </command-example-list>
             </command>
 
             <!-- OPERATION - STANZA-CREATE COMMAND -->
-            <command id="stanza-create" name="Stanza Create">
+            <command id="stanza-create" name="Création du Stanza">
                 <summary>Create the required stanza data.</summary>
 
-                <text>The <cmd>stanza-create</cmd> command must be run on the host where the repository is located after the stanza has been configured in <file>pgbackrest.conf</file>.</text>
+                <text>La commande <cmd>stanza-create</cmd> doit être exécutée sur l'hôte où se trouve le dépôt après que le stanza ait été configurée dans <file>pgbackrest.conf</file>.</text>
 
                 <option-list>
                     <!-- OPERATION - STANZA-CREATE COMMAND - FORCE OPTION -->
-                    <option id="force" name="Force">
-                        <summary>Force stanza creation.</summary>
+                    <option id="force" name="Forcer">
+                        <summary>Forcer la création du stanza.</summary>
 
-                        <text>This option is no longer supported.</text>
+                        <text>Cette option n'est plus supportée.</text>
 
                         <example>n</example>
                     </option>
 
                     <!-- ======================================================================================================= -->
                     <option id="online" name="Online">
-                        <summary>Create on an online cluster.</summary>
+                        <summary>Création sur une instance en ligne.</summary>
 
-                        <text>Specifying --no-online prevents <backrest/> from connecting to <postgres/> when creating the stanza.</text>
+                        <text>Le fait de spécifier <br-option>--no-online</br-option> empêche <backrest/> de se connecter à <postgres/> lors de la création du stanza.</text>
 
                         <example>n</example>
                     </option>
                 </option-list>
 
                 <command-example-list>
-                    <command-example title="Create required stanza data">
+                    <command-example title="Créer les données requise au stanza">
                         <text><code-block title="">
                             {[backrest-exe]} --stanza=db stanza-create
                         </code-block>
 
-                        Create the required data for the <id>db</id> stanza.</text>
+                        Créer les données requises pour le stanza <id>db</id>.</text>
                     </command-example>
                 </command-example-list>
             </command>
 
             <!-- OPERATION - STANZA-UPGRADE COMMAND -->
-            <command id="stanza-upgrade" name="Stanza Upgrade">
-                <summary>Upgrade a stanza.</summary>
+            <command id="stanza-upgrade" name="Mise à niveau du Stanza">
+                <summary>Mettre à jour un stanza.</summary>
 
-                <text>Immediately after upgrading <postgres/> to a newer major version, the <br-option>pg-path</br-option> for all <backrest/> configurations must be set to the new database location and the <cmd>stanza-upgrade</cmd> run on the repository host. If the database is offline use the <br-option>--no-online</br-option> option.</text>
+                <text>Immédiatement après la mise à niveau de <postgres/> vers une nouvelle version majeure, le chemin <br-option>pg-path</br-option> pour toute la configuration de <backrest/>  doit être défini sur le nouvel emplacement de la base de données et la commande <cmd>stanza-upgrade</cmd> doit être exécuté sur l'hôte du dépôt. Si l'instance  <postgres/> est hors ligne, utilisez l'option <br-option>--no-online</br-option>.</text>
 
                 <option-list>
                     <!-- ======================================================================================================= -->
                     <option id="online" name="Online">
-                        <summary>Update an online cluster.</summary>
+                        <summary>Mettre à jour une instance en ligne.</summary>
 
-                        <text>Specifying --no-online prevents <backrest/> from connecting to <postgres/> when upgrading the stanza.</text>
+                        <text>Le fait de spécifier <br-option>--no-online</br-option> empêche <backrest/> de se connecter à <postgres/> lors de la mise à jour du stanza.</text>
 
                         <example>n</example>
                     </option>
                 </option-list>
 
                 <command-example-list>
-                    <command-example title="Upgrade a stanza">
+                    <command-example title="Mise à niveau du stanza">
                         <text><code-block title="">
                             {[backrest-exe]} --stanza=db stanza-upgrade
                         </code-block>
 
-                        Upgrade the <id>db</id> stanza to a new version of <postgres/>.</text>
+                        Met à jour le stanza <id>db</id> avec une nouvelle version de <postgres/>.</text>
                     </command-example>
                 </command-example-list>
             </command>
 
             <!-- OPERATION - STANZA-DELETE COMMAND -->
-            <command id="stanza-delete" name="Stanza Delete">
-                <summary>Delete a stanza.</summary>
+            <command id="stanza-delete" name="suppression du Stanza">
+                <summary>Supprimer un stanza.</summary>
 
-                <text>The <cmd>stanza-delete</cmd> command removes data in the repository associated with a stanza.<admonition type="warning">Use this command with caution &amp;mdash; it will permanently remove all backups and archives from the <backrest/> repository for the specified stanza.</admonition>
-                To delete a stanza:
+                <text>La commande <cmd>stanza-delete</cmd> supprime les données du dépôt associé au stanza.<admonition type="warning">Utilisez cette commande avec précaution &amp;mdash; elle supprimera définitivement toutes les sauvegardes et archives du dépôt <backrest/> pour la stanza spécifiée.</admonition>
+                Pour supprimer un stanza:
                 <ul>
-                    <li>Shut down the <postgres/> cluster associated with the stanza (or use --force to override).</li>
-                    <li>Run the <cmd>stop</cmd> command on the repository host.</li>
-                    <li>Run the <cmd>stanza-delete</cmd> command on the repository host.</li>
-                </ul>Once the command successfully completes, it is the responsibility of the user to remove the stanza from all <backrest/> configuration files.</text>
+                    <li>Arrêter l'instance <postgres/> associé au stanza (ou utiliser l'option <br-option>--force</br-option> pour passer outre).</li>
+                    <li>Exécuter la commande <cmd>stop</cmd> sur l'hôte du dépôt.</li>
+                    <li>Exécuter la commande <cmd>stanza-delete</cmd> sur l'hôte du dépôt.</li>
+                </ul>Une fois la commande terminée avec succès, il incombe à l'utilisateur de supprimer de la configuration <backrest/> le stanza.</text>
 
                 <option-list>
                     <!-- OPERATION - STANZA-CREATE COMMAND - FORCE OPTION -->
                     <option id="force" name="Force">
-                        <summary>Force stanza delete.</summary>
+                        <summary>Forcer la suppression du stanzadu réferentiel.</summary>
 
-                        <text>If <postgres/> is still running for the stanza, then this option can be used to force the stanza to be deleted from the repository.</text>
+                        <text>Si <postgres/> est toujours en cours d'exécution pour le stanza, alors cette option peut être utilisée pour forcer sa suppression du référentiel.</text>
 
                         <example>n</example>
                     </option>
                 </option-list>
 
                 <command-example-list>
-                    <command-example title="Delete a stanza">
+                    <command-example title="Supprimer un stanza">
                         <text><code-block title="">
                             {[backrest-exe]} --stanza=db stanza-delete
                         </code-block>
 
-                        Delete the <id>db</id> stanza repository.</text>
+                        Supprime le (stanza) <id>db</id> du référentiel.</text>
                     </command-example>
                 </command-example-list>
             </command>
