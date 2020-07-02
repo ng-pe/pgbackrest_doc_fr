@@ -432,8 +432,8 @@
                     </config-key>
 
                     <!-- CONFIG - RETENTION SECTION - REPO-ARCHIVE-RETENTION KEY -->
-                    <config-key id="repo-retention-archive" name="Archive Retention">
-                        <summary>Number of backups worth of continuous WAL to retain.</summary>
+                    <config-key id="repo-retention-archive" name="Rétention d'Archive ">
+                        <summary>Nombre de sauvegardes correspondant à la valeur de WAL continue à conserver.</summary>
 
                         <text><admonition type="note">Les segments WAL nécessaires pour rendre une sauvegarde cohérente sont toujours conservés jusqu'à l'expiration de la sauvegarde, quelle que soit la configuration de cette option.</admonition> Si cette configuration n'est pas définie et que <setting>repo-retention-full-type</setting> est positionné sur <setting>count</setting> (valeur par défaut), alors l'expiration de l'archive sera par défaut à la valeur de <setting>repo-retention-full</setting>  si <setting>repo-retention-archive-type</setting> est définit à <setting>full</setting> (ou à <setting>repo-retention-diff</setting> si <setting>repo-retention-archive-type</setting> est définit à <setting>diff</setting> ). Cela permet de garantir que le WAL n'expirera que pour les sauvegardes ayant déjà expirées. Si <setting>repo-retention-full-type</setting> est positionné sur <setting>time</setting>, avec cette valeur, par défaut, les archives qui sont antérieures à la plus ancienne sauvegarde complète conservée et satisfaisant au paramètre <setting>repo-retention-full</setting> seront supprimés.
 
@@ -443,7 +443,7 @@
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-KEY KEY -->
-                    <config-key id="repo-s3-key" name="Clé d'accès au dépôt S3">
+                    <config-key id="repo-s3-key" name="Clé d'accès S3">
                         <summary>Clé d'accès au dépôt S3.</summary>
 
                         <text>Clé AWS utilisée pour accéder au bucket.</text>
@@ -452,7 +452,7 @@
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-KEY-SECRET KEY -->
-                    <config-key id="repo-s3-key-secret" name="Clé d'accès secrète au dépôt S3">
+                    <config-key id="repo-s3-key-secret" name="Clé d'accès secrète S3">
                         <summary>Clé d'accès secrète au dépôt S3.</summary>
 
                         <text>Clé secrète AWS utilisée pour accéder au bucket.</text>
@@ -470,7 +470,7 @@
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-BUCKET KEY -->
-                    <config-key id="repo-s3-bucket" name="S3 dépôt Bucket">
+                    <config-key id="repo-s3-bucket" name="S3 Bucket">
                         <summary>S3 dépôt bucket.</summary>
 
                         <text>Bucket S3 utilisé pour stocker le dépôt.
@@ -499,7 +499,7 @@
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-ENDPOINT KEY -->
-                    <config-key id="repo-s3-endpoint" name="Dépot S3 Point de terminaison">
+                    <config-key id="repo-s3-endpoint" name="Point de terminaison S3">
                         <summary>Dépot S3 Point de terminaison (endpoint).</summary>
 
                         <text>Le point de terminaison d'AWS doit être valable pour la région sélectionnée.</text>
@@ -508,7 +508,7 @@
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-HOST KEY -->
-                    <config-key id="repo-s3-host" name="Hôte dépôt S3">
+                    <config-key id="repo-s3-host" name="Hôte S3">
                         <summary>Hôte du dépot S3.</summary>
 
                         <text>Conntecter sur un hôte différent du point de terminaison (endpoint). Il est généralement utilisé à des fins de test.</text>
@@ -517,7 +517,7 @@
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-PORT KEY -->
-                    <config-key id="repo-s3-port" name="Port dépot S3">
+                    <config-key id="repo-s3-port" name="Port S3">
                         <summary>Port de connection au dépot S3.</summary>
 
                         <text>Port à utiliser lors de la connexion au point de terminaison (ou à l'hôte si spécifié).</text>
@@ -526,7 +526,7 @@
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-REGION KEY -->
-                    <config-key id="repo-s3-region" name="Région dépot S3">
+                    <config-key id="repo-s3-region" name="Région S3">
                         <summary>Région du dépôt S3.</summary>
 
                         <text>La région d'AWS où le bucket a été créé.</text>
@@ -535,7 +535,7 @@
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-URI-STYLE KEY -->
-                    <config-key id="repo-s3-uri-style" name="Dépot S3 URI formats">
+                    <config-key id="repo-s3-uri-style" name="S3 Formats d'URI">
                         <summary>S3 URI formats.</summary>
 
                         <text>Les formats URI suivants sont pris en charge:
@@ -548,7 +548,7 @@
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-S3-VERIFY-TLS KEY -->
-                    <config-key id="repo-s3-verify-tls" name="S3 Dépot Vérifiction TLS">
+                    <config-key id="repo-s3-verify-tls" name="S3 Vérifiction TLS">
                         <summary>Vérifier le certificat du serveur S3.</summary>
 
                         <text>Désactive la vérification du certificat du serveur S3. Cette fonction ne doit être utilisée que dans le cadre de tests ou dans le cas d'une utilisation avec un certificat a été auto-signé.</text>
@@ -571,7 +571,7 @@
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-CIPHER-TYPE KEY -->
-                    <config-key id="repo-cipher-type" name="Repository Cipher Type">
+                    <config-key id="repo-cipher-type" name="Type de chiffrement du dépôt">
                         <summary>Chiffrement (cipher) utilisé pour chiffrer le dépôt.</summary>
 
                         <text>Les types de chiffrement suivants sont pris en charge:
@@ -585,7 +585,7 @@
                     </config-key>
 
                     <!-- CONFIG - REPO SECTION - REPO-CIPHER-PASS KEY -->
-                    <config-key id="repo-cipher-pass" name="Repository Cipher Passphrase">
+                    <config-key id="repo-cipher-pass" name="Phrase de chiffrement du dépôt">
                         <summary>Phrase de chiffrement du dépôt.</summary>
 
                         <text>Mot de passe utilisée pour chiffrer/déchiffrer les fichiers du dépôt.</text>
@@ -596,8 +596,8 @@
             </config-section>
 
             <!-- CONFIG - BACKUP -->
-            <config-section id="backup" name="Backup">
-                <text>La section <setting>backup</setting> définit les paramètres relatifs à la sauvegarde..</text>
+            <config-section id="backup" name="Sauvegarde">
+                <text>La section <setting>backup</setting> définit les paramètres relatifs à la sauvegarde.</text>
 
                 <config-key-list>
                     <!-- CONFIG - BACKUP SECTION - ARCHIVE-CHECK -->
@@ -634,7 +634,7 @@
                     </config-key>
 
                     <!-- CONFIG - BACKUP SECTION - CHECKSUM-PAGE KEY -->
-                    <config-key id="checksum-page" name="Page Checksums">
+                    <config-key id="checksum-page" name="Sommes de controle des Pages">
                         <summary>Validation des sommes de contrôle des pages de données (checksums).</summary>
 
                         <text>Permet à <backrest/> de valider toutes les sommes de contrôle des pages de données pendant la sauvegarde de l'instance.  Cette option est automatiquement activée lorsque les sommes de contrôle des pages de données sont activées sur l'instance.
@@ -645,7 +645,7 @@
                     </config-key>
 
                     <!-- CONFIG - BACKUP SECTION - EXCLUDE KEY -->
-                    <config-key id="exclude" name="Path/File Exclusions">
+                    <config-key id="exclude" name="Exclusions Chemin/Fichier">
                         <summary>Exclusion des chemins/fichiers de la sauvegarde..</summary>
 
                         <text>Toutes les exclusions sont relatives à <path>$PGDATA</path>. Si l'exclusion se termine par / alors seuls les fichiers du répertoire spécifié seront exclus, par exemple <br-option>--exclude=junk/</br-option> exclura tous les fichiers du répertoire <path>$PGDATA/junk</path> mais inclura le répertoire lui-même.  Si l'exclusion ne se termine pas par / alors le fichier peut correspondre exactement à l'exclusion ou correspondre à / apposé à l'exclusion, par exemple <br-option>--exclude=junk</br-option> exclura le répertoire <path>$PGDATA/junk</path> et tous les fichiers qu'il contient.
@@ -691,7 +691,7 @@
                     </config-key>
 
                     <!-- CONFIG - BACKUP SECTION - STOP-AUTO -->
-                    <config-key id="stop-auto" name="Stop Auto">
+                    <config-key id="stop-auto" name="Arrêt Automatique">
                         <summary>Arrêt d'une sauvegarde antérieure défaillante lors la nouvelle sauvegarde.</summary>
 
                         <text>Cette opération ne sera effectuée que si un verrouillage consultatif exclusif peut être acquis afin de faire la preuve que le processus de sauvegarde antérieur ayant échoué s'est réellement arrêté.
@@ -724,7 +724,7 @@
                     </config-key>
 
                     <!-- CONFIG - ARCHIVE SECTION - ARCHIVE-GET-QUEUE-MAX KEY -->
-                    <config-key id="archive-get-queue-max" name="Maximum Archive Get Queue Size">
+                    <config-key id="archive-get-queue-max" name="Taille maximale file d'attente récupération d'Archive">
                         <summary>Taille maximale de la file d'attente <backrest/> archive-get.</summary>
 
                         <text>Spécifie la taille maximale de la file d'attente <cmd>archive-get</cmd> lorsque <br-option>archive-async</br-option> est activée.  La file d'attente est stockée sur l'emplacement définit par <br-option>spool-path</br-option> et est utilisée pour accélérer la réception des données de WAL par <postgres/>.
@@ -789,7 +789,7 @@
                     </config-key>
 
                     <!-- CONFIG - RESTORE SECTION - LINK-MAP KEY -->
-                    <config-key id="link-map" name="Link Map">
+                    <config-key id="link-map" name="Mappage liens symboliques">
                         <summary>Modification de la destination d'un lien symbolique.</summary>
 
                         <text>Permet de modifier la destination du fichier ou du répertoire d'un lien symbolique lors de la restauration.  Ceci est utile lors de la restauration sur un sytèmes avec une configuration du stockage différente de celle du système d'origine (là où la sauvegarde a été réalisée).</text>
@@ -838,7 +838,7 @@
 
                 <config-key-list>
                     <!-- CONFIG - STANZA SECTION - PG-HOST-CMD KEY -->
-                    <config-key id="pg-host-cmd" name="PostgreSQL Host Command">
+                    <config-key id="pg-host-cmd" name="Hôte PostgreSQL Commande">
                         <summary>Emplacement des exécutable <backrest/> sur l'hôte <postgres/>.</summary>
 
                         <text>Uniquement requis si le chemin vers <exe/> est différent sur le serveur local et <postgres/>.  S'il n'est pas défini, le chemin de l'<exe/> de l'hôte de la base de données sera le même que le chemin de l'<exe/> local.</text>
@@ -848,7 +848,7 @@
                     </config-key>
 
                     <!-- CONFIG - STANZA SECTION - PG-HOST-CONFIG KEY -->
-                    <config-key id="pg-host-config" name="PostgreSQL Host Configuration">
+                    <config-key id="pg-host-config" name="Hôte PostgreSQL Configuration">
                         <summary><backrest/> database host configuration file.</summary>
 
                         <text>Définit l'emplacement du fichier de configuration sur l'hôte <postgres/>.  Ceci n'est requis que si le fichier de configuration de l'hôte <postgres/> se trouve dans un emplacement différent de celui du fichier de configuration local.</text>
@@ -857,7 +857,7 @@
                     </config-key>
 
                     <!-- CONFIG - STANZA SECTION - PG-HOST-CONFIG-INCLUDE-PATH KEY -->
-                    <config-key id="pg-host-config-include-path" name="PostgreSQL Host Configuration Include Path">
+                    <config-key id="pg-host-config-include-path" name="Hôte PostgreSQL Chemin inclusion Configuration">
                         <summary>Chemin d'inclusion de la configuration <backrest/> sur l'hôte.</summary>
 
                         <text>Définit l'emplacement du chemin d'inclusion de la configuration sur l'hôte <postgres/>.  Ceci n'est requis que si le chemin d'inclusion de la configuration de l'hôte <postgres/> se trouve à un endroit différent du chemin d'inclusion de la configuration locale.</text>
@@ -866,7 +866,7 @@
                     </config-key>
 
                     <!-- CONFIG - STANZA SECTION - PG-HOST-CONFIG-PATH KEY -->
-                    <config-key id="pg-host-config-path" name="PostgreSQL Host Configuration Path">
+                    <config-key id="pg-host-config-path" name="Hôte PostgreSQL Chemin Configuration">
                         <summary>Chemin de configuration <backrest/> de l'hôte de base de données.</summary>
 
                         <text>Définit l'emplacement du chemin de configuration sur l'hôte <postgres/>.  Ceci n'est requis que si le chemin de configuration de l'hôte <postgres/> se trouve dans un emplacement différent du chemin de configuration local.</text>
@@ -875,7 +875,7 @@
                     </config-key>
 
                     <!-- CONFIG - STANZA SECTION - PG-HOST KEY -->
-                    <config-key id="pg-host" name="PostgreSQL Host">
+                    <config-key id="pg-host" name="Hôte PostgreSQL">
                         <summary>Hôte <postgres/> pour les opérations à distance via SSH.</summary>
 
                         <text>Utilisé pour les sauvegardes lorsque l'hôte <postgres/> est différent de l'hôte du dépôt.</text>
@@ -884,7 +884,7 @@
                     </config-key>
 
                     <!-- CONFIG - STANZA SECTION - PG-HOST-USER KEY -->
-                    <config-key id="pg-host-user" name="PostgreSQL Host User">
+                    <config-key id="pg-host-user" name="Hôte PostgreSQL Utilisateur">
                         <summary>Utilisateur de connexion <postgres/> lorsque <setting>pg-host</setting> est défini.</summary>
 
                         <text>Cet utilisateur sera également propriétaire du processus distant <backrest/> et initiera les connexions à <postgres/>.  Pour que cela puisse fonctionner correctement, l'utilisateur doit être le propriétaire de l'instance de base de données <postgres/>, qui est généralement par défaut <id>postgres</id>.</text>
@@ -893,7 +893,7 @@
                     </config-key>
 
                     <!-- CONFIG - STANZA SECTION - PG-PATH KEY -->
-                    <config-key id="pg-path" name="PostgreSQL Path">
+                    <config-key id="pg-path" name="PostgreSQL Chemin">
                         <summary><postgres/> data directory.</summary>
 
                         <text>Ce paramètre doit être le même que le paramètre <setting>data_directory</setting> du fichier <file>postgresql.conf</file>.  Même si cette valeur peut être lue à partir de <file>postgresql.conf</file> ou <postgres/>, il est conseillé de la définir au cas où ces ressources ne seraient pas disponibles pendant un scénario de restauration ou de sauvegarde hors ligne.
@@ -922,7 +922,7 @@
                     </config-key>
 
                     <!-- CONFIG - STANZA SECTION - PG-USER KEY -->
-                    <config-key id="pg-user" name="PostgreSQL Database User">
+                    <config-key id="pg-user" name="PostgreSQL Utilisateur Base de données">
                         <summary>Nom d'utilisateur de base de données <postgres/>.</summary>
 
                         <text>Le nom d'utilisateur de la base de données utilisé lors de la connexion à <postgres/>.  S'il n'est pas spécifié, <backrest/> se connectera avec l'utilisateur du système d'exploitation local ou <id>PGUSER</id>.</text>
@@ -931,7 +931,7 @@
                     </config-key>
 
                     <!-- CONFIG - STANZA SECTION - PG-HOST-PORT KEY -->
-                    <config-key id="pg-host-port" name="PostgreSQL Host Port">
+                    <config-key id="pg-host-port" name="Hôte PostgreSQL Port">
                         <summary>Port de l'hôte <postgres/> lorsque <setting>pg-host</setting> est configuré.</summary>
 
                         <text>Utiliser cette option pour spécifier un port non par défaut pour le protocole hôte <postgres/>.  Actuellement, seul le protocole SSH est pris en charge</text>
@@ -944,8 +944,8 @@
     </config>
 
     <!-- COMMAND -->
-    <operation title="{[project]} Command Reference">
-        <description>La référence de la commande {[projet]} détaille toutes les commandes et options.</description>
+    <operation title="{[project]} Référence de commandes">
+        <description>La référence de commandes de {[projet]} détaille toutes les commandes et options.</description>
 
         <text>Les commandes sont utilisées pour exécuter les différentes fonctionnalités de <backrest/>.  Ici, les options de commande sont énumérées de manière détaillée, autrement dit, chaque option applicable à une commande est énumérée avec cette commande, même si elle s'applique à une ou plusieurs autres commandes.  Cela inclut toutes les options qui peuvent également être configurées dans <file>pgbackrest.conf</file>.
 
@@ -1563,7 +1563,7 @@
 
                 <option-list>
                     <!-- OPERATION - STANZA-CREATE COMMAND - FORCE OPTION -->
-                    <option id="force" name="Force">
+                    <option id="force" name="Forcer">
                         <summary>Forcer la création du stanza.</summary>
 
                         <text>Cette option n'est plus supportée.</text>
@@ -1593,7 +1593,7 @@
             </command>
 
             <!-- OPERATION - STANZA-UPGRADE COMMAND -->
-            <command id="stanza-upgrade" name="Stanza Upgrade">
+            <command id="stanza-upgrade" name="Mise à niveau du Stanza">
                 <summary>Mettre à jour un stanza.</summary>
 
                 <text>Immédiatement après la mise à niveau de <postgres/> vers une nouvelle version majeure, le chemin <br-option>pg-path</br-option> pour toute la configuration de <backrest/>  doit être défini sur le nouvel emplacement de la base de données et la commande <cmd>stanza-upgrade</cmd> doit être exécuté sur l'hôte du dépôt. Si l'instance  <postgres/> est hors ligne, utilisez l'option <br-option>--no-online</br-option>.</text>
@@ -1610,7 +1610,7 @@
                 </option-list>
 
                 <command-example-list>
-                    <command-example title="Upgrade a stanza">
+                    <command-example title="Mise à niveau du stanza">
                         <text><code-block title="">
                             {[backrest-exe]} --stanza=db stanza-upgrade
                         </code-block>
@@ -1621,7 +1621,7 @@
             </command>
 
             <!-- OPERATION - STANZA-DELETE COMMAND -->
-            <command id="stanza-delete" name="Stanza Delete">
+            <command id="stanza-delete" name="suppression du Stanza">
                 <summary>Supprimer un stanza.</summary>
 
                 <text>La commande <cmd>stanza-delete</cmd> supprime les données du dépôt associé au stanza.<admonition type="warning">Utilisez cette commande avec précaution &amp;mdash; elle supprimera définitivement toutes les sauvegardes et archives du dépôt <backrest/> pour la stanza spécifiée.</admonition>
@@ -1644,7 +1644,7 @@
                 </option-list>
 
                 <command-example-list>
-                    <command-example title="Delete a stanza">
+                    <command-example title="Supprimer un stanza">
                         <text><code-block title="">
                             {[backrest-exe]} --stanza=db stanza-delete
                         </code-block>
