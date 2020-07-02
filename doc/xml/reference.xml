@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE doc SYSTEM "doc.dtd">
-<doc title="{[project]} Command &amp; Configuration Reference">
+<doc title="{[project]} Guide de référence des commandes &amp; de la configuration">
     <!-- CONFIG -->
     <config title="{[project]} Référence de la configuration">
-        <description>La référence de configuration de {[projet]} détaille toutes les options de configuration.</description>
+        <description>Ce guide de référence de la configuration {[projet]} détaille toutes les options de configuration.</description>
 
         <text><backrest/> peut être utilisé entièrement avec les paramètres de la ligne de commande mais un fichier de configuration est plus pratique pour les installations complexes ou comportant beaucoup d'options. L'emplacement par défaut du fichier de configuration est <file>/etc/pgbackrest/pgbackrest.conf</file>.  Si aucun fichier n'existe à cet emplacement, l'ancienne valeur par défaut <file>/etc/pgbackrest.conf</file> sera alors utilisée.</text>
 
-        <config-section-list title="Settings">
+        <config-section-list title="Paramètres">
             <!-- CONFIG - LOG -->
             <config-section id="log" name="Log">
                 <text>La section <setting>log</setting> définit les paramètres liés à la journalisation des traces.<admonition type="caution">Cette journalisation peut révéler des informations sensibles telles que des clés et des mots de passe.  À utiliser donc avec prudence !</admonition></text>
 
                 <!-- CONFIG - LOG SECTION - LOG-LEVEL-FILE KEY -->
                 <config-key-list>
-                    <config-key id="log-level-file" name="File Log Level">
+                    <config-key id="log-level-file" name="Niveau du journal fichier">
                         <summary>Niveau d'enregistrement des traces lors de l'enregistrement sur fichier.</summary>
 
                         <text>Les niveaux de traces suivants sont pris en charge:
@@ -32,7 +32,7 @@
                     </config-key>
 
                     <!-- CONFIG - LOG SECTION - LOG-LEVEL-CONSOLE KEY -->
-                    <config-key id="log-level-console" name="Console Log Level">
+                    <config-key id="log-level-console" name="Niveau du journal de la console">
                         <summary>Niveau de journalisation en sortie sur la console.</summary>
 
                         <text>Les niveaux de traces suivants sont pris en charge:
@@ -50,7 +50,7 @@
                     </config-key>
 
                     <!-- CONFIG - LOG SECTION - LOG-LEVEL-STDERR KEY -->
-                    <config-key id="log-level-stderr" name="Std Error Log Level">
+                    <config-key id="log-level-stderr" name="Niveau du journal pour stderr">
                         <summary>Niveau de traces sur la sortie console stderr.</summary>
 
                         <text>Spécifie les niveaux de traces qui sortiront en <id>stderr</id> plutôt que <id>stdout</id> (spécifié par <br-option>log-level-console</br-option>).  L'horodatage et le processus ne seront pas émis sur <id>stderr</id>.
@@ -70,7 +70,7 @@
                     </config-key>
 
                     <!-- CONFIG - GENERAL SECTION - LOG-PATH KEY -->
-                    <config-key id="log-path" name="Log Path">
+                    <config-key id="log-path" name="Emplacement du journal">
                         <summary>Emplacement où les fichiers journaux de traces sont stockés.</summary>
 
                         <text>Le chemin d'accès au journal fournit un emplacement pour <backrest/> pour stocker les fichiers journaux.  Notez que si <setting>log-level-file=off</setting> alors aucun chemin pour l'emplacement des journaux de traces n'est nécessaire.</text>
@@ -79,7 +79,7 @@
                     </config-key>
 
                     <!-- CONFIG - LOG SECTION - LOG-TIMESTAMP KEY -->
-                    <config-key id="log-timestamp" name="Log Timestamp">
+                    <config-key id="log-timestamp" name="Horodatage du journal">
                         <summary>Activer l'horodatage dans les traces.</summary>
 
                         <text>Active l'horodatage dans la console et l'enregistrement des fichiers.  Cette option est désactivée dans des situations particulières telles que la génération de documentation.</text>
@@ -88,7 +88,7 @@
                     </config-key>
 
                     <!-- CONFIG - LOG SECTION - LOG-SUBPROCESS KEY -->
-                    <config-key id="log-subprocess" name="Log Subprocesses">
+                    <config-key id="log-subprocess" name="Journalisation des sous-processus">
                         <summary>Activer la journalisation des traces dans les sous-processus.</summary>
 
                         <text>Activez la journalisation des traces dans les fichiers pour tous les sous-processus créés par ce processus en utilisant le niveau de journalisation spécifié par <br-option>log-level-file</br-option>.</text>
@@ -103,7 +103,7 @@
                 <text>La section <setting>general</setting> définit les options qui sont communes à de nombreuses commandes.</text>
 
                 <config-key-list>
-                    <config-key id="buffer-size" name="Buffer Size">
+                    <config-key id="buffer-size" name="Taille de la mémoire tampon">
                         <summary>Taille de la mémoire tampon pour les opérations sur les fichiers.</summary>
 
                         <text>Définissez la taille de la mémoire tampon utilisée pour les opérations de copie, de compression et de décompression.  Un maximum de 3 tampons seront utilisés à la fois par processus.  Un maximum supplémentaire de 256K par processus peut être utilisé pour les tampons zlib.
@@ -116,7 +116,7 @@
                     </config-key>
 
                     <!-- CONFIG - GENERAL SECTION - CMD-SSH KEY -->
-                    <config-key id="cmd-ssh" name="SSH client command">
+                    <config-key id="cmd-ssh" name="Commande client SSH">
                         <summary>Chemin d'accès à l'exécutable du client ssh.</summary>
 
                         <text>Utilisez un client SSH spécifique lorsqu'une alternative est nécessaire ou lorsque l'exécutable <file>ssh</file> n'est pas dans $PATH.</text>
@@ -125,7 +125,7 @@
                     </config-key>
 
                     <!-- CONFIG - GENERAL SECTION - COMPRESS -->
-                    <config-key id="compress" name="Compress">
+                    <config-key id="compress" name="Compression">
                         <summary>Utilisez la compression de fichiers.</summary>
 
                         <text>Les fichiers de sauvegarde sont compatibles avec les outils de compression en ligne de commande.
@@ -136,7 +136,7 @@
                     </config-key>
 
                     <!-- CONFIG - GENERAL SECTION - COMPRESS-TYPE -->
-                    <config-key id="compress-type" name="Compress Type">
+                    <config-key id="compress-type" name="Type de compression">
                         <summary>Type de compression pour les fichiers.</summary>
 
                         <text>Les types de compression suivants sont pris en charge :
@@ -151,7 +151,7 @@
                     </config-key>
 
                     <!-- CONFIG - GENERAL SECTION - COMPRESS-LEVEL KEY -->
-                    <config-key id="compress-level" name="Compress Level">
+                    <config-key id="compress-level" name="Niveau de compression">
                         <summary>Niveau de compression des fichiers.</summary>
 
                         <text>Définit le niveau à utiliser pour la compression des fichiers lorsque <setting>compress-type</setting> n'est pas égal à <id>none</id> ou <setting>compress=y</setting> (déprécié).</text>
@@ -161,7 +161,7 @@
                     </config-key>
 
                     <!-- CONFIG - GENERAL SECTION - COMPRESS-LEVEL-NETWORK KEY -->
-                    <config-key id="compress-level-network" name="Network Compress Level">
+                    <config-key id="compress-level-network" name="Niveau de compression réseau">
                         <summary>Niveau de compression du réseau.</summary>
 
                         <text>Définit le niveau de compression sur le réseau, lorsque <setting>compress-type=none</setting> et que la commande n'est pas exécutée sur le même hôte que le dépôt.  La compression est utilisée pour réduire le trafic réseau mais peut être désactivée en définissant <setting>compress-level-network=0</setting>.  Lorsque <setting>compress-type</setting> n'est pas égal à <id>none</id>, le paramètre <setting>compress-level-network</setting> est ignoré et <setting>compress-level</setting> est utilisé à la place de sorte que le fichier ne soit compressé qu'une seule fois.  La compression SSH est toujours désactivée.</text>
@@ -171,7 +171,7 @@
                     </config-key>
 
                     <!-- CONFIG - GENERAL SECTION - DB-TIMEOUT KEY -->
-                    <config-key id="db-timeout" name="Database Timeout">
+                    <config-key id="db-timeout" name="Timeout de la base de données">
                         <summary>Délai d'attente des requêtes à la base de données.</summary>
 
                         <text>Définit le délai d'attente, en secondes, pour les interrogations de la base de données.  Cela inclut les fonctions <code>pg_start_backup()</code> et <code>pg_stop_backup()</code> qui peuvent chacune prendre un temps considérable.  C'est pourquoi le délai d'attente doit être maintenu à un niveau élevé, sauf si vous savez que ces fonctions retourneront rapidement (c'est-à-dire si vous avez défini <setting>startfast=y</setting> et que vous savez que l'instance de base de données ne générera pas beaucoup de segments WAL pendant la sauvegarde). <admonition type="note">L'option <br-option>db-timeout</br-option> doit être inférieure à l'option <br-option>protocol-timeout</br-option>.</admonition></text>
@@ -191,8 +191,8 @@
                     </config-key>
 
                     <!-- CONFIG - GENERAL SECTION - IO-TIMEOUT KEY -->
-                    <config-key id="io-timeout" name="I/O Timeout">
-                        <summary>I/O timeout.</summary>
+                    <config-key id="io-timeout" name="Délai d'attente E/S">
+                        <summary>Délai d'attente E/S.</summary>
 
                         <text>Délai d'attente, en secondes, utilisé pour les connexions et les opérations de lecture/écriture.
 
@@ -202,7 +202,7 @@
                     </config-key>
 
                     <!-- CONFIG - GENERAL SECTION - LOCK-PATH KEY -->
-                    <config-key id="lock-path" name="Lock Path">
+                    <config-key id="lock-path" name="Chemin fichier de verrouillage">
                         <summary>Chemin d'accès où sont stockés les fichiers de verrouillage.</summary>
 
                         <text>Le chemin de verrouillage fournit l'emplacement à <backrest/> pour créer des fichiers de verrouillage afin d'éviter que des opérations en conflictuelles ne soient exécutées simultanément.</text>
@@ -211,7 +211,7 @@
                     </config-key>
 
                     <!-- CONFIG - GENERAL SECTION - NEUTRAL-UMASK -->
-                    <config-key id="neutral-umask" name="Neutral Umask">
+                    <config-key id="neutral-umask" name="Umask neutre">
                         <summary>Utilisation d'un <quote>umask</quote> neutre</summary>
 
                         <text>Définit l'umask à 0000 pour que les modes dans le dépôt de sauvegarde soient créés de manière appropriée.  Le mode par défaut du répertoire est 0750 et le mode par défaut du fichier est 0640.  Pour les répertoires lock et log, les modes de répertoire et de fichier sont respectivement fixés à 0770 et 0660.
@@ -222,7 +222,7 @@
                     </config-key>
 
                     <!-- CONFIG - GENERAL SECTION - LOG-PATH KEY -->
-                    <config-key id="spool-path" name="Spool Path">
+                    <config-key id="spool-path" name="Chemin pour données transitoires (Spool)">
                         <summary>Chemin où les données transitoires sont stockées.</summary>
 
                         <text>Ce chemin est utilisé pour stocker les données nécessaires à la commande asynchrone <cmd>archive-push</cmd> et <cmd>archive-get</cmd>.
@@ -239,7 +239,7 @@
                     </config-key>
 
                     <!-- CONFIG - GENERAL SECTION - PROCESS-MAX -->
-                    <config-key id="process-max" name="Process Maximum">
+                    <config-key id="process-max" name="Processus Maximum">
                         <summary>Nombre de processus maximal lors utilisé lors de la compression et du transfert.</summary>
 
                         <text>Chaque processus effectuera une compression et un transfert pour que la commande s'exécute plus rapidement, mais ne réglez pas <setting>process-max</setting> à un niveau si élevé que cela affecte les performances de la base de données.</text>
@@ -248,7 +248,7 @@
                     </config-key>
 
                     <!-- CONFIG - GENERAL SECTION - PROTOCOL-TIMEOUT KEY -->
-                    <config-key id="protocol-timeout" name="Protocol Timeout">
+                    <config-key id="protocol-timeout" name="Délai d'attente au niveau Protocole">
                         <summary>Délai d'attente du protocole.</summary>
 
                         <text>Définit le délai, en secondes, durant lequel le processus local ou distant attendra qu'un nouveau message soit reçu au niveau de la couche protocole.  Cela permet d'éviter que les processus n'attendent indéfiniment un message. <admonition type="note">L'option <br-option>protocol-timeout</br-option> doit être supérieure à celle de <br-option>db-timeout</br-option> option.</admonition></text>
@@ -266,7 +266,7 @@
                     </config-key>
 
                     <!-- CONFIG - GENERAL SECTION - TCP-KEEP-ALIVE-COUNT KEY -->
-                    <config-key id="tcp-keep-alive-count" name="Keep Alive Count">
+                    <config-key id="tcp-keep-alive-count" name="Conteur Keep Alive">
                         <summary>Compteur Keep-alive.</summary>
 
                         <text>Spécifie le nombre de messages TCP à garder en mémoire qui peuvent être perdus avant que la connexion ne soit considérée comme morte.
@@ -277,7 +277,7 @@
                     </config-key>
 
                     <!-- CONFIG - GENERAL SECTION - TCP-KEEP-ALIVE-IDLE KEY -->
-                    <config-key id="tcp-keep-alive-idle" name="Keep Alive Idle">
+                    <config-key id="tcp-keep-alive-idle" name="Temps d'inactivité Keep Alive">
                         <summary>Temps d'inactivité du keepalive.</summary>
 
                         <text>Spécifie la durée (en secondes) sans activité du réseau après laquelle le système d'exploitation doit envoyer un message TCP de maintien en activité (keep-alive).
@@ -288,7 +288,7 @@
                     </config-key>
 
                     <!-- CONFIG - GENERAL SECTION - TCP-KEEP-ALIVE-INTERVAL KEY -->
-                    <config-key id="tcp-keep-alive-interval" name="Keep Alive Interval">
+                    <config-key id="tcp-keep-alive-interval" name="Intervalle du Keep Alive">
                         <summary>Temps d'intervalle de maintien en vie (keep-alive).</summary>
 
                         <text>Spécifie le temps (en secondes) après lequel un message TCP de maintien en activité (keep-alive) non acquitté doit être retransmis.
@@ -301,8 +301,8 @@
             </config-section>
 
             <!-- CONFIG - REPO -->
-            <config-section id="repository" name="Repository">
-                <text>La section <setting>repository</setting> définit les options utilisées pour configurer le dépôt de sauvegarde.
+            <config-section id="repository" name="Dépot (Repository)">
+                <text>La section <setting>repository</setting> (dépot) définit les options utilisées pour configurer le dépôt de sauvegarde.
 
                 <b>Indexation</b> : Toutes les options <setting>repo-</setting> sont indexées pour permettre la configuration de plusieurs dépôts, bien qu'un seul dépôt soit actuellement pris en charge. Par exemple, le dépôt est configuré avec les options <setting>repo1-path</setting>, <setting>repo1-host</setting>, etc.
 
@@ -310,7 +310,7 @@
 
                 <config-key-list>
                     <!-- CONFIG - REPO SECTION - REPO-HOST KEY -->
-                    <config-key id="repo-host" name="Repository Host">
+                    <config-key id="repo-host" name="Hôte du dépot">
                         <summary>Hôte de dépôt dans le cas d'un fonctionnement à distance via SSH.</summary>
 
                         <text>Assurez-vous que l'authentification SSH soit correctement approuvé entre l'hôte <postgres/> et l'hôte du référentiel.
@@ -437,7 +437,7 @@
 
                         <text><admonition type="note">Les segments WAL nécessaires pour rendre une sauvegarde cohérente sont toujours conservés jusqu'à l'expiration de la sauvegarde, quelle que soit la configuration de cette option.</admonition> Si cette configuration n'est pas définie et que <setting>repo-retention-full-type</setting> est positionné sur <setting>count</setting> (valeur par défaut), alors l'expiration de l'archive sera par défaut à la valeur de <setting>repo-retention-full</setting>  si <setting>repo-retention-archive-type</setting> est définit à <setting>full</setting> (ou à <setting>repo-retention-diff</setting> si <setting>repo-retention-archive-type</setting> est définit à <setting>diff</setting> ). Cela permet de garantir que le WAL n'expirera que pour les sauvegardes ayant déjà expirées. Si <setting>repo-retention-full-type</setting> est positionné sur <setting>time</setting>, avec cette valeur, par défaut, les archives qui sont antérieures à la plus ancienne sauvegarde complète conservée et satisfaisant au paramètre <setting>repo-retention-full</setting> seront supprimés.
 
-                        Cette option doit être définie si <setting>repo-retention-archive-type</setting> est positionné sur <setting>incr</setting>. Si l'espace disque est insuffisant, tce paramètre, associé à <setting>repo-retention-archive-type</setting>, peut être utilisé pour faire expirer de manière agressive les segments WAL. Toutefois, cela annule la possibilité d'effectuer un PITR à partir des sauvegardes avec les WAL expirés et donc <b>n'est pas</b> recommandé.</text>
+                        Cette option doit être définie si <setting>repo-retention-archive-type</setting> est positionné sur <setting>incr</setting>. Si l'espace disque est insuffisant, ce paramètre, associé à <setting>repo-retention-archive-type</setting>, peut être utilisé pour faire expirer de manière agressive les segments WAL. Toutefois, cela annule la possibilité d'effectuer un PITR à partir des sauvegardes avec les WAL expirés et donc <b>n'est pas</b> recommandé.</text>
 
                         <example>2</example>
                     </config-key>
@@ -612,7 +612,7 @@
                     </config-key>
 
                     <!-- CONFIG - BACKUP SECTION - ARCHIVE-COPY -->
-                    <config-key id="archive-copy" name="Copy Archive">
+                    <config-key id="archive-copy" name="Copie des Archives">
                         <summary>Copier tous les segments WAL nécessaires à la cohérence de la sauvegarde.</summary>
 
                         <text>Cette option un peu parano protège contre la corruption dans les archives des segments WAL en stockant les segments WAL nécessaires à la cohérence directement dans la sauvegarde. Les segments WAL sont toujours stockés dans l'archive, donc cette option utilisera de l'espace supplémentaire.
@@ -625,7 +625,7 @@
                     </config-key>
 
                     <!-- CONFIG - BACKUP SECTION - BACKUP-STANDBY KEY -->
-                    <config-key id="backup-standby" name="Backup from Standby">
+                    <config-key id="backup-standby" name="Sauvegarde à partir du secondaire">
                         <summary>Sauvegarde depuis l'instance standby secondaire.</summary>
 
                         <text>Activer la sauvegarde depuis le secondaire en standby pour réduire la charge sur l'instance primaire. Cette option nécessite que les hôtes <host>primary</host> (primaire) et <host>standby</host> (secondaire en standby) soit correctement configurés.</text>
@@ -1032,7 +1032,7 @@
 
         <command-list title="Commands">
             <!-- OPERATION - BACKUP COMMAND -->
-            <command id="backup" name="Backup">
+            <command id="backup" name="Sauvegarde">
                 <summary>Sauvegarder une instance de bases de données.</summary>
 
                 <text><backrest/> n'a pas de planificateur de taches intégré, il est donc conseillé de l'exécuter à partir de cron ou d'un autre système de planification.</text>
@@ -1053,7 +1053,7 @@
                     </option>
 
                     <!-- OPERATION - BACKUP COMMAND - FORCE OPTION -->
-                    <option id="force" name="Force">
+                    <option id="force" name="Forcer">
                         <summary>Forcer une sauvegarde hors ligne.</summary>
 
                         <text>Lorsqu'il est utilisé avec <br-option>--no-start-stop</br-option> une sauvegarde sera exécutée même si <backrest/> pense que <postgres/> est en cours d'exécution.  <b>Cette option doit être utilisée avec une extrême prudence car elle risque d'entraîner une sauvegarde incorrecte.</b>
@@ -1118,7 +1118,7 @@
             </command>
 
             <!-- OPERATION - CHECK COMMAND -->
-            <command id="check" name="Check">
+            <command id="check" name="Vérification">
                 <summary>Vérification de la configuration.</summary>
 
                 <text>La commande <cmd>check</cmd> valide que <backrest/> et le paramétre <pg-setting>archive_command</pg-setting> sont configurés correctement pour l'archivage et les sauvegardes. Il détecte d'éventuelles erreurs de configuration, en particulier pour l'archivage. Une mauvaise configuration de l'archivage se traduit par des sauvegardes incomplètes : les segments WAL requis n'étant pas parvenus aux archives. La commande peut être exécutée sur le serveur de l'instance de la base de données ou sur le serveur du dépôt de sauvegarde.  La commande peut également être exécutée sur l'hôte secondaire (standby), mais comme les commandes <code>pg_switch_xlog()</code>/<code>pg_switch_wal()</code> ne peut pas être exécuté sur une instance secondaire, la commande ne testera que la configuration du dépôt.
@@ -1143,7 +1143,7 @@
 
                 <option-list>
                     <!-- OPERATION - EXPIRE COMMAND - SET OPTION -->
-                    <option id="set" name="Defini">
+                    <option id="set" name="Definir">
                         <summary>Definir l'expiration de la sauvegarde.</summary>
 
                         <text>Le jeu de sauvegarde spécifié (c'est-à-dire l'étiquette de sauvegarde fournie et toutes ses sauvegardes dépendantes, le cas échéant) expirera quelles que soient les règles de conservation des sauvegardes, excepté qu'au moins une sauvegarde complète doit rester dans le dépôt. <admonition type="warning">Utilisez cette option avec une extrême prudence &amp;mdash ; elle supprimera définitivement toutes les sauvegardes et archives non nécessaires pour effectuer une sauvegarde cohérente du dépôt de sauvegarde <backrest/> pour le jeu de sauvegarde spécifié. Ce processus peut empêcher l'exécution du PITR. Si les options <br-option>--repo-retention-full</br-option> et/ou <br-option>--repo-retention-archive</br-option> sont configurées, alors il est conseillé de remplacer ces options en définissant leurs valeurs au maximum lors de l'exécution de la commande d'expiration.</admonition></text>
@@ -1181,7 +1181,7 @@
             </command>
 
             <!-- OPERATION - REPO-GET COMMAND -->
-            <command id="repo-get" name="Dépôt Obtenir un fichier">
+            <command id="repo-get" name="Obtenir un fichier du dépôt">
                 <summary>Obtenir un fichier du dépôt.</summary>
 
                 <text>Similaire à la commande unix <cmd>cat</cmd> mais les options sont différentes.</text>
@@ -1273,7 +1273,7 @@
             </command>
 
             <!-- OPERATION - REPO-PUT COMMAND -->
-            <command id="repo-put" name="Repository Put File">
+            <command id="repo-put" name="Déposer un ficher">
                 <summary>Déposer un fichier dans le dépôt.</summary>
 
                 <text>Similaire à la commande unix <cmd>tee</cmd> mais avec des options différentes.
