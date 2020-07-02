@@ -1325,7 +1325,7 @@
             <command id="restore" name="Restauration">
                 <summary>Retaurer une instance de base de données.</summary>
 
-                <text>This command is generally run manually, but there are instances where it might be automated.</text>
+                <text>Cette commande est généralement exécutée manuellement, mais il est possible de automatiser dans certains cas.</text>
 
                 <option-list>
                     <!-- OPERATION - RESTORE COMMAND - SET OPTION -->
