@@ -1091,7 +1091,7 @@
                 <title>Exemple d'une configuration non conforme</title>
 
                 <execute user="postgres" output="y" err-expect="82">
-                    <exe-cmd>{[project-exe]} {[dash]}-stanza={[postgres-cluster-demo]} --archive-timeout=.1 check</exe-cmd>
+                    <exe-cmd>{[project-exe]} {[dash]}-stanza={[postgres-cluster-demo]} --archive-timeout=0 check</exe-cmd>
                     <exe-highlight>could not find WAL segment|did not reach the archive</exe-highlight>
                 </execute>
             </execute-list>
