@@ -415,10 +415,10 @@
             </execute>
         </execute-list>
 
-        <p>Echange de clef entre <host>{[host-repo1]}</host> et <host>{[setup-ssh-host]}</host>.</p>
+        <p>Échange de clef entre <host>{[host-repo1]}</host> et <host>{[setup-ssh-host]}</host>.</p>
 
         <execute-list host="{[host-repo1]}">
-            <title>Copiez la clef public de <host>{[setup-ssh-host]}</host> sur <host>{[host-repo1]}</host></title>
+            <title>Copiez la clef publique de <host>{[setup-ssh-host]}</host> sur <host>{[host-repo1]}</host></title>
 
             <execute user="root" err-suppress="y" user-force="y">
                 <exe-cmd>
@@ -455,7 +455,7 @@
         </execute-list>
 
         <execute-list host="{[setup-ssh-host]}">
-            <title>Teste de la connexion depuis <host>{[setup-ssh-host]}</host> vers <host>{[host-repo1]}</host></title>
+            <title>Test de la connexion depuis <host>{[setup-ssh-host]}</host> vers <host>{[host-repo1]}</host></title>
 
             <execute user="{[setup-ssh-user]}" err-suppress="y">
                 <exe-cmd>ssh pgbackrest@{[host-repo1]}</exe-cmd>
